@@ -26,14 +26,142 @@ import {
   User,
   Hash,
   Brain,
-  Smile
+  Smile,
+  Wifi,
+  WifiOff,
+  Play
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PROCEDURES, DRUGS, PATHOLOGIES, LAB_VALUES, DICTIONARY, CLINICAL_CASES } from './data';
 import { Procedure, Drug, Pathology, LabValue, DictionaryEntry, ClinicalCase } from './types';
 
 // Types for navigation
-type Section = 'home' | 'procedures' | 'pharmacology' | 'pathologies' | 'scales' | 'labs' | 'dictionary' | 'cases';
+type Section = 'home' | 'procedures' | 'pharmacology' | 'pathologies' | 'scales' | 'labs' | 'dictionary' | 'cases' | 'settings';
+
+function SettingsView() {
+  const [userInfo, setUserInfo] = useState({
+    name: 'Andrea Morales',
+    specialty: 'Lic. en Enfermería',
+    hospital: 'Hospital Central - UCI'
+  });
+
+  const [notifs, setNotifs] = useState({
+    vitalsAlert: true,
+    drugUpdates: true,
+    clinicalCases: false
+  });
+
+  return (
+    <div className="max-w-4xl mx-auto py-8">
+      <div className="flex items-center gap-4 mb-10 pb-6 border-b border-medical-border">
+        <div className="w-16 h-16 rounded-2xl bg-medical-blue/20 flex items-center justify-center text-medical-blue border border-medical-blue/30 shadow-lg shadow-medical-blue/5">
+          <Settings size={32} />
+        </div>
+        <div>
+          <h2 className="text-3xl font-bold text-white tracking-tight">Configuración</h2>
+          <p className="text-medical-gray text-sm">Gestiona tu perfil y preferencias de la aplicación</p>
+        </div>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Profile Settings */}
+        <div className="bg-medical-card p-6 rounded-2xl border border-medical-border space-y-6">
+          <h3 className="text-sm font-bold text-medical-blue uppercase tracking-widest flex items-center gap-2">
+            <User size={16} /> Perfil del Profesional
+          </h3>
+          <div className="space-y-4">
+            <div>
+              <label className="text-[10px] font-bold text-medical-gray uppercase mb-1 block">Nombre Completo</label>
+              <input 
+                type="text" 
+                value={userInfo.name}
+                onChange={(e) => setUserInfo({...userInfo, name: e.target.value})}
+                className="w-full bg-medical-input border border-medical-border rounded-lg p-3 text-sm text-white focus:border-medical-blue/50 outline-none transition-all"
+              />
+            </div>
+            <div>
+              <label className="text-[10px] font-bold text-medical-gray uppercase mb-1 block">Especialidad / Cargo</label>
+              <input 
+                type="text" 
+                value={userInfo.specialty}
+                onChange={(e) => setUserInfo({...userInfo, specialty: e.target.value})}
+                className="w-full bg-medical-input border border-medical-border rounded-lg p-3 text-sm text-white focus:border-medical-blue/50 outline-none transition-all"
+              />
+            </div>
+            <div>
+              <label className="text-[10px] font-bold text-medical-gray uppercase mb-1 block">Centro de Trabajo</label>
+              <input 
+                type="text" 
+                value={userInfo.hospital}
+                onChange={(e) => setUserInfo({...userInfo, hospital: e.target.value})}
+                className="w-full bg-medical-input border border-medical-border rounded-lg p-3 text-sm text-white focus:border-medical-blue/50 outline-none transition-all"
+              />
+            </div>
+          </div>
+          <button className="w-full bg-medical-blue text-white font-bold py-3 rounded-xl hover:bg-medical-blue/80 transition-all shadow-lg shadow-medical-blue/20">
+            Guardar Cambios
+          </button>
+        </div>
+
+        {/* Preferences */}
+        <div className="space-y-8">
+          <div className="bg-medical-card p-6 rounded-2xl border border-medical-border space-y-6">
+            <h3 className="text-sm font-bold text-medical-blue uppercase tracking-widest flex items-center gap-2">
+              <AlertCircle size={16} /> Notificaciones y Alertas
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-3 bg-medical-input/50 rounded-xl border border-medical-border">
+                <div>
+                  <p className="text-sm font-semibold text-white">Alertas de Signos Vitales</p>
+                  <p className="text-[10px] text-medical-gray">Notificar cuando un valor esté fuera de rango.</p>
+                </div>
+                <button 
+                  onClick={() => setNotifs({...notifs, vitalsAlert: !notifs.vitalsAlert})}
+                  className={`w-12 h-6 rounded-full transition-all relative ${notifs.vitalsAlert ? 'bg-medical-blue' : 'bg-medical-border'}`}
+                >
+                  <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all ${notifs.vitalsAlert ? 'right-1' : 'left-1'}`} />
+                </button>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-medical-input/50 rounded-xl border border-medical-border">
+                <div>
+                  <p className="text-sm font-semibold text-white">Actualizaciones de Fármacos</p>
+                  <p className="text-[10px] text-medical-gray">Avisar si hay cambios en dosis o protocolos.</p>
+                </div>
+                <button 
+                  onClick={() => setNotifs({...notifs, drugUpdates: !notifs.drugUpdates})}
+                  className={`w-12 h-6 rounded-full transition-all relative ${notifs.drugUpdates ? 'bg-medical-blue' : 'bg-medical-border'}`}
+                >
+                  <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all ${notifs.drugUpdates ? 'right-1' : 'left-1'}`} />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-medical-card p-6 rounded-2xl border border-medical-border space-y-6">
+            <h3 className="text-sm font-bold text-medical-blue uppercase tracking-widest flex items-center gap-2">
+              <Book size={16} /> Sistema
+            </h3>
+            <div className="grid grid-cols-2 gap-3">
+              <button className="bg-medical-input p-4 rounded-xl border border-medical-border text-left hover:border-medical-blue/30 transition-all group">
+                <p className="text-[10px] font-bold text-medical-gray uppercase mb-1">Idioma</p>
+                <p className="text-white font-bold group-hover:text-medical-blue transition-colors">Español (Latam)</p>
+              </button>
+              <button className="bg-medical-input p-4 rounded-xl border border-medical-border text-left hover:border-medical-blue/30 transition-all group">
+                <p className="text-[10px] font-bold text-medical-gray uppercase mb-1">Unidades</p>
+                <p className="text-white font-bold group-hover:text-medical-blue transition-colors">SI (Métrico)</p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-12 text-center text-medical-gray space-y-2 pb-10">
+        <p className="text-xs font-bold uppercase tracking-widest">Versión Pro 2.4.0</p>
+        <p className="text-[10px]">© 2026 ClinixCare Medical Technologies</p>
+      </div>
+    </div>
+  );
+}
 
 function GlobalSearchView({ query, onSelectItem }: { query: string, onSelectItem: (section: Section, id: string) => void }) {
   const q = query.toLowerCase();
@@ -170,6 +298,21 @@ export default function App() {
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
+
   const handleGlobalSelectItem = (section: Section, id: string) => {
     setActiveSection(section);
     setGlobalQuery('');
@@ -178,125 +321,141 @@ export default function App() {
     // but the sections already have internal state for selection usually.
   };
 
+  const NavIcon = ({ section, icon: Icon }: { section: Section, icon: any }) => {
+    const isActive = activeSection === section;
+    return (
+      <button 
+        onClick={() => setActiveSection(section)}
+        className={`p-3.5 rounded-xl transition-all duration-300 ${isActive ? 'bg-medical-blue text-white shadow-lg shadow-medical-blue/20' : 'text-medical-gray hover:text-white'}`}
+      >
+        <Icon size={22} />
+      </button>
+    );
+  };
+
   const NavItem = ({ section, icon: Icon, label }: { section: Section, icon: any, label: string }) => (
     <button
       onClick={() => {
         setActiveSection(section);
         setIsSidebarOpen(false);
       }}
-      className={`w-full flex items-center gap-3 px-4 py-3 transition-all duration-200 ${
+      className={`w-full flex items-center gap-4 px-6 py-4 transition-all duration-200 border-l-4 ${
         activeSection === section 
-          ? 'bg-medical-blue/10 text-medical-blue border-l-4 border-medical-blue' 
-          : 'text-medical-gray hover:text-medical-text hover:bg-white/5'
+          ? 'bg-medical-blue/10 text-medical-blue border-medical-blue' 
+          : 'text-medical-gray border-transparent hover:text-white hover:bg-white/5'
       }`}
     >
-      <Icon size={20} />
-      <span className="font-medium text-sm">{label}</span>
+      <Icon size={22} />
+      <span className="font-bold text-sm tracking-tight">{label}</span>
     </button>
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
-      {/* Sidebar for Desktop / Overlay for Mobile */}
-      <AnimatePresence>
-        {(isSidebarOpen || window.innerWidth > 1024) && (
-          <>
-            {/* Backdrop for mobile */}
-            {isSidebarOpen && (
+    <div className="min-h-screen bg-black flex justify-center selection:bg-medical-blue/30 overflow-x-hidden">
+      {/* Mobile-centric container for all screens */}
+      <div className="w-full max-w-[1024px] bg-medical-bg flex flex-col relative shadow-2xl overflow-hidden h-screen">
+        <AnimatePresence>
+          {isSidebarOpen && (
+            <>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={toggleSidebar}
-                className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 lg:hidden"
+                className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]"
               />
-            )}
-            
-            <motion.aside
-              initial={{ x: -280 }}
-              animate={{ x: 0 }}
-              exit={{ x: -280 }}
-              className="fixed lg:static inset-y-0 left-0 w-72 bg-medical-sidebar border-r border-medical-border p-6 z-50 flex flex-col shadow-xl lg:shadow-none"
-            >
-              <div className="flex items-center gap-3 mb-10 px-2 text-medical-blue">
-                <div className="w-3 h-3 bg-medical-blue rounded-full"></div>
-                <h1 className="text-xl font-bold tracking-tight text-white leading-none">
-                  ClinixCare
-                </h1>
-              </div>
-
-              <div className="space-y-1 -mx-6 flex-grow">
-                <p className="px-10 text-[10px] font-bold text-medical-gray uppercase tracking-widest mb-4">Menú Principal</p>
-                <NavItem section="home" icon={Home} label="Panel Principal" />
-                <NavItem section="procedures" icon={Stethoscope} label="Procedimientos" />
-                <NavItem section="pharmacology" icon={Pill} label="Farmacología" />
-                <NavItem section="pathologies" icon={Activity} label="Patologías" />
-                <NavItem section="scales" icon={ClipboardList} label="Escalas de Valoración" />
-                <NavItem section="labs" icon={Thermometer} label="Valores de Laboratorio" />
-                <NavItem section="dictionary" icon={Book} label="Diccionario Médico" />
-                <NavItem section="cases" icon={BookOpen} label="Casos Clínicos" />
-              </div>
-
-              <div className="mt-auto pt-6 border-t border-medical-border flex items-center gap-3 px-2">
-                <div className="w-10 h-10 rounded-full bg-medical-input flex items-center justify-center text-medical-blue font-bold border border-medical-border">
-                  AM
+              <motion.aside
+                initial={{ x: -280 }}
+                animate={{ x: 0 }}
+                exit={{ x: -280 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                className="fixed inset-y-0 left-0 w-72 bg-medical-sidebar border-r border-medical-border p-6 z-[70] flex flex-col shadow-2xl"
+              >
+                <div className="flex items-center justify-between mb-10 px-2">
+                  <div className="flex items-center gap-3 text-medical-blue">
+                    <div className="w-3 h-3 bg-medical-blue rounded-full"></div>
+                    <h1 className="text-xl font-bold tracking-tight text-white leading-none">Cuidar+</h1>
+                  </div>
+                  <button onClick={toggleSidebar} className="p-2 text-medical-gray hover:text-white">
+                    <X size={24} />
+                  </button>
                 </div>
-                <div className="flex-grow overflow-hidden">
-                  <p className="text-sm font-semibold text-white truncate">Andrea Morales</p>
-                  <p className="text-xs text-medical-gray truncate">Lic. en Enfermería</p>
+
+                <div className="space-y-1 -mx-2 flex-grow overflow-y-auto">
+                  <p className="px-4 text-[10px] font-bold text-medical-gray uppercase tracking-widest mb-4 opacity-50">Menú Principal</p>
+                  <NavItem section="home" icon={Home} label="Panel Principal" />
+                  <NavItem section="procedures" icon={Stethoscope} label="Procedimientos" />
+                  <NavItem section="pharmacology" icon={Pill} label="Farmacología" />
+                  <NavItem section="pathologies" icon={Activity} label="Patologías" />
+                  <NavItem section="scales" icon={ClipboardList} label="Escalas de Valoración" />
+                  <NavItem section="labs" icon={Thermometer} label="Valores de Laboratorio" />
+                  <NavItem section="dictionary" icon={Book} label="Diccionario Médico" />
+                  <NavItem section="cases" icon={BookOpen} label="Casos Clínicos" />
+                  <NavItem section="settings" icon={Settings} label="Configuración" />
                 </div>
-                <Settings size={18} className="text-medical-gray cursor-pointer hover:text-medical-blue" />
-              </div>
-            </motion.aside>
-          </>
-        )}
-      </AnimatePresence>
+
+                <div className="mt-auto pt-6 border-t border-medical-border flex items-center gap-3 px-2">
+                  <div className="w-10 h-10 rounded-full bg-medical-blue/10 border border-medical-blue/20 flex items-center justify-center text-medical-blue font-bold">
+                    AM
+                  </div>
+                  <div className="flex-grow overflow-hidden">
+                    <p className="text-sm font-semibold text-white truncate">Andrea Morales</p>
+                    <p className="text-[10px] uppercase font-bold text-medical-gray tracking-wider">Enfermería</p>
+                  </div>
+                </div>
+              </motion.aside>
+            </>
+          )}
+        </AnimatePresence>
+
+        {/* Global Bottom Navigation for Mobile Feel */}
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-medical-sidebar/80 backdrop-blur-md border border-medical-border px-2 py-2 rounded-2xl z-40 shadow-2xl lg:hidden">
+          <NavIcon section="home" icon={Home} />
+          <NavIcon section="procedures" icon={Stethoscope} />
+          <NavIcon section="cases" icon={BookOpen} />
+          <NavIcon section="settings" icon={Settings} />
+        </div>
 
       {/* Main Content */}
       <main className="flex-grow flex flex-col max-h-screen overflow-hidden">
         {/* Header */}
-        <header className="h-16 bg-medical-sidebar border-b border-medical-border flex items-center justify-between px-6 sticky top-0 z-30">
-          <div className="flex items-center gap-4">
+        <header className="h-20 bg-medical-sidebar border-b border-medical-border flex items-center justify-between px-4 sm:px-6 sticky top-0 z-50">
+          <div className="flex items-center gap-3">
             <button 
               onClick={toggleSidebar}
-              className="lg:hidden p-2 hover:bg-medical-input rounded-lg text-medical-text transition-colors"
+              className="p-3 hover:bg-medical-input rounded-xl text-medical-text transition-colors"
             >
               <Menu size={24} />
             </button>
-            <h2 className="text-lg font-semibold text-white capitalize hidden md:block">
-              {globalQuery ? 'Búsqueda Global' : activeSection === 'home' ? 'Protocolos de Enfermería' : activeSection}
+            <h2 className="text-lg font-bold text-white tracking-tight hidden sm:block">
+              {activeSection === 'home' ? 'Cuidar+ Protocolos' : 
+               activeSection === 'cases' ? 'Evaluación de Casos' :
+               activeSection.charAt(0).toUpperCase() + activeSection.slice(1)}
             </h2>
           </div>
           
-          <div className="relative group max-w-sm w-full mx-4">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-medical-gray group-focus-within:text-medical-blue transition-colors" size={18} />
-            <input 
-              type="text" 
-              placeholder="Buscar en toda la biblioteca..."
-              className="w-full bg-medical-input border border-medical-border rounded-lg py-2 pl-10 pr-4 text-sm text-gray-300 focus:border-medical-blue/50 transition-all outline-none placeholder:text-medical-gray/50"
-              value={globalQuery}
-              onChange={(e) => setGlobalQuery(e.target.value)}
-            />
+          <div className="flex-grow max-w-[200px] sm:max-w-xs mx-2">
+            <div className="relative group">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-medical-gray group-focus-within:text-medical-blue transition-colors" size={16} />
+              <input 
+                type="text" 
+                placeholder="Buscar para todo..."
+                className="w-full bg-medical-input border border-medical-border rounded-xl py-2 pl-9 pr-4 text-xs text-gray-300 focus:border-medical-blue/50 transition-all outline-none"
+                value={globalQuery}
+                onChange={(e) => setGlobalQuery(e.target.value)}
+              />
+            </div>
           </div>
 
-          <div className="flex gap-4 items-center shrink-0">
-            <div className="text-right hidden sm:block">
-              <div className="text-[10px] text-medical-gray font-bold uppercase tracking-widest leading-none mb-1">Tiempo Turno</div>
-              <div className="text-sm font-mono font-bold text-medical-green">05:42:12</div>
-            </div>
-            <div className="w-12 h-12 bg-medical-red/10 border border-medical-red/30 rounded-full flex items-center justify-center cursor-pointer hover:bg-medical-red/20 transition-colors shadow-lg shadow-medical-red/5 overflow-hidden">
-              <img 
-                src="/sos_logo.png" 
-                alt="SOS Logo" 
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
+          <div className="flex gap-2 items-center">
+            <div className={`p-2.5 rounded-xl border hidden xs:flex ${isOnline ? 'bg-medical-green/10 border-medical-green/20 text-medical-green' : 'bg-medical-red/10 border-medical-red/20 text-medical-red'}`}>
+              {isOnline ? <Wifi size={18} /> : <WifiOff size={18} />}
             </div>
           </div>
         </header>
 
         {/* Dynamic Content */}
-        <div className="flex-grow overflow-y-auto p-4 sm:p-8">
+        <div className="flex-grow overflow-y-auto p-4 sm:p-6 lg:p-10 pb-32">
           <AnimatePresence mode="wait">
             <motion.div
               key={globalQuery ? 'global-search' : activeSection}
@@ -317,6 +476,7 @@ export default function App() {
                   {activeSection === 'labs' && <LabsView />}
                   {activeSection === 'dictionary' && <DictionaryView />}
                   {activeSection === 'cases' && <ClinicalCasesView />}
+                  {activeSection === 'settings' && <SettingsView />}
                 </>
               )}
             </motion.div>
@@ -324,7 +484,8 @@ export default function App() {
         </div>
       </main>
     </div>
-  );
+  </div>
+);
 }
 
 // --- Sub-components for Views ---
@@ -411,12 +572,8 @@ function QuickCard({ title, desc, bgColor, icon: Icon, onClick }: any) {
 
 function ProceduresView() {
   const [selected, setSelected] = useState<Procedure | null>(null);
-  const [localSearch, setLocalSearch] = useState('');
 
-  const filteredProcedures = PROCEDURES.filter(p => 
-    p.name.toLowerCase().includes(localSearch.toLowerCase()) ||
-    p.type.toLowerCase().includes(localSearch.toLowerCase())
-  );
+  const filteredProcedures = PROCEDURES;
 
   if (selected) {
     return (
@@ -437,19 +594,6 @@ function ProceduresView() {
             </div>
           </div>
 
-          {selected.image && (
-            <div className="w-full h-64 rounded-2xl overflow-hidden border border-medical-border relative group">
-              <img 
-                src={selected.image} 
-                alt={selected.name} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-medical-card/80 to-transparent flex items-end p-6">
-                <span className="text-white font-bold text-xs uppercase tracking-widest bg-medical-blue/80 px-3 py-1 rounded">Guía Visual de Referencia</span>
-              </div>
-            </div>
-          )}
 
           <div className="grid md:grid-cols-2 gap-8">
             <SectionBlock title="Material Necesario" icon={ClipboardList}>
@@ -499,16 +643,6 @@ function ProceduresView() {
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest">Guías de Procedimientos</h3>
-        <div className="relative group max-w-xs w-full">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-medical-gray group-focus-within:text-sky-400 transition-colors" size={14} />
-          <input 
-            type="text" 
-            placeholder="Filtrar procedimientos..."
-            className="w-full bg-medical-input border border-medical-border rounded-lg py-1.5 pl-9 pr-4 text-xs text-gray-300 focus:border-sky-400/50 transition-all outline-none"
-            value={localSearch}
-            onChange={(e) => setLocalSearch(e.target.value)}
-          />
-        </div>
       </div>
       <div className="grid sm:grid-cols-2 gap-4">
         {filteredProcedures.map((p) => (
@@ -552,13 +686,8 @@ function SectionBlock({ title, icon: Icon, children, color = 'text-medical-blue'
 function PharmacologyView() {
   const [selected, setSelected] = useState<Drug | null>(null);
   const [showCalculator, setShowCalculator] = useState(false);
-  const [localSearch, setLocalSearch] = useState('');
 
-  const filteredDrugs = DRUGS.filter(d => 
-    d.name.toLowerCase().includes(localSearch.toLowerCase()) ||
-    d.mechanism.toLowerCase().includes(localSearch.toLowerCase()) ||
-    d.group.toLowerCase().includes(localSearch.toLowerCase())
-  );
+  const filteredDrugs = DRUGS;
 
   return (
     <div className="max-w-4xl mx-auto space-y-12">
@@ -566,16 +695,6 @@ function PharmacologyView() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest">Diccionario de Fármacos</h3>
           <div className="flex flex-col sm:flex-row items-center gap-3">
-            <div className="relative group max-w-xs w-full">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-medical-gray group-focus-within:text-indigo-400 transition-colors" size={14} />
-              <input 
-                type="text" 
-                placeholder="Filtrar fármacos..."
-                className="w-full bg-medical-input border border-medical-border rounded-lg py-1.5 pl-9 pr-4 text-xs text-gray-300 focus:border-indigo-400/50 transition-all outline-none"
-                value={localSearch}
-                onChange={(e) => setLocalSearch(e.target.value)}
-              />
-            </div>
             <button 
               onClick={() => setShowCalculator(!showCalculator)}
               className={`flex items-center gap-2 px-4 py-1.5 rounded-lg font-bold text-xs transition-all whitespace-nowrap ${
@@ -722,12 +841,7 @@ function DripCalculator() {
 }
 
 function PathologiesView() {
-  const [localSearch, setLocalSearch] = useState('');
-  const filteredPathologies = PATHOLOGIES.filter(p => 
-    p.name.toLowerCase().includes(localSearch.toLowerCase()) ||
-    p.system.toLowerCase().includes(localSearch.toLowerCase()) ||
-    p.definition.toLowerCase().includes(localSearch.toLowerCase())
-  );
+  const filteredPathologies = PATHOLOGIES;
 
   const systems = Array.from(new Set(PATHOLOGIES.map(p => p.system)));
 
@@ -735,16 +849,6 @@ function PathologiesView() {
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest">Guía de Patologías</h3>
-        <div className="relative group max-w-xs w-full">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-medical-gray group-focus-within:text-medical-blue transition-colors" size={14} />
-          <input 
-            type="text" 
-            placeholder="Filtrar patologías..."
-            className="w-full bg-medical-input border border-medical-border rounded-lg py-1.5 pl-9 pr-4 text-xs text-gray-300 focus:border-medical-blue/50 transition-all outline-none"
-            value={localSearch}
-            onChange={(e) => setLocalSearch(e.target.value)}
-          />
-        </div>
       </div>
       <div className="space-y-12">
         {systems.map((system) => {
@@ -1926,10 +2030,28 @@ function ClinicalCasesView() {
   const [answeredCount, setAnsweredCount] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [timeLeft, setTimeLeft] = useState(600); // 10 minutes total
+  const [randomizedCases, setRandomizedCases] = useState<ClinicalCase[]>([]);
+  const [showStartOverlay, setShowStartOverlay] = useState(false);
+  const [pendingCategory, setPendingCategory] = useState<'pharmacology' | 'pathology' | null>(null);
 
-  const selectedCase = CLINICAL_CASES.find(c => c.id === selectedCaseId);
-  const currentCategoryCases = CLINICAL_CASES.filter(c => c.category === activeCategory);
-  const currentIndex = currentCategoryCases.findIndex(c => c.id === selectedCaseId);
+  const selectedCase = randomizedCases.find(c => c.id === selectedCaseId);
+  const currentIndex = randomizedCases.findIndex(c => c.id === selectedCaseId);
+
+  const startExam = (category: 'pharmacology' | 'pathology') => {
+    const allCategoryCases = CLINICAL_CASES.filter(c => c.category === category);
+    const shuffled = [...allCategoryCases].sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, 10);
+    setRandomizedCases(selected);
+    setActiveCategory(category);
+    setSelectedCaseId(selected[0]?.id || null);
+    setTimeLeft(600);
+    setScore(0);
+    setAnsweredCount(0);
+    setSelectedOption(null);
+    setShowResults(false);
+    setShowStartOverlay(false);
+    setPendingCategory(null);
+  };
 
   // Global Timer Logic
   useEffect(() => {
@@ -1956,6 +2078,8 @@ function ClinicalCasesView() {
     setSelectedOption(null);
     setShowResults(false);
     setTimeLeft(600);
+    setShowStartOverlay(false);
+    setPendingCategory(null);
   };
 
   const handleOptionSelect = (option: string) => {
@@ -1968,12 +2092,7 @@ function ClinicalCasesView() {
   };
 
   const resetExam = () => {
-    setScore(0);
-    setAnsweredCount(0);
-    setShowResults(false);
-    setTimeLeft(600);
-    const firstCase = currentCategoryCases[0];
-    if (firstCase) setSelectedCaseId(firstCase.id);
+    startExam(activeCategory!);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -2001,7 +2120,7 @@ function ClinicalCasesView() {
           <div className="bg-medical-input p-6 rounded-2xl border border-medical-border">
             <p className="text-[10px] font-bold text-medical-blue uppercase tracking-widest mb-1">Puntaje</p>
             <div className="text-4xl font-black text-white">
-              {score} <span className="text-sm text-medical-gray font-normal">/ {currentCategoryCases.length * 2}</span>
+              {score} <span className="text-sm text-medical-gray font-normal">/ {randomizedCases.length * 2}</span>
             </div>
           </div>
           <div className="bg-medical-input p-6 rounded-2xl border border-medical-border">
@@ -2128,20 +2247,20 @@ function ClinicalCasesView() {
               <div className="mt-8 flex justify-end">
                 <button
                   onClick={() => {
-                    if (currentIndex === currentCategoryCases.length - 1) {
+                    if (currentIndex === randomizedCases.length - 1) {
                       setShowResults(true);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     } else {
-                      const nextCase = currentCategoryCases[currentIndex + 1];
+                      const nextCase = randomizedCases[currentIndex + 1];
                       setSelectedCaseId(nextCase.id);
                       setSelectedOption(null);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
                   }}
-                  className={`flex items-center gap-2 ${currentIndex === currentCategoryCases.length - 1 ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-500/20' : 'bg-medical-blue hover:bg-medical-blue/80 shadow-medical-blue/20'} text-white px-6 py-2 rounded-lg text-xs font-bold uppercase tracking-widest transition-all shadow-lg`}
+                  className={`flex items-center gap-2 ${currentIndex === randomizedCases.length - 1 ? 'bg-rose-500 hover:bg-rose-600 shadow-rose-500/20' : 'bg-medical-blue hover:bg-medical-blue/80 shadow-medical-blue/20'} text-white px-6 py-2 rounded-lg text-xs font-bold uppercase tracking-widest transition-all shadow-lg`}
                 >
-                  {currentIndex === currentCategoryCases.length - 1 ? 'Finalizar Evaluación' : 'Siguiente'} 
-                  {currentIndex === currentCategoryCases.length - 1 ? <ClipboardList size={16} /> : <ArrowRight size={16} />}
+                  {currentIndex === randomizedCases.length - 1 ? 'Finalizar Evaluación' : 'Siguiente'} 
+                  {currentIndex === randomizedCases.length - 1 ? <ClipboardList size={16} /> : <ArrowRight size={16} />}
                 </button>
               </div>
             )}
@@ -2151,8 +2270,7 @@ function ClinicalCasesView() {
     );
   }
 
-  if (activeCategory) {
-    const filteredCases = CLINICAL_CASES.filter(c => c.category === activeCategory);
+  if (activeCategory && !selectedCaseId) {
     return (
       <div className="max-w-4xl mx-auto space-y-6">
         <button 
@@ -2163,7 +2281,7 @@ function ClinicalCasesView() {
         </button>
 
         <div className="grid sm:grid-cols-2 gap-6">
-          {filteredCases.map((c, index) => (
+          {randomizedCases.map((c, index) => (
             <button 
               key={c.id}
               onClick={() => setSelectedCaseId(c.id)}
@@ -2187,15 +2305,13 @@ function ClinicalCasesView() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest mb-6">Módulo de Casiones Clínicos</h3>
+    <div className="max-w-4xl mx-auto relative px-4 sm:px-0">
+      <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest mb-6">Módulo de Casos Clínicos</h3>
       <div className="grid sm:grid-cols-2 gap-8">
         <button 
           onClick={() => {
-            const firstPharmCase = CLINICAL_CASES.find(c => c.category === 'pharmacology');
-            setActiveCategory('pharmacology');
-            setTimeLeft(600); // 10 minutes
-            if (firstPharmCase) setSelectedCaseId(firstPharmCase.id);
+            setPendingCategory('pharmacology');
+            setShowStartOverlay(true);
           }}
           className="group relative overflow-hidden bg-medical-card p-10 rounded-2xl border border-medical-border hover:border-indigo-500/50 transition-all text-center shadow-xl"
         >
@@ -2213,10 +2329,8 @@ function ClinicalCasesView() {
 
         <button 
           onClick={() => {
-            const firstPathCase = CLINICAL_CASES.find(c => c.category === 'pathology');
-            setActiveCategory('pathology');
-            setTimeLeft(600); // 10 minutes
-            if (firstPathCase) setSelectedCaseId(firstPathCase.id);
+            setPendingCategory('pathology');
+            setShowStartOverlay(true);
           }}
           className="group relative overflow-hidden bg-medical-card p-10 rounded-2xl border border-medical-border hover:border-rose-500/50 transition-all text-center shadow-xl"
         >
@@ -2232,6 +2346,49 @@ function ClinicalCasesView() {
           </div>
         </button>
       </div>
+
+      {showStartOverlay && pendingCategory && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="absolute inset-0 bg-medical-sidebar/90 backdrop-blur-sm"
+            onClick={() => setShowStartOverlay(false)}
+          />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="relative bg-medical-card w-full max-w-md p-8 rounded-3xl border border-medical-border shadow-2xl text-center"
+          >
+            <div className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 ${pendingCategory === 'pharmacology' ? 'bg-indigo-500/20 text-indigo-400' : 'bg-rose-500/20 text-rose-400'}`}>
+              {pendingCategory === 'pharmacology' ? <Pill size={32} /> : <Activity size={32} />}
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-2">¿Preparado para iniciar?</h3>
+            <p className="text-medical-gray text-sm mb-8 leading-relaxed">
+              Te enfrentarás a 10 casos clínicos aleatorios de <strong>{pendingCategory === 'pharmacology' ? 'Farmacología' : 'Patología'}</strong>.
+              <br />
+              Tendrás 10 minutos para completar toda la evaluación.
+            </p>
+            <div className="grid grid-cols-2 gap-4">
+              <button 
+                onClick={() => setShowStartOverlay(false)}
+                className="py-3 px-6 bg-medical-input border border-medical-border text-white rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-white/5 transition-all"
+              >
+                Cancelar
+              </button>
+              <button 
+                onClick={() => {
+                  setShowStartOverlay(false);
+                  startExam(pendingCategory);
+                }}
+                className={`py-3 px-6 ${pendingCategory === 'pharmacology' ? 'bg-indigo-600 hover:bg-indigo-700' : 'bg-medical-blue hover:bg-medical-blue/80'} text-white rounded-xl font-bold text-xs uppercase tracking-widest transition-all shadow-lg flex items-center justify-center gap-2`}
+              >
+                Empezar <Play size={14} fill="currentColor" />
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }
@@ -2297,14 +2454,7 @@ function LabsView() {
 }
 
 function DictionaryView() {
-  const [localSearch, setLocalSearch] = useState('');
-  const [activeLetter, setActiveLetter] = useState<string | null>(null);
-
-  const filteredEntries = DICTIONARY.filter(e => 
-    e.term.toLowerCase().includes(localSearch.toLowerCase()) ||
-    e.abbreviation?.toLowerCase().includes(localSearch.toLowerCase()) ||
-    e.definition.toLowerCase().includes(localSearch.toLowerCase())
-  );
+  const filteredEntries = DICTIONARY;
 
   const categories = Array.from(new Set(DICTIONARY.map(e => e.category)));
 
@@ -2312,16 +2462,6 @@ function DictionaryView() {
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest">Diccionario de Términos y Abreviaturas</h3>
-        <div className="relative group max-w-xs w-full">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-medical-gray group-focus-within:text-medical-blue transition-colors" size={14} />
-          <input 
-            type="text" 
-            placeholder="Buscar término o sigla..."
-            className="w-full bg-medical-input border border-medical-border rounded-lg py-1.5 pl-9 pr-4 text-xs text-gray-300 focus:border-medical-blue/50 transition-all outline-none"
-            value={localSearch}
-            onChange={(e) => setLocalSearch(e.target.value)}
-          />
-        </div>
       </div>
       
       <div className="space-y-8">
@@ -2351,16 +2491,6 @@ function DictionaryView() {
                     </div>
                     <div className="flex-grow flex flex-col md:flex-row gap-4">
                       <p className="text-sm text-medical-text leading-relaxed flex-grow">{entry.definition}</p>
-                      {entry.image && (
-                        <div className="md:w-48 shrink-0 rounded-lg overflow-hidden border border-medical-border h-32">
-                          <img 
-                            src={entry.image} 
-                            alt={entry.term} 
-                            className="w-full h-full object-cover"
-                            referrerPolicy="no-referrer"
-                          />
-                        </div>
-                      )}
                     </div>
                   </div>
                 ))}
@@ -2373,7 +2503,7 @@ function DictionaryView() {
       {filteredEntries.length === 0 && (
         <div className="text-center py-20">
           <Book className="text-medical-gray mx-auto mb-4 opacity-20" size={48} />
-          <p className="text-medical-gray font-medium">No se encontraron términos para "{localSearch}"</p>
+          <p className="text-medical-gray font-medium">No se encontraron términos.</p>
         </div>
       )}
     </div>

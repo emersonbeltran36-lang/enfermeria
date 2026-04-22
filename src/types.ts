@@ -5,6 +5,7 @@ export interface Procedure {
   materials: string[];
   steps: string[];
   biosecurity: string[];
+  image?: string;
 }
 
 export interface Drug {
@@ -44,6 +45,7 @@ export interface DictionaryEntry {
   definition: string;
   abbreviation?: string;
   category: 'Anatomía' | 'Procedimientos' | 'Abreviaturas' | 'Fisiología' | 'General';
+  image?: string;
 }
 
 export interface ClinicalCase {

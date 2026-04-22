@@ -27,7 +27,8 @@ export const PROCEDURES: Procedure[] = [
       'Uso obligatorio de bata, gorro, tapabocas N95 y guantes estériles.',
       'Manejo estricto de técnica aséptica.',
       'Desecho de cortopunzantes en guardián.'
-    ]
+    ],
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'sv',
@@ -51,7 +52,8 @@ export const PROCEDURES: Procedure[] = [
     biosecurity: [
       'Lavado de manos antes y después del contacto.',
       'Desinfección de equipos entre pacientes.'
-    ]
+    ],
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'sng',
@@ -81,7 +83,8 @@ export const PROCEDURES: Procedure[] = [
       'Uso de guantes, tapabocas y protección ocular.',
       'Riesgo de tos o emesis durante la inserción.',
       'Verificar siempre permeabilidad antes de administrar nutrición.'
-    ]
+    ],
+    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'foley',
@@ -112,7 +115,8 @@ export const PROCEDURES: Procedure[] = [
       'Técnica aséptica estricta (prevención de ITU asociada a catéter).',
       'Mantener la bolsa recolectora por debajo del nivel de la vejiga.',
       'Higiene diaria del meato urinario.'
-    ]
+    ],
+    image: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'intub',
@@ -143,7 +147,8 @@ export const PROCEDURES: Procedure[] = [
       'Protección facial completa (monogafas, careta, tapabocas N95).',
       'Uso de guantes limpios.',
       'Riesgo alto de aerosolización.'
-    ]
+    ],
+    image: 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'pl',
@@ -172,7 +177,8 @@ export const PROCEDURES: Procedure[] = [
       'Técnica estéril rigurosa (riesgo de meningitis iatrogénica).',
       'Uso de tapabocas, bata y guantes estériles.',
       'Manejo cuidadoso de muestras biológicas.'
-    ]
+    ],
+    image: 'https://images.unsplash.com/photo-1581056771107-24ca5f033742?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'tora',
@@ -200,7 +206,8 @@ export const PROCEDURES: Procedure[] = [
       'Riesgo de neumotórax o hemotórax.',
       'Uso de técnica estéril completa.',
       'Evitar entrada de aire al sistema durante el drenaje.'
-    ]
+    ],
+    image: 'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'para',
@@ -227,7 +234,8 @@ export const PROCEDURES: Procedure[] = [
       'Riesgo de peritonitis bacteriana o perforación intestinal.',
       'Considerar reposición de Albúmina si el drenaje es >5 litros.',
       'Técnica aséptica.'
-    ]
+    ],
+    image: 'https://images.unsplash.com/photo-1504439468489-c8920d796a29?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'aga',
@@ -254,7 +262,8 @@ export const PROCEDURES: Procedure[] = [
       'Riesgo de hematoma o isquemia distal.',
       'Uso de guantes por exposición a sangre.',
       'Eliminación de aguja en guardián inmediatamente.'
-    ]
+    ],
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80'
   },
   {
     id: 'ecg',
@@ -281,7 +290,322 @@ export const PROCEDURES: Procedure[] = [
       'Higiene de manos.',
       'Limpieza de cables y peras entre usos.',
       'Respetar la intimidad del paciente.'
-    ]
+    ],
+    image: 'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'iv-perif',
+    name: 'Venopunción Periférica',
+    type: 'invasive',
+    materials: [
+      'Catéter venoso periférico (Abocath) calibres 18G, 20G, 22G',
+      'Torniquete (Smarck)',
+      'Solución antiséptica (Alcohol 70% o Clorhexidina)',
+      'Apósito transparente (Tegaderm)',
+      'Equipo de venoclisis o extensión con llave de 3 vías',
+      'Guantes limpios',
+      'Gasas estériles'
+    ],
+    steps: [
+      'Informar al paciente y seleccionar vena (preferiblemente miembro no dominante).',
+      'Colocar el torniquete 10-15 cm por encima del sitio elegido.',
+      'Realizar desinfección del área con movimientos circulares o de arrastre.',
+      'Insertar el catéter con el bisel hacia arriba en ángulo de 15-30°.',
+      'Observar retorno sanguíneo en la cámara y avanzar el catéter retirando la aguja.',
+      'Presionar la vena por encima del catéter, retirar torniquete y conectar sistema.',
+      'Fijar con apósito transparente y rotular (fecha, calibre, responsable).',
+      'Verificar permeabilidad y ausencia de signos de flebitis.'
+    ],
+    biosecurity: [
+      'Uso de guantes limpios.',
+      'Desecho de aguja en guardián de seguridad.',
+      'Evitar punciones innecesarias.'
+    ],
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'secr-asp',
+    name: 'Aspiración de Secreciones',
+    type: 'invasive',
+    materials: [
+      'Sistema de succión (Vacío)',
+      'Sonda de aspiración estéril (calibre según vía)',
+      'Guantes estériles y limpios',
+      'Solución salina 0.9% (para lavado de sonda)',
+      'Conector en Y (si no lo tiene la sonda)',
+      'Tapabocas y protección ocular'
+    ],
+    steps: [
+      'Valorar necesidad (ruidos audibles, caída de saturación).',
+      'Hiperoxigenar al paciente (si está ventilado) al 100%.',
+      'Introducir la sonda suavemente sin realizar succión.',
+      'Retirar la sonda con movimientos rotatorios realizando succión intermitente (máx 10-15 seg).',
+      'Limpiar la sonda con solución salina.',
+      'Permitir recuperación del paciente entre aspiraciones.',
+      'Auscultar campos pulmonares post-procedimiento.',
+      'Desechar material y registrar características de las secreciones.'
+    ],
+    biosecurity: [
+      'Uso estricto de técnica aséptica en vía aérea artificial.',
+      'Protección contra aerosoles.',
+      'No forzar la introducción de la sonda.'
+    ],
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'curacion',
+    name: 'Curación de Heridas',
+    type: 'non-invasive',
+    materials: [
+      'Kit de curación estéril (pinzas, tijeras)',
+      'Solución salina 0.9%',
+      'Antiséptico según protocolo',
+      'Gasas estériles',
+      'Apósitos o vendajes',
+      'Guantes estériles y limpios',
+      'Cinta adhesiva micropore o transpore'
+    ],
+    steps: [
+      'Retirar vendaje anterior con guantes limpios observando características.',
+      'Lavado de manos y colocación de guantes estériles.',
+      'Limpieza de la herida con solución salina desde el centro a la periferia (o de limpio a sucio).',
+      'Secar la herida con gasas estériles mediante toques suaves.',
+      'Aplicar medicamento o apósito primario si está indicado.',
+      'Cubrir con apósito secundario y fijar adecuadamente.',
+      'Registrar estado de la herida (bordes, exudado, olor, tamaño).'
+    ],
+    biosecurity: [
+      'Mantener esterilidad del instrumental.',
+      'Desechar apósitos contaminados en bolsa roja.',
+      'Evitar cruce de microorganismos entre heridas.'
+    ],
+    image: 'https://images.unsplash.com/photo-1603398938378-e54eab446f21?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'lavado-g',
+    name: 'Lavado Gástrico',
+    type: 'invasive',
+    materials: [
+      'Sonda orogástrica o nasogástrica de gran calibre (32-36 Fr en adultos)',
+      'Solución salina 0.9% a temperatura ambiente (2-3 litros)',
+      'Jeringa de 50cc (pico catéter)',
+      'Sistema de drenaje o bolsa recolectora',
+      'Lubricante hidrosoluble',
+      'Fonendoscopio'
+    ],
+    steps: [
+      'Colocar al paciente en decúbito lateral izquierdo con pies elevados (Trendelenburg leve).',
+      'Medir e insertar la sonda verificando ubicación.',
+      'Introducir 200-300 ml de solución salina.',
+      'Extraer el líquido por gravedad o aspiración suave.',
+      'Repetir el ciclo hasta que el líquido salga claro o se complete la dosis.',
+      'Considerar administración de carbón activado si está indicado.',
+      'Retirar la sonda previa pinzamiento para evitar aspiración.',
+      'Vigilar estado de conciencia y riesgo de broncoaspiración.'
+    ],
+    biosecurity: [
+      'Asegurar vía aérea si el paciente tiene Glasgow < 8.',
+      'Uso de EPP completo ante riesgo de emesis.',
+      'Control estricto de líquidos introducidos vs eliminados.'
+    ],
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'cardiover',
+    name: 'Cardioversión Eléctrica',
+    type: 'invasive',
+    materials: [
+      'Desfibrilador manual con modo sincrónico',
+      'Paletas o parches adhesivos conductores',
+      'Gel conductor (si usa paletas)',
+      'Equipo de reanimación avanzada (Coche de paro)',
+      'Monitorización ECG, SpO2 y TA',
+      'Sedación y analgesia (Midazolam/Fentanilo)'
+    ],
+    steps: [
+      'Explicar el procedimiento y obtener consentimiento.',
+      'Asegurar acceso venoso y monitorización continua.',
+      'Administrar sedación profunda.',
+      'Activar el modo "SYNC" en el desfibrilador (verificar marca en la onda R).',
+      'Seleccionar carga (según protocolo: 50J, 100J, etc.).',
+      'Colocar parches o paletas con gel.',
+      'Cargar y asegurar que nadie toque al paciente ("¡Fuera todos!").',
+      'Presionar botón de descarga manteniendo presión (si son paletas) hasta el choque.',
+      'Evaluar ritmo post-choque y estado del paciente.'
+    ],
+    biosecurity: [
+      'Seguridad eléctrica para el personal.',
+      'Asegurar vía aérea durante la sedación.',
+      'Tener equipo de intubación listo.'
+    ],
+    image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'med-parent',
+    name: 'Vías Parenterales (IM / SC / ID)',
+    type: 'invasive',
+    materials: [
+      'Jeringas de 1cc, 3cc, 5cc o 10cc',
+      'Agujas según vía (IM: 21G, SC: 25G, ID: 27G)',
+      'Medicamento indicado',
+      'Torundas de algodón con alcohol',
+      'Guantes limpios'
+    ],
+    steps: [
+      'Verificar los "10 correctos" de administración.',
+      'Cargar el medicamento con técnica aséptica.',
+      'Identificar sitio anatómico (IM: Glúteo, Deltoides; SC: Abdomen, Peritrocantereo).',
+      'Desinfectar la piel.',
+      'Insertar aguja (IM: 90°, SC: 45°, ID: 10-15°).',
+      'Aspirar (en IM) para verificar que no esté en vaso sanguíneo.',
+      'Inyectar lentamente el fármaco.',
+      'Retirar aguja y presionar suavemente sin masajear (en SC/ID).'
+    ],
+    biosecurity: [
+      'No reencapuchar agujas.',
+      'Higiene de manos.',
+      'Desecho inmediato en contenedor rígido.'
+    ],
+    image: 'https://images.unsplash.com/photo-1579153123746-8577e3d05ff1?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'wound-care',
+    name: 'Curación de Heridas (Técnica Estéril)',
+    type: 'invasive',
+    materials: [
+      'Equipo de curación estéril (pinzas, tijeras)',
+      'Solución salina 0.9%',
+      'Gasas estériles',
+      'Guantes estériles y limpios',
+      'Apósitos según tipo de herida',
+      'Cinta quirúrgica o vendaje'
+    ],
+    steps: [
+      'Lavado de manos y colocación de guantes limpios.',
+      'Retirar el apósito sucio y observar características de la herida.',
+      'Retirar guantes sucios, lavado de manos y colocar guantes estériles.',
+      'Limpiar la herida con solución salina desde el centro a la periferia.',
+      'Secar con gasa mediante toques suaves.',
+      'Aplicar medicamento o apósito primario si está indicado.',
+      'Cubrir con apósito secundario y fijar.'
+    ],
+    biosecurity: [
+      'Uso de técnica aséptica rigurosa.',
+      'Desecho de material contaminado en bolsa roja.',
+      'Uso de EPP según riesgo de salpicaduras.'
+    ],
+    image: 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'aspiration',
+    name: 'Aspiración de Secreciones',
+    type: 'invasive',
+    materials: [
+      'Sonda de aspiración de calibre adecuado',
+      'Sistema de succión (vacío)',
+      'Guantes estériles',
+      'Agua estéril o solución salina',
+      'Tapabocas y protección ocular'
+    ],
+    steps: [
+      'Explicar el procedimiento y auscultar campos pulmonares.',
+      'Hiperoxigenar al paciente (si está ventilado).',
+      'Colocarse EPP y guante estéril en la mano dominante.',
+      'Introducir la sonda sin succionar hasta el tope.',
+      'Retirar la sonda con movimientos rotatorios succionando de forma intermitente (máx. 10-15 seg).',
+      'Limpiar la sonda y repetir si es necesario tras descanso.',
+      'Auscultar nuevamente y registrar características de secreciones.'
+    ],
+    biosecurity: [
+      'Técnica estéril para evitar neumonías asociadas.',
+      'Protección contra aerosoles.',
+      'No forzar la entrada de la sonda.'
+    ],
+    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'bed-bath',
+    name: 'Higiene del Paciente Encamado',
+    type: 'non-invasive',
+    materials: [
+      'Palangana con agua tibia',
+      'Jabón líquido neutro',
+      'Esponjas o paños desechables',
+      'Toallas limpias',
+      'Ropa de cama limpia y pijama',
+      'Guantes limpios'
+    ],
+    steps: [
+      'Informar al paciente y asegurar su privacidad.',
+      'Lavar cara, cuello y orejas (sin jabón si es posible).',
+      'Lavar brazos, manos, tórax y abdomen.',
+      'Lavar piernas y pies.',
+      'Posicionar al paciente de lado para lavar espalda y glúteos.',
+      'Realizar aseo genital (de limpio a sucio).',
+      'Secar minuciosamente los pliegues cutáneos.',
+      'Vestir al paciente y cambiar ropa de cama.'
+    ],
+    biosecurity: [
+      'Mantener la mecánica corporal adecuada.',
+      'Evitar enfriamientos innecesarios.',
+      'Vigilar integridad de la piel durante el baño.'
+    ],
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'postural-changes',
+    name: 'Cambios Posturales y Prevención de UPP',
+    type: 'non-invasive',
+    materials: [
+      'Almohadas o cojines posicionadores',
+      'Sábanas de movimiento',
+      'Crema hidratante o ácidos grasos hiperoxigenados',
+      'Dispositivos de descarga (taloneras)'
+    ],
+    steps: [
+      'Evaluar el riesgo del paciente (Escala de Braden/Norton).',
+      'Establecer un plan de rotación (cada 2-3 horas).',
+      'Alternar posiciones: Decúbito supino, lateral izquierdo y derecho.',
+      'Evitar el contacto de prominencias óseas entre sí mediante almohadas.',
+      'Realizar masajes suaves o aplicar ácidos grasos en zonas de riesgo.',
+      'Asegurar que las sábanas estén limpias, secas y sin arrugas.',
+      'Fomentar la movilización temprana si es posible.'
+    ],
+    biosecurity: [
+      'No realizar masajes sobre zonas ya enrojecidas.',
+      'Uso de mecánica corporal para evitar lesiones del personal.',
+      'Evitar el cizallamiento al movilizar al paciente.'
+    ],
+    image: 'https://images.unsplash.com/photo-1581056771107-24ca5f033742?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'enema',
+    name: 'Administración de Enema',
+    type: 'invasive',
+    materials: [
+      'Solución para enema (evacuante o medicado)',
+      'Sonda rectal o dispositivo aplicador',
+      'Lubricante hidrosoluble',
+      'Sistema de irrigación (si se requiere)',
+      'Guantes limpios',
+      'Soporte para suero (si aplica)',
+      'Cuña o acceso a baño'
+    ],
+    steps: [
+      'Informar al paciente y colocar en posición de Sims (decúbito lateral izquierdo).',
+      'Lubricar la punta de la sonda rectal.',
+      'Insertar suavemente la sonda (7-10 cm en adultos).',
+      'Administrar la solución lentamente a temperatura ambiente.',
+      'Retirar sonda y pedir al paciente que retenga el líquido (5-10 min).',
+      'Asistir al paciente para la evacuación.',
+      'Limpiar zona anal y registrar resultados.'
+    ],
+    biosecurity: [
+      'Uso de guantes y delantal protector.',
+      'Suspender si hay dolor intenso o resistencia.',
+      'Vigilar signos de respuesta vagal.'
+    ],
+    image: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&q=80'
   }
 ];
 
@@ -513,6 +837,843 @@ export const PATHOLOGIES: Pathology[] = [
       'Control de glucometría cada hora.',
       'Monitoreo estricto de Potasio sérico.'
     ]
+  },
+  {
+    id: 'angina',
+    name: 'Angina Inestable',
+    system: 'Cardiovascular',
+    definition: 'Dolor torácico que ocurre en reposo o con esfuerzo mínimo, indicativo de isquemia miocárdica inminente.',
+    affectedTarget: 'Arterias Coronarias',
+    symptoms: ['Dolor torácico opresivo que no cede', 'Diaforesis', 'Náuseas', 'Ansiedad'],
+    nursingCare: ['Monitorización de signos vitales', 'Administración de Nitroglicerina sublingual si hay dolor', 'Mantenimiento de acceso venoso', 'EKG seriados']
+  },
+  {
+    id: 'pericarditis',
+    name: 'Pericarditis Aguda',
+    system: 'Cardiovascular',
+    definition: 'Inflamación del pericardio, a menudo de origen viral o idiopático.',
+    affectedTarget: 'Pericardio (Saco que rodea el corazón)',
+    symptoms: ['Dolor torácico que mejora al inclinarse hacia adelante', 'Frote pericárdico', 'Fiebre leve'],
+    nursingCare: ['Control del dolor con AINEs', 'Reposo en cama', 'Vigilancia de signos de taponamiento cardíaco']
+  },
+  {
+    id: 'endocarditis',
+    name: 'Endocarditis Infecciosa',
+    system: 'Cardiovascular',
+    definition: 'Infección de las válvulas cardíacas o del endocardio posterior.',
+    affectedTarget: 'Válvulas cardíacas',
+    symptoms: ['Fiebre prolongada', 'Soplos cardíacos nuevos', 'Petequias', 'Fatiga'],
+    nursingCare: ['Administración prolongada de antibióticos IV', 'Control de la temperatura', 'Vigilancia de signos de insuficiencia cardíaca']
+  },
+  {
+    id: 'miocarditis',
+    name: 'Miocarditis',
+    system: 'Cardiovascular',
+    definition: 'Inflamación del músculo cardíaco (miocardio).',
+    affectedTarget: 'Miocardio',
+    symptoms: ['Dolor torácico', 'Arritmias', 'Disnea', 'Signos de fatiga'],
+    nursingCare: ['Reposo absoluto', 'Monitorización cardíaca continua', 'Oxigenoterapia si es necesario']
+  },
+  {
+    id: 'aaa',
+    name: 'Aneurisma de Aorta Abdominal (AAA)',
+    system: 'Cardiovascular',
+    definition: 'Dilatación localizada de la aorta abdominal.',
+    affectedTarget: 'Aorta Abdominal',
+    symptoms: ['Masa abdominal pulsátil', 'Dolor lumbar o abdominal sordo', 'Soplo abdominal'],
+    nursingCare: ['Control estricto de la presión arterial', 'Evitar maniobras de Valsalva', 'Preparación para cirugía si hay rotura']
+  },
+  {
+    id: 'tvp',
+    name: 'Trombosis Venosa Profunda (TVP)',
+    system: 'Cardiovascular',
+    definition: 'Formación de un coágulo de sangre en una vena profunda.',
+    affectedTarget: 'Venas de extremidades inferiores',
+    symptoms: ['Edema unilateral', 'Dolor en la pantorrilla', 'Calor y eritema local'],
+    nursingCare: ['Reposo en cama inicial', 'Administración de anticoagulantes', 'Medición de la circunferencia de la extremidad']
+  },
+  {
+    id: 'ea',
+    name: 'Estenosis Aórtica',
+    system: 'Cardiovascular',
+    definition: 'Estrechamiento de la apertura de la válvula aórtica.',
+    affectedTarget: 'Válvula Aórtica',
+    symptoms: ['Síncope de esfuerzo', 'Angina', 'Disnea'],
+    nursingCare: ['Evitar esfuerzos físicos extenuantes', 'Monitoreo de signos de bajo gasto cardíaco', 'Control de la hidratación']
+  },
+  {
+    id: 'im',
+    name: 'Insuficiencia Mitral',
+    system: 'Cardiovascular',
+    definition: 'Reflujo de sangre desde el ventrículo izquierdo a la aurícula izquierda.',
+    affectedTarget: 'Válvula Mitral',
+    symptoms: ['Fatiga', 'Disnea de esfuerzo', 'Palpitaciones'],
+    nursingCare: ['Control de la precarga con diuréticos', 'Monitorización de la SatO2', 'Posición fowler']
+  },
+  {
+    id: 'fa',
+    name: 'Fibrilación Auricular (FA)',
+    system: 'Cardiovascular',
+    definition: 'Arritmia supraventricular caracterizada por una activación auricular desorganizada.',
+    affectedTarget: 'Aurículas cardíacas',
+    symptoms: ['Palpitaciones irregulares', 'Mareo', 'Disnea', 'Pulso irregular'],
+    nursingCare: ['Monitorización del ritmo cardíaco', 'Control de la frecuencia con beta-bloqueantes', 'Administración de anticoagulantes']
+  },
+  {
+    id: 'asma',
+    name: 'Asma Bronquial (Crisis)',
+    system: 'Respiratorio',
+    definition: 'Inflamación crónica de las vías respiratorias que causa hiperreactividad bronquial.',
+    affectedTarget: 'Vías respiratorias bajas (Bronquios)',
+    symptoms: ['Sibilancias expiratorias', 'Tos seca', 'Opresión torácica', 'Taquipnea'],
+    nursingCare: ['Administración de broncodilatadores (puf/nebulización)', 'Oxigenoterapia según SatO2', 'Posición sentada', 'Control de FR']
+  },
+  {
+    id: 'bronquitis',
+    name: 'Bronquitis Aguda',
+    system: 'Respiratorio',
+    definition: 'Inflamación transitoria de los bronquios principales.',
+    affectedTarget: 'Bronquios',
+    symptoms: ['Tos productiva', 'Dolor retroesternal al toser', 'Fiebre leve'],
+    nursingCare: ['Incrementar ingesta hídrica', 'Fisioterapia respiratoria', 'Control de la temperatura']
+  },
+  {
+    id: 'derrame',
+    name: 'Derrame Pleural',
+    system: 'Respiratorio',
+    definition: 'Acumulación anómala de líquido en el espacio pleural.',
+    affectedTarget: 'Pleura (Espacio pleural)',
+    symptoms: ['Dolor pleurítico', 'Disnea', 'Matidez a la percusión', 'Ausencia de ruidos respiratorios'],
+    nursingCare: ['Asistencia en la toracocentesis', 'Control de la función respiratoria', 'Manejo del dolor']
+  },
+  {
+    id: 'neumotorax',
+    name: 'Neumotórax',
+    system: 'Respiratorio',
+    definition: 'Presencia de aire en el espacio pleural que causa colapso pulmonar.',
+    affectedTarget: 'Espacio Pleural',
+    symptoms: ['Dolor torácico súbito', 'Disnea súbita', 'Desviación traqueal (en tensión)', 'Timpanismo'],
+    nursingCare: ['Preparación y control del tubo de tórax', 'Monitorización de la mecánica ventilatoria', 'Control de drenaje']
+  },
+  {
+    id: 'absceso',
+    name: 'Absceso Pulmonar',
+    system: 'Respiratorio',
+    definition: 'Lesión necrótica del parénquima pulmonar que contiene pus.',
+    affectedTarget: 'Parénquima pulmonar',
+    symptoms: ['Fiebre héctica', 'Tos con vómica (expectoración purulenta abundante)', 'Pérdida de peso'],
+    nursingCare: ['Fisioterapia respiratoria y drenaje postural', 'Administración de antibióticos IV', 'Nutrición hiperproteica']
+  },
+  {
+    id: 'tbc',
+    name: 'Tuberculosis Pulmonar',
+    system: 'Respiratorio',
+    definition: 'Enfermedad infecciosa causada por Mycobacterium tuberculosis.',
+    affectedTarget: 'Pulmones (principalmente ápices)',
+    symptoms: ['Tos por más de 15 días', 'Hemoptisis', 'Sudoración nocturna', 'Pérdida de peso'],
+    nursingCare: ['Aislamiento respiratorio (Presión negativa)', 'Administración de esquema antituberculoso', 'Educación sobre adherencia']
+  },
+  {
+    id: 'bronquiectasias',
+    name: 'Bronquiectasias',
+    system: 'Respiratorio',
+    definition: 'Dilataciones irreversibles de los bronquios secundarias a inflamación crónica.',
+    affectedTarget: 'Pared bronquial',
+    symptoms: ['Tos crónica productiva fétida', 'Acropaquia (dedos en palillo de tambor)', 'Hemoptisis recurrente'],
+    nursingCare: ['Técnicas de higiene bronquial', 'Hidratación', 'Control de infecciones']
+  },
+  {
+    id: 'eap',
+    name: 'Edema Agudo de Pulmón (EAP)',
+    system: 'Respiratorio',
+    definition: 'Acumulación de líquido en los alvéolos que impide el intercambio gaseoso.',
+    affectedTarget: 'Alvéolos pulmonares',
+    symptoms: ['Disnea severa paroxística', 'Expectoración asalmonada/espumosa', 'Estertores crepitantes dispersos', 'Cianosis'],
+    nursingCare: ['Posición de Fowler alta', 'Oxigenoterapia / VMNI', 'Administración de diuréticos y vasodilatadores']
+  },
+  {
+    id: 'meningitis',
+    name: 'Meningitis Bacteriana',
+    system: 'Neurológico',
+    definition: 'Inflamación de las meninges por infección bacteriana.',
+    affectedTarget: 'Meninges (Piamadre y aracnoides)',
+    symptoms: ['Rigidez de nuca', 'Fiebre alta', 'Vómitos en proyectil', 'Fotofobia'],
+    nursingCare: ['Aislamiento de gotas', 'Monitorización de signos de hipertensión endocraneana', 'Administración de antibióticos precoces']
+  },
+  {
+    id: 'epilepsia',
+    name: 'Estado Epiléptico',
+    system: 'Neurológico',
+    definition: 'Actividad convulsiva continua por más de 5 minutos o crisis recurrentes sin recuperación.',
+    affectedTarget: 'Corteza Cerebral',
+    symptoms: ['Convulsiones generalizadas', 'Pérdida de conciencia prolongada', 'Cianosis'],
+    nursingCare: ['Protección de la vía aérea y evitar lesiones', 'Administración de Benzodiacepinas IV', 'Cronometrar la duración de la crisis']
+  },
+  {
+    id: 'parkinson',
+    name: 'Enfermedad de Parkinson',
+    system: 'Neurológico',
+    definition: 'Trastorno neurodegenerativo de la sustancia negra.',
+    affectedTarget: 'Ganglios basales (Sustancia negra)',
+    symptoms: ['Temblor en reposo', 'Bradicinesia', 'Rigidez en "rueda dentada"', 'Inestabilidad postural'],
+    nursingCare: ['Prevención de caídas', 'Asistencia en la alimentación y movilidad', 'Administración de Levodopa según horario']
+  },
+  {
+    id: 'em',
+    name: 'Esclerosis Múltiple',
+    system: 'Neurológico',
+    definition: 'Enfermedad autoinmune desmielinizante del SNC.',
+    affectedTarget: 'Vainas de Mielina en el SNC',
+    symptoms: ['Diplopía', 'Parestesias', 'Debilidad muscular', 'Alteraciones de la marcha'],
+    nursingCare: ['Manejo de la fatiga', 'Prevención de úlceras por presión si hay inmovilidad', 'Soporte emocional']
+  },
+  {
+    id: 'mg',
+    name: 'Miastenia Gravis',
+    system: 'Neurológico',
+    definition: 'Trastorno neuromuscular autoinmune que afecta la placa motora.',
+    affectedTarget: 'Receptores de Acetilcolina',
+    symptoms: ['Ptosis palpebral', 'Diplopía', 'Debilidad muscular fluctuante', 'Disfagia'],
+    nursingCare: ['Programar actividades cuando el efecto del medicamento es máximo', 'Vigilar signos de crisis miasténica (insuficiencia resp.)']
+  },
+  {
+    id: 'gbs',
+    name: 'Síndrome de Guillain-Barré',
+    system: 'Neurológico',
+    definition: 'Polineuropatía desmielinizante inflamatoria aguda.',
+    affectedTarget: 'Nervios periféricos',
+    symptoms: ['Parálisis ascendente simétrica', 'Arreflexia', 'Parestesias', 'Inestabilidad autonómica'],
+    nursingCare: ['Monitoreo estrecho de la capacidad vital respiratoria', 'Fisioterapia para evitar contracturas', 'Soporte nutricional']
+  },
+  {
+    id: 'alzheimer',
+    name: 'Enfermedad de Alzheimer',
+    system: 'Neurológico',
+    definition: 'Demencia degenerativa primaria más común.',
+    affectedTarget: 'Corteza cerebral y el hipocampo',
+    symptoms: ['Pérdida de memoria reciente', 'Desorientación', 'Afasia', 'Apraxia'],
+    nursingCare: ['Ambiente seguro y estructurado', 'Orientación a la realidad constante', 'Apoyo al cuidador principal']
+  },
+  {
+    id: 'hsa',
+    name: 'Hemorragia Subaracnoidea (HSA)',
+    system: 'Neurológico',
+    definition: 'Presencia de sangre en el espacio subaracnoideo, usualmente por ruptura de aneurisma.',
+    affectedTarget: 'Vasos cerebrales subaracnoideos',
+    symptoms: ['Cefalea súbita "la peor de la vida"', 'Vómitos', 'Pérdida de conciencia', 'Meningismo'],
+    nursingCare: ['Ambiente tranquilo (oscuridad, silencio)', 'Control de la presión arterial', 'Evitar estreñimiento (Valsalva)']
+  },
+  {
+    id: 'gastritis_c',
+    name: 'Gastritis Crónica',
+    system: 'Digestivo',
+    definition: 'Inflamación prolongada de la mucosa gástrica, frecuentemente por H. pylori.',
+    affectedTarget: 'Mucosa Gástrica',
+    symptoms: ['Epigastralgia sorda', 'Saciedad precoz', 'Náuseas ocasionales'],
+    nursingCare: ['Educación dietética (evitar irritantes)', 'Administración de IBP/Antiácidos', 'Fomentar la higiene de manos']
+  },
+  {
+    id: 'ulcera',
+    name: 'Úlcera Péptica',
+    system: 'Digestivo',
+    definition: 'Erosión en la mucosa del estómago o duodeno que penetra la muscularis mucosae.',
+    affectedTarget: 'Estómago o Duodeno',
+    symptoms: ['Dolor epigástrico que cede con alimentos (duodenal) o empeora (gástrica)', 'Hematemesis', 'Melena'],
+    nursingCare: ['Vigilancia de signos de perforación o hemorragia', 'Administración de inhibidores de bomba de protones', 'Evitar AINEs']
+  },
+  {
+    id: 'cirrosis',
+    name: 'Cirrosis Hepática',
+    system: 'Digestivo',
+    definition: 'Estadio final de la fibrosis hepática con alteración de la arquitectura.',
+    affectedTarget: 'Hígado',
+    symptoms: ['Ictericia', 'Ascitis', 'Encefalopatía hepática', 'Aparición de varices esofágicas'],
+    nursingCare: ['Control de perímetro abdominal', 'Dieta hiposódica', 'Valoración del estado neurológico (asterixis)']
+  },
+  {
+    id: 'colecistitis',
+    name: 'Colecistitis Aguda',
+    system: 'Digestivo',
+    definition: 'Inflamación de la vesícula biliar, generalmente por cálculos.',
+    affectedTarget: 'Vesícula Biliar',
+    symptoms: ['Dolor en hipocondrio derecho irradiado a hombro', 'Signo de Murphy positivo', 'Fiebre'],
+    nursingCare: ['Ayuno (NPO)', 'Control del dolor', 'Preparación para colecistectomía']
+  },
+  {
+    id: 'diverticulitis',
+    name: 'Diverticulitis Aguda',
+    system: 'Digestivo',
+    definition: 'Inflamación o infección de los divertículos colónicos.',
+    affectedTarget: 'Colon (especialmente Sigmoides)',
+    symptoms: ['Dolor en fosa ilíaca izquierda', 'Fiebre', 'Alteración del hábito intestinal'],
+    nursingCare: ['Dieta absoluta inicial', 'Antibioticoterapia', 'Control de signos de peritonitis']
+  },
+  {
+    id: 'crohn',
+    name: 'Enfermedad de Crohn',
+    system: 'Digestivo',
+    definition: 'Enfermedad inflamatoria intestinal que afecta cualquier parte del tubo digestivo.',
+    affectedTarget: 'Todo el tracto GI (principalmente íleon distal)',
+    symptoms: ['Diarrea crónica', 'Dolor abdominal', 'Fístulas perianales', 'Pérdida de peso'],
+    nursingCare: ['Control del estado nutricional', 'Manejo de la diarrea y cuidado perianal', 'Apoyo psicológico']
+  },
+  {
+    id: 'cu',
+    name: 'Colitis Ulcerosa',
+    system: 'Digestivo',
+    definition: 'Enfermedad inflamatoria mucosa limitada al colon.',
+    affectedTarget: 'Colon y Recto',
+    symptoms: ['Rectorragia', 'Tenesmo rectal', 'Diarrea muco-sanguinolenta'],
+    nursingCare: ['Vigilar signos de megacolon tóxico', 'Balance hídrico', 'Control de hemoglobina']
+  },
+  {
+    id: 'glom',
+    name: 'Glomerulonefritis Aguda',
+    system: 'Renal',
+    definition: 'Inflamación de los glomérulos renales, a menudo post-estreptocócica.',
+    affectedTarget: 'Glomérulo Renal',
+    symptoms: ['Hematuria macroscópica (orina color cola)', 'Hipertensión', 'Edema periorbitario', 'Oliguria'],
+    nursingCare: ['Restricción de sodio y líquidos', 'Monitorización de la presión arterial', 'Pesaje diario']
+  },
+  {
+    id: 'nefrotico',
+    name: 'Síndrome Nefrótico',
+    system: 'Renal',
+    definition: 'Aumento severo de la permeabilidad glomerular a las proteínas.',
+    affectedTarget: 'Membrana basal glomerular',
+    symptoms: ['Edema masivo (Anasarca)', 'Proteinuria masiva (>3.5g/24h)', 'Hipoalbuminemia'],
+    nursingCare: ['Monitoreo del edema y la piel', 'Restricción hídrica', 'Vigilancia de complicaciones infecciosas']
+  },
+  {
+    id: 'pielon',
+    name: 'Pielonefritis Aguda',
+    system: 'Renal',
+    definition: 'Infección del tracto urinario superior (parénquima renal y pelvis).',
+    affectedTarget: 'Parénquima y pelvis renal',
+    symptoms: ['Dolor lumbar (Puño percusión positiva)', 'Fiebre con escalofríos', 'Disuria', 'Náuseas'],
+    nursingCare: ['Fomentar la hidratación oral/IV', 'Administración de antibióticos', 'Control de la curva térmica']
+  },
+  {
+    id: 'litiasis_r',
+    name: 'Litiasis Renal',
+    system: 'Renal',
+    definition: 'Formación de cálculos en el aparato urinario.',
+    affectedTarget: 'Cálices, pelvis renal o uréteres',
+    symptoms: ['Cólico nefrítico (dolor lumbar súbito e insoportable)', 'Hematuria', 'Náuseas'],
+    nursingCare: ['Manejo del dolor agudo (Escala EVA)', 'Hidratación forzada si el cálculo es pequeño', 'Colado de orina para recuperar cálculo']
+  },
+  {
+    id: 'irc',
+    name: 'Insuficiencia Renal Crónica (IRC)',
+    system: 'Renal',
+    definition: 'Disminución persistente de la función renal filtrante por más de 3 meses.',
+    affectedTarget: 'Riñón global (Nefronas)',
+    symptoms: ['Hipertensión', 'Anemia', 'Prurito urémico', 'Fatiga'],
+    nursingCare: ['Educación sobre dieta hipoproteica/hiposódica', 'Cuidado de acceso vascular para diálisis', 'Control de potasio y fósforo']
+  },
+  {
+    id: 'hipotiroidismo',
+    name: 'Hipotiroidismo',
+    system: 'Endocrino',
+    definition: 'Deficiencia de hormonas tiroideas.',
+    affectedTarget: 'Metabolismo sistémico',
+    symptoms: ['Intolerancia al frío', 'Estreñimiento', 'Bradipsiquia', 'Mixedema'],
+    nursingCare: ['Administración de Levotiroxina en ayunas', 'Prevención del estreñimiento', 'Vigilar signos de coma mixedematoso']
+  },
+  {
+    id: 'hipertiroidismo',
+    name: 'Hipertiroidismo',
+    system: 'Endocrino',
+    definition: 'Exceso de producción de hormonas tiroideas.',
+    affectedTarget: 'Metabolismo sistémico',
+    symptoms: ['Exoftalmos (en Graves)', 'Taquicardia', 'Pérdida de peso', 'Insomnio'],
+    nursingCare: ['Control de la frecuencia cardíaca', 'Proteger córneas si hay exoftalmos', 'Ambiente tranquilo y fresco']
+  },
+  {
+    id: 'addison',
+    name: 'Enfermedad de Addison',
+    system: 'Endocrino',
+    definition: 'Insuficiencia suprarrenal primaria.',
+    affectedTarget: 'Corteza Suprarrenal',
+    symptoms: ['Hiperpigmentación cutánea', 'Hipotensión ortostática', 'Deseo de sal', 'Fatiga'],
+    nursingCare: ['Administración de corticoides', 'Vigilancia de signos de crisis addisoniana', 'Manejo del estrés']
+  },
+  {
+    id: 'cushing',
+    name: 'Síndrome de Cushing',
+    system: 'Endocrino',
+    definition: 'Exposición prolongada a niveles elevados de glucocorticoides.',
+    affectedTarget: 'Metabolismo de grasas y proteínas',
+    symptoms: ['Cara de luna llena', 'Giba dorsal', 'Estrías purpúreas en abdomen', 'Obesidad central'],
+    nursingCare: ['Prevención de infecciones (inmunosupresión)', 'Monitoreo de glucemia y PA', 'Cuidado de la integridad cutánea']
+  },
+  {
+    id: 'diabes_ins',
+    name: 'Diabetes Insípida',
+    system: 'Endocrino',
+    definition: 'Déficit de ADH o resistencia a su acción.',
+    affectedTarget: 'Túbulos colectores renales',
+    symptoms: ['Poliuria masiva (orina diluida)', 'Polidipsia intensa', 'Signos de deshidratación'],
+    nursingCare: ['Balance hídrico estricto', 'Administración de Desmopresina', 'Vigilancia de hipernatremia']
+  },
+  {
+    id: 'sepsis',
+    name: 'Sepsis / Choque Séptico',
+    system: 'Infeccioso',
+    definition: 'Disfunción orgánica potencialmente mortal causada por una respuesta desregulada a la infección.',
+    affectedTarget: 'Sistémico (Múltiples órganos)',
+    symptoms: ['Hipotensión que no responde a volumen', 'Fiebre o hipotermia', 'Taquicardia', 'Lactato > 2 mmol/L'],
+    nursingCare: ['Administración rápida de cristaloides y antibióticos', 'Toma de hemocultivos', 'Monitoreo dinámico del gasto cardíaco']
+  },
+  {
+    id: 'vih',
+    name: 'VIH / SIDA',
+    system: 'Infeccioso',
+    definition: 'Infección por el virus de la inmunodeficiencia humana.',
+    affectedTarget: 'Linfocitos T CD4+',
+    symptoms: ['Infecciones oportunistas', 'Pérdida de peso', 'Linfadenopatías', 'Diarrea crónica'],
+    nursingCare: ['Educación sobre tratamiento antirretroviral (TAR)', 'Precauciones estándar', 'Apoyo integral biopsicosocial']
+  },
+  {
+    id: 'malaria',
+    name: 'Malaria',
+    system: 'Infeccioso',
+    definition: 'Infección parasitaria por Plasmodium trasmitida por mosquitos.',
+    affectedTarget: 'Eritrocitos e Hígado',
+    symptoms: ['Paroxismos febriles (escalofríos, fiebre, sudor)', 'Anemia', 'Esplenomegalia'],
+    nursingCare: ['Control de la curva térmica', 'Vigilancia de signos de malaria cerebral', 'Administración de antimaláricos']
+  },
+  {
+    id: 'dengue',
+    name: 'Dengue Grave',
+    system: 'Infeccioso',
+    definition: 'Infección viral transmitida por Aedes aegypti con fuga plasmática.',
+    affectedTarget: 'Endotelio vascular y Plaquetas',
+    symptoms: ['Dolor retroocular', 'Petequias', 'Hemorragias', 'Dolor abdominal intenso'],
+    nursingCare: ['Reposo y toldillo', 'Evitar AINEs (preferir Paracetamol)', 'Balance hídrico riguroso']
+  },
+  {
+    id: 'leptospira',
+    name: 'Leptospirosis',
+    system: 'Infeccioso',
+    definition: 'Zoonosis causada por espiroquetas tras contacto con orina animal.',
+    affectedTarget: 'Hígado y Riñón principalmente (Weil)',
+    symptoms: ['Sufusión conjuntival', 'Ictericia', 'Mialgias intensas (pantorrillas)', 'Fiebre'],
+    nursingCare: ['Control de función renal', 'Manejo de la hidratación', 'Administración de penicilina o doxiciclina']
+  },
+  {
+    id: 'varicela',
+    name: 'Varicela',
+    system: 'Infeccioso',
+    definition: 'Infección primaria por virus de varicela-zóster.',
+    affectedTarget: 'Piel y Mucosas',
+    symptoms: ['Exantema maculopapular-vesicular-costra (cielo estrellado)', 'Prurito intenso', 'Fiebre'],
+    nursingCare: ['Aislamiento respiratorio y de contacto', 'Cuidado de la piel para evitar sobreinfección', 'Corte de uñas']
+  },
+  {
+    id: 'herpes_z',
+    name: 'Herpes Zóster',
+    system: 'Infeccioso',
+    definition: 'Reactivación del virus varicela-zóster en ganglios dorsales.',
+    affectedTarget: 'Dermatoma específico',
+    symptoms: ['Dolor neuropático intenso', 'Vesículas en racimo siguiendo un trayecto nervioso'],
+    nursingCare: ['Manejo del dolor neuropático', 'Administración de antivirales (Aciclovir)', 'Cuidado de las lesiones']
+  },
+  {
+    id: 'anemia_f',
+    name: 'Anemia Ferropénica',
+    system: 'Hematológico',
+    definition: 'Disminución de hemoglobina por deficiencia de hierro.',
+    affectedTarget: 'Eritrocitos',
+    symptoms: ['Palidez', 'Astenia', 'Pica', 'Coiloniquia (uñas en cuchara)'],
+    nursingCare: ['Administración de hierro oral (con Vit C)', 'Educación nutricional', 'Control de efectos GI del hierro']
+  },
+  {
+    id: 'leucemia',
+    name: 'Leucemia Linfoide Aguda',
+    system: 'Hematológico',
+    definition: 'Neoplasia de precursores linfoides en médula ósea.',
+    affectedTarget: 'Médula Ósea y Sangre periférica',
+    symptoms: ['Fiebre', 'Hemorragias (trombocitopenia)', 'Dolor óseo', 'Adenopatías'],
+    nursingCare: ['Manejo del paciente neutropénico (aislamiento)', 'Prevención de mucositis', 'Control de hemorragias']
+  },
+  {
+    id: 'PTI',
+    name: 'Púrpura Trombocitopénica Idiopática',
+    system: 'Hematológico',
+    definition: 'Destrucción autoinmune de plaquetas.',
+    affectedTarget: 'Plaquetas',
+    symptoms: ['Equimosis y Petequias', 'Epistaxis', 'Gingivorragia'],
+    nursingCare: ['Evitar punciones intramusculares', 'Reposo relativo para evitar traumatismos', 'Vigilar signos de sangrado en SNC']
+  },
+  {
+    id: 'les',
+    name: 'Lupus Eritematoso Sistémico (LES)',
+    system: 'Inmunológico',
+    definition: 'Enfermedad autoinmune multisistémica crónica.',
+    affectedTarget: 'Articulaciones, Piel, Riñón, Corazón',
+    symptoms: ['Eritema malar (alas de mariposa)', 'Artralgia', 'Fotosensibilidad', 'Lupus discoide'],
+    nursingCare: ['Proteger de la luz solar', 'Monitoreo de función renal (proteinuria)', 'Fomentar el cumplimiento del tratamiento con corticoides']
+  },
+  {
+    id: 'ar',
+    name: 'Artritis Reumatoide',
+    system: 'Inmunológico',
+    definition: 'Enfermedad inflamatoria crónica autoinmune de las sinoviales.',
+    affectedTarget: 'Articulaciones diartrodiales (Sinovial)',
+    symptoms: ['Rigidez matutina prolongada', 'Dolor articular simétrico', 'Deformidades articulares'],
+    nursingCare: ['Ejercicios de amplitud de movimiento', 'Control del dolor', 'Calor local para mejorar rigidez']
+  },
+  {
+    id: 'stevens',
+    name: 'Síndrome de Stevens-Johnson',
+    system: 'Dermatológico',
+    definition: 'Reacción de hipersensibilidad severa que afecta piel y mucosas.',
+    affectedTarget: 'Epidermis',
+    symptoms: ['Desprendimiento epidérmico (<10%)', 'Ampollas hemorrágicas', 'Afectación mucosa ocular/oral'],
+    nursingCare: ['Manejo como paciente quemado', 'Control estricto de infecciones', 'Higiene bucal suave y colirios']
+  },
+  {
+    id: 'gota',
+    name: 'Gota (Artritis Gotosa)',
+    system: 'Metabólico',
+    definition: 'Depósito de cristales de urato monosódico en articulaciones.',
+    affectedTarget: 'Articulaciones (primera metatarsofalángica)',
+    symptoms: ['Dolor articular súbito e insoportable (Podagra)', 'Tofos (depósitos crónicos)', 'Eritema local'],
+    nursingCare: ['Reposo y elevación de la extremidad', 'Restricción de purinas en dieta', 'Hidratación abundante']
+  },
+  {
+    id: 'osteoporosis',
+    name: 'Osteoporosis',
+    system: 'Musculoesquelético',
+    definition: 'Densidad mineral ósea disminuida con alteración de la microarquitectura.',
+    affectedTarget: 'Tejido óseo',
+    symptoms: ['Fracturas por fragilidad', 'Pérdida de estatura', 'Xifosis dorsal'],
+    nursingCare: ['Prevención de caídas en el hogar', 'Suplementación de Calcio y Vitamina D', 'Ejercicios de bajo impacto']
+  },
+  {
+    id: 'rabdo',
+    name: 'Rabdomiólisis',
+    system: 'Musculoesquelético',
+    definition: 'Descomposición del tejido muscular con liberación de mioglobina.',
+    affectedTarget: 'Músculos esqueléticos y Riñones (por toxicidad)',
+    symptoms: ['Mialgias', 'Debilidad muscular', 'Orinas color oscura (mioglobinuria)'],
+    nursingCare: ['Hidratación agresiva IV', 'Control de CPA y niveles de electrolitos', 'Vigilancia de insuficiencia renal']
+  },
+  {
+    id: 'fibro',
+    name: 'Fibromialgia',
+    system: 'Musculoesquelético',
+    definition: 'Síndrome de dolor musculoesquelético generalizado crónico.',
+    affectedTarget: 'Procesamiento central del dolor',
+    symptoms: ['Dolor en puntos gatillo', 'Fatiga crónica', 'Trastornos del sueño', 'Colon irritable'],
+    nursingCare: ['Manejo del dolor con terapia multimodal', 'Apoyo psicológico (TCC)', 'Fomentar actividad física gradual']
+  },
+  {
+    id: 'oa',
+    name: 'Osteoartritis',
+    system: 'Musculoesquelético',
+    definition: 'Degeneración del cartílago articular.',
+    affectedTarget: 'Cartílago hialino articular',
+    symptoms: ['Dolor mecánico (empeora con movimiento)', 'Crepitación articular', 'Nódulos de Heberden'],
+    nursingCare: ['Manejo del peso corporal', 'Analgesia tópica/sistémica', 'Ayudas mecánicas para la marcha']
+  },
+  {
+    id: 'asco',
+    name: 'Ascitis',
+    system: 'Digestivo',
+    definition: 'Acumulación de líquido seroso en la cavidad peritoneal.',
+    affectedTarget: 'Cavidad Peritoneal',
+    symptoms: ['Aumento del perímetro abdominal', 'Oleada ascítica positiva', 'Eversión del ombligo'],
+    nursingCare: ['Balance hídrico', 'Medición diaria del perímetro abdominal', 'Control de electrolitos (Sodio)']
+  },
+  {
+    id: 'celulitis',
+    name: 'Celulitis Infecciosa',
+    system: 'Infectioso',
+    definition: 'Infección bacteriana aguda de la dermis profunda y tejido subcutáneo.',
+    affectedTarget: 'Dermis profunda',
+    symptoms: ['Eritema mal definido', 'Calor local', 'Edema', 'Linfangitis'],
+    nursingCare: ['Elevación de la zona afectada', 'Administración de antibióticos', 'Marcar el borde del eritema para monitoreo']
+  },
+  {
+    id: 'absceso_cut',
+    name: 'Absceso Cutáneo',
+    system: 'Dermatológico',
+    definition: 'Acumulación localizada de pus en la piel.',
+    affectedTarget: 'Tejido subcutáneo/Dermis',
+    symptoms: ['Nódulo doloroso fluctuante', 'Eritema', 'Calor'],
+    nursingCare: ['Asistencia en el drenaje quirúrgico', 'Cambios de apósitos', 'Control del dolor local']
+  },
+  {
+    id: 'faringitis',
+    name: 'Faringoamigdalitis Aguda',
+    system: 'Respiratorio',
+    definition: 'Inflamación de las amígdalas y faringe, usualmente viral o bacteriana.',
+    affectedTarget: 'Faringe y Amígdalas',
+    symptoms: ['Odinofagia', 'Adenopatías cervicales', 'Exudado pultáceo (si es bacteriana)'],
+    nursingCare: ['Gargarismos salinos', 'Control de la fiebre', 'Asegurar ingesta de líquidos']
+  },
+  {
+    id: 'sinusitis',
+    name: 'Sinusitis Aguda',
+    system: 'Respiratorio',
+    definition: 'Inflamación de la mucosa de los senos paranasales.',
+    affectedTarget: 'Senos Paranasales (Maxilar, Frontal)',
+    symptoms: ['Dolor facial que empeora al inclinarse', 'Rinorrea purulenta', 'Anosmia'],
+    nursingCare: ['Lavados nasales', 'Hidratación', 'Control del dolor']
+  },
+  {
+    id: 'otitis',
+    name: 'Otitis Media Aguda',
+    system: 'Infectioso',
+    definition: 'Infección del oído medio.',
+    affectedTarget: 'Oído Medio',
+    symptoms: ['Otalgia intensa', 'Hipoacusia', 'Iritabilidad (en niños)', 'Fiebre'],
+    nursingCare: ['Prevención de entrada de agua en el oído', 'Manejo de la temperatura', 'Uso de analgésicos']
+  },
+  {
+    id: 'cistitis',
+    name: 'Cistitis Aguda',
+    system: 'Renal',
+    definition: 'Infección urinaria baja localizada en la vejiga.',
+    affectedTarget: 'Vejiga Urinaria',
+    symptoms: ['Disuria', 'Polaquiuria', 'Tenesmo vesical', 'Dolor suprapúbico'],
+    nursingCare: ['Fomentar ingesta hídrica abundante', 'Educación sobre técnica de higiene perineal', 'Administración de antisépticos urinarios']
+  },
+  {
+    id: 'prostatitis',
+    name: 'Prostatitis Aguda',
+    system: 'Genitourinario',
+    definition: 'Inflamación infecciosa de la próstata.',
+    affectedTarget: 'Próstata',
+    symptoms: ['Dolor perineal', 'Disuria', 'Fiebre', 'Obstrucción urinaria parcial'],
+    nursingCare: ['Control de la diuresis', 'Manejo de la fiebre', 'Prevención del estreñimiento']
+  },
+  {
+    id: 'orquitis',
+    name: 'Orquiepididimitis',
+    system: 'Genitourinario',
+    definition: 'Inflamación del epidídimo y testículo.',
+    affectedTarget: 'Testículo y Epidídimo',
+    symptoms: ['Edema testicular unilateral', 'Dolor intenso', 'Fiebre', 'Reflejo cremastérico (usualmente presente)'],
+    nursingCare: ['Soporte escrotal', 'Reposo', 'Aplicación de frío local']
+  },
+  {
+    id: 'osteomielitis',
+    name: 'Osteomielitis',
+    system: 'Infeccioso',
+    definition: 'Infección del hueso y médula ósea.',
+    affectedTarget: 'Tejido óseo',
+    symptoms: ['Dolor óseo profundo', 'Eritema sobre el hueso', 'Fiebre héctica'],
+    nursingCare: ['Tratamiento antibiótico IV prolongado', 'Inmovilización de la extremidad', 'Manejo de la herida quirúrgica']
+  },
+  {
+    id: 'mononucleosis',
+    name: 'Mononucleosis Infecciosa',
+    system: 'Infeccioso',
+    definition: 'Infección por el virus de Epstein-Barr.',
+    affectedTarget: 'Linfocitos B y tejido linfoide',
+    symptoms: ['Fiebre', 'Faringitis severa', 'Adenopatías generalizadas', 'Esplenomegalia'],
+    nursingCare: ['Reposo absoluto (evitar ruptura esplénica)', 'Hidratación', 'Control del dolor']
+  },
+  {
+    id: 'fiebre_t',
+    name: 'Fiebre Tifoidea',
+    system: 'Infeccioso',
+    definition: 'Infección sistémica por Salmonella Typhi.',
+    affectedTarget: 'Placas de Peyer intestinales y SRE',
+    symptoms: ['Fiebre en escalera', 'Roséola tifoidea', 'Bradicardia relativa (Signo de Faget)'],
+    nursingCare: ['Aislamiento entérico', 'Vigilar signos de perforación intestinal', 'Dieta blanda']
+  },
+  {
+    id: 'meniere',
+    name: 'Enfermedad de Meniere',
+    system: 'Otorrinolaringológico',
+    definition: 'Trastorno del oído interno caracterizado por hidrops endolinfático.',
+    affectedTarget: 'Oído Interno (Laberinto)',
+    symptoms: ['Vértigo episódico', 'Tinnitus', 'Hipoacusia fluctuante', 'Plenitud ótica'],
+    nursingCare: ['Prevención de caídas durante episodios', 'Dieta hiposódica', 'Evitar cambios bruscos de posición']
+  },
+  {
+    id: ' glaucoma',
+    name: 'Glaucoma de Ángulo Abierto',
+    system: 'Oftalmológico',
+    definition: 'Aumento crónico de la presión intraocular con daño del nervio óptico.',
+    affectedTarget: 'Nervio Óptico',
+    symptoms: ['Pérdida de visión periférica ("túnel")', 'Asintomático inicialmente'],
+    nursingCare: ['Administración de colirios hipotensores', 'Educación sobre técnica de instilación de gotas', 'Controles oftalmológicos']
+  },
+  {
+    id: 'catarata',
+    name: 'Catarata',
+    system: 'Oftalmológico',
+    definition: 'Opacidad del cristalino.',
+    affectedTarget: 'Cristalino',
+    symptoms: ['Visión borrosa progresiva', 'Dificultad para ver de noche', 'Deslumbramientos'],
+    nursingCare: ['Apoyo pre y postoperatorio', 'Administración de gotas antibióticas post cirugía', 'Uso de protector ocular']
+  },
+  {
+    id: 'hemorroides',
+    name: 'Hemorroides',
+    system: 'Digestivo',
+    definition: 'Dilataciones varicosas de las venas del plexo hemorroidal.',
+    affectedTarget: 'Canal Anal',
+    symptoms: ['Rectorragia brillante al defecar', 'Prolapso', 'Prurito anal'],
+    nursingCare: ['Baños de asiento', 'Dieta rica en fibra y abundantes líquidos', 'Uso de pomadas antiinflamatorias']
+  },
+  {
+    id: 'hernia_i',
+    name: 'Hernia Inguinal',
+    system: 'Digestivo/Muscular',
+    definition: 'Protrusión de contenido abdominal a través del conducto inguinal.',
+    affectedTarget: 'Canal Inguinal',
+    symptoms: ['Masa en región inguinal que aumenta con esfuerzo', 'Dolor leve a severo (si hay encarcelación)'],
+    nursingCare: ['Valoración de la reductibilidad de la masa', 'Vigilar signos de estrangulación (dolor, vómito)', 'Preparación quirúrgica']
+  },
+  {
+    id: 'epilepsia_a',
+    name: 'Epilepsia Ausencia',
+    system: 'Neurológico',
+    definition: 'Crisis generalizadas caracterizadas por breves interrupciones de la conciencia.',
+    affectedTarget: 'Cerebro global',
+    symptoms: ['Mirada fija', 'Pestañeo rápido', 'Interrupción de la actividad sin caída'],
+    nursingCare: ['Control de la seguridad del paciente', 'Registro de frecuencia y duración', 'Apoyo escolar/social']
+  },
+  {
+    id: 'herpes_s',
+    name: 'Herpes Simple Labial',
+    system: 'Infectioso',
+    definition: 'Infección por virus herpes simple tipo 1 (VHS-1).',
+    affectedTarget: 'Borde de los labios/Mucosa oral',
+    symptoms: ['Hormigueo previo', 'Vesículas pequeñas dolorosas', 'Costra'],
+    nursingCare: ['No compartir utensilios', 'Aplicación de antivirales tópicos', 'Evitar contacto con las lesiones']
+  },
+  {
+    id: 'tiña_p',
+    name: 'Tiña Pedis (Pie de Atleta)',
+    system: 'Infectioso/Dermatológico',
+    definition: 'Infección fúngica de la piel de los pies.',
+    affectedTarget: 'Espacios interdigitales, planta del pie',
+    symptoms: ['Eritema', 'Prurito', 'Descamación', 'Mal olor'],
+    nursingCare: ['Mantener pies secos', 'Uso de antifúngicos tópicos', 'Uso de calzado ventilado y calcetines de algodón']
+  },
+  {
+    id: 'anemia_p',
+    name: 'Anemia Perniciosa',
+    system: 'Hematológico',
+    definition: 'Deficiencia de vitamina B12 por falta de factor intrínseco.',
+    affectedTarget: 'Eritrocitos y Sistema Nervioso',
+    symptoms: ['Glositis (lengua roja depapilada)', 'Parestesias', 'Marcha inestable'],
+    nursingCare: ['Administración de Cianocobalamina IM de por vida', 'Vigilancia de seguridad por parestesias', 'Dieta adecuada']
+  },
+  {
+    id: 'purpura_h',
+    name: 'Púrpura de Henoch-Schönlein',
+    system: 'Inmunológico/Vascular',
+    definition: 'Vasculitis sistémica de pequeños vasos mediada por IgA.',
+    affectedTarget: 'Piel, Articulaciones, GI, Riñón',
+    symptoms: ['Púrpura palpable en glúteos/piernas', 'Dolor abdominal', 'Hematuria'],
+    nursingCare: ['Monitorización de función renal', 'Manejo del dolor abdominal', 'Reposo en cama']
+  },
+  {
+    id: 'fiebre_r',
+    name: 'Fiebre Reumática',
+    system: 'Inmunológico/Cardíaco',
+    definition: 'Respuesta inmunitaria tardía a faringitis estreptocócica.',
+    affectedTarget: 'Corazón (Válvulas), Articulaciones',
+    symptoms: ['Carditis', 'Poliartritis migratoria', 'Corea de Sydenham', 'Nódulos subcutáneos'],
+    nursingCare: ['Administración de Penicilina benzatínica', 'Reposo en cama si hay carditis', 'Control del dolor articular']
+  },
+  {
+    id: 'sind_down',
+    name: 'Síndrome de Down',
+    system: 'Genético',
+    definition: 'Trastorno genético por trisomía del par 21.',
+    affectedTarget: 'Desarrollo multisistémico',
+    symptoms: ['Hipotonía muscular', 'Rasgos faciales característicos', 'Cardiopatías frecuentes'],
+    nursingCare: ['Estimulación temprana', 'Control cardiológico y tiroideo frecuente', 'Fomento de la autonomía']
+  },
+  {
+    id: 'hipoti_con',
+    name: 'Hipotiroidismo Congénito',
+    system: 'Endocrino (Pediátrico)',
+    definition: 'Déficit de hormona tiroidea desde el nacimiento.',
+    affectedTarget: 'Desarrollo metabólico y cerebral',
+    symptoms: ['Ictericia prolongada', 'Macroglosia', 'Hernia umbilical', 'Estreñimiento'],
+    nursingCare: ['Tamizaje neonatal', 'Inicio inmediato de Levotiroxina', 'Control del crecimiento']
+  },
+  {
+    id: 'bronc_ped',
+    name: 'Bronquiolitis',
+    system: 'Respiratorio (Pediátrico)',
+    definition: 'Primer episodio de sibilancias precedido de rinitis en lactantes.',
+    affectedTarget: 'Vías respiratorias pequeñas (Bronquiolos)',
+    symptoms: ['Dificultad respiratoria (tirajes)', 'Sibilancias', 'Rechazo a la alimentación'],
+    nursingCare: ['Aspiración de secreciones nasales', 'Posición de semifowler', 'Monitoreo de SatO2 y FR']
+  },
+  {
+    id: 'cancer_p',
+    name: 'Cáncer de Pulmón (CPCNP)',
+    system: 'Oncológico',
+    definition: 'Neoplasia maligna de células epiliales del pulmón.',
+    affectedTarget: 'Parénquima pulmonar/Bronquios',
+    symptoms: ['Tos con hemoptisis', 'Dolor torácico', 'Pérdida de peso', 'Pancoast (síndrome)'],
+    nursingCare: ['Manejo de la disnea', 'Control del dolor crónico', 'Cuidados del paciente en quimioterapia/radioterapia']
+  },
+  {
+    id: 'hepatitis_a',
+    name: 'Hepatitis A',
+    system: 'Infectioso',
+    definition: 'Inflamación hepática viral autolimitada trasmitida vía fecal-oral.',
+    affectedTarget: 'Hepatocitos',
+    symptoms: ['Ictericia', 'Coluria', 'Acolia', 'Fiebre y náuseas'],
+    nursingCare: ['Aislamiento entérico', 'Reposo y dieta baja en grasas', 'Higiene estricta']
+  },
+  {
+    id: 'fascitis',
+    name: 'Fascitis Necrosante',
+    system: 'Infectioso (Emergencia)',
+    definition: 'Infección bacteriana rápida y destructiva de la fascia.',
+    affectedTarget: 'Fascia muscular y tejido subcutáneo',
+    symptoms: ['Dolor desproporcionado a la lesión visible', 'Criptación', 'Necrosis dérmica violácea'],
+    nursingCare: ['Preparación para desbridamiento quirúrgico inmediato', 'Manejo de antibióticos de amplio espectro', 'Soporte hemodinámico']
+  },
+  {
+    id: 'rabia',
+    name: 'Rabia Humana',
+    system: 'Infectioso/Neurológico',
+    definition: 'Encefalitis viral aguda transmitida por mordedura animal.',
+    affectedTarget: 'SNC (Cerebro)',
+    symptoms: ['Hidrofobia', 'Aerofobia', 'Espasmos musculares', 'Iritabilidad extrema'],
+    nursingCare: ['Lavado profuso de la herida con agua y jabón', 'Administración de vacuna/inmunoglobulina post-exposición', 'Aislamiento en habitación tranquila']
+  },
+  {
+    id: 'lepra',
+    name: 'Enfermedad de Hansen (Lepra)',
+    system: 'Infectioso',
+    definition: 'Infección crónica por Mycobacterium leprae.',
+    affectedTarget: 'Piel y Nervios Periféricos',
+    symptoms: ['Manchas hipocrómicas anestésicas', 'Engrosamiento nervioso', 'Deformidades'],
+    nursingCare: ['Administración de poliquimioterapia (PQT)', 'Cuidado de pies/manos anestésicos', 'Lucha contra el estigma']
+  },
+  {
+    id: 'mal_altura',
+    name: 'Mal de Montaña (Soroche)',
+    system: 'Ambiental',
+    definition: 'Hipoxia hipobárica por ascenso rápido a altitudes elevadas.',
+    affectedTarget: 'Oxigenación sistémica',
+    symptoms: ['Cefalea', 'Mareos', 'Náuseas', 'Dificultad física'],
+    nursingCare: ['Descenso si los síntomas son graves', 'Oxigenoterapia', 'Hidratación y reposo']
+  },
+  {
+    id: 'golpe_calor',
+    name: 'Golpe de Calor',
+    system: 'Ambiental',
+    definition: 'Falla de la termorregulación por exposición a calor extremo.',
+    affectedTarget: 'Sistema nervioso central/Termorregulación',
+    symptoms: ['Temperatura > 40°C', 'Piel seca y caliente', 'Confusión/Coma'],
+    nursingCare: ['Enfriamiento rápido (hielo, mantas frías)', 'Hidratación IV con sueros frescos', 'Monitoreo de la temperatura central']
   }
 ];
 
@@ -619,7 +1780,44 @@ export const DICTIONARY: DictionaryEntry[] = [
   { term: 'Síncope', definition: 'Pérdida súbita y temporal de la conciencia y del tono muscular.', category: 'General' },
 
   // Anatomía y Otros
-  { term: 'Próxima a la Línea Media', definition: 'Ubicación anatómica cercana al eje central del cuerpo.', category: 'Anatomía' },
+  { 
+    term: 'Plano Sagital', 
+    definition: 'Divide el cuerpo en mitades derecha e izquierda.', 
+    category: 'Anatomía',
+    image: 'https://images.unsplash.com/photo-1530026405186-ed1f139ed4bf?auto=format&fit=crop&w=800&q=80'
+  },
+  { 
+    term: 'Plano Coronal', 
+    definition: 'Divide el cuerpo en partes anterior (frontal) y posterior (dorsal).', 
+    category: 'Anatomía',
+    image: 'https://images.unsplash.com/photo-1544006659-f0b21f04cb1d?auto=format&fit=crop&w=800&q=80'
+  },
+  { 
+    term: 'Caja Torácica', 
+    definition: 'Estructura ósea formada por las costillas, esternón y columna vertebral que protege el corazón y pulmones.', 
+    category: 'Anatomía',
+    image: 'https://images.unsplash.com/photo-1559839734-2b71f1536b8a?auto=format&fit=crop&w=800&q=80'
+  },
+  { 
+    term: 'Columna Vertebral', 
+    definition: 'Estructura formada por 33 vértebras que protege la médula espinal.', 
+    category: 'Anatomía',
+    image: 'https://images.unsplash.com/photo-1530026405186-ed1f139ed4bf?auto=format&fit=crop&w=800&q=80'
+  },
+  { 
+    term: 'Posición de Fowler', 
+    definition: 'Paciente sentado en la cama con la cabecera elevada a 45°-60°.', 
+    category: 'Anatomía',
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80'
+  },
+  { 
+    term: 'Posición de Trendelenburg', 
+    definition: 'Paciente en decúbito supino con la cabeza más baja que los pies (aprox. 15°-30°).', 
+    category: 'Anatomía',
+    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80'
+  },
+  { term: 'Proximal', definition: 'Cercano al punto de origen o tronco.', category: 'Anatomía' },
+  { term: 'Distal', definition: 'Lejano al punto de origen o tronco.', category: 'Anatomía' },
   { term: 'Decúbito Supino', definition: 'Posición anatómica del cuerpo humano tendido boca arriba.', category: 'Anatomía' },
   { term: 'Decúbito Prono', definition: 'Posición anatómica del cuerpo humano tendido boca abajo.', category: 'Anatomía' }
 ];

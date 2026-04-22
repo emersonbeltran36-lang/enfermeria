@@ -21,7 +21,12 @@ import {
   Book,
   ArrowLeft,
   ArrowRight,
-  Clock
+  Clock,
+  Accessibility,
+  User,
+  Hash,
+  Brain,
+  Smile
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PROCEDURES, DRUGS, PATHOLOGIES, LAB_VALUES, DICTIONARY, CLINICAL_CASES } from './data';
@@ -30,12 +35,148 @@ import { Procedure, Drug, Pathology, LabValue, DictionaryEntry, ClinicalCase } f
 // Types for navigation
 type Section = 'home' | 'procedures' | 'pharmacology' | 'pathologies' | 'scales' | 'labs' | 'dictionary' | 'cases';
 
+function GlobalSearchView({ query, onSelectItem }: { query: string, onSelectItem: (section: Section, id: string) => void }) {
+  const q = query.toLowerCase();
+
+  const results = {
+    procedures: PROCEDURES.filter(p => p.name.toLowerCase().includes(q) || p.type.toLowerCase().includes(q)),
+    drugs: DRUGS.filter(d => d.name.toLowerCase().includes(q) || d.group.toLowerCase().includes(q)),
+    pathologies: PATHOLOGIES.filter(p => p.name.toLowerCase().includes(q) || p.definition.toLowerCase().includes(q)),
+    dictionary: DICTIONARY.filter(d => d.term.toLowerCase().includes(q) || d.definition.toLowerCase().includes(q))
+  };
+
+  const totalResults = results.procedures.length + results.drugs.length + results.pathologies.length + results.dictionary.length;
+
+  if (totalResults === 0) {
+    return (
+      <div className="text-center py-20">
+        <Search size={48} className="mx-auto text-medical-gray mb-4 opacity-20" />
+        <h4 className="text-xl font-bold text-white">No se encontraron resultados</h4>
+        <p className="text-medical-gray mt-2">Prueba con términos como "RCP", "Adrenalina" o "Glasgow"</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-6xl mx-auto space-y-12 pb-20">
+      <div className="flex items-center justify-between border-b border-medical-border pb-4">
+        <div>
+          <h3 className="text-2xl font-bold text-white leading-none">Resultados de Búsqueda</h3>
+          <p className="text-medical-gray text-xs mt-2 uppercase tracking-widest font-bold">Enciclopédia Médica Global</p>
+        </div>
+        <div className="bg-medical-blue/10 text-medical-blue px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-medical-blue/20">
+          {totalResults} coincidencias
+        </div>
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-8">
+        {results.procedures.length > 0 && (
+          <div className="space-y-4">
+            <h4 className="text-[10px] font-bold text-sky-400 uppercase tracking-widest flex items-center gap-2">
+              <Stethoscope size={14} /> Procedimientos ({results.procedures.length})
+            </h4>
+            <div className="space-y-2">
+              {results.procedures.slice(0, 5).map(p => (
+                <button 
+                  key={p.id}
+                  onClick={() => onSelectItem('procedures', p.id)}
+                  className="w-full bg-medical-card p-4 rounded-xl border border-medical-border hover:border-sky-500/50 transition-all text-left flex justify-between items-center group"
+                >
+                  <div>
+                    <p className="text-white font-bold">{p.name}</p>
+                    <p className="text-[10px] text-medical-gray uppercase font-bold tracking-tighter mt-0.5">{p.type}</p>
+                  </div>
+                  <ArrowRight size={16} className="text-medical-gray group-hover:text-sky-400 transition-colors" />
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {results.drugs.length > 0 && (
+          <div className="space-y-4">
+            <h4 className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest flex items-center gap-2">
+              <Pill size={14} /> Farmacología ({results.drugs.length})
+            </h4>
+            <div className="space-y-2">
+              {results.drugs.slice(0, 5).map(d => (
+                <button 
+                  key={d.id}
+                  onClick={() => onSelectItem('pharmacology', d.id)}
+                  className="w-full bg-medical-card p-4 rounded-xl border border-medical-border hover:border-indigo-500/50 transition-all text-left flex justify-between items-center group"
+                >
+                  <div>
+                    <p className="text-white font-bold">{d.name}</p>
+                    <p className="text-[10px] text-medical-gray uppercase font-bold tracking-tighter mt-0.5">{d.group}</p>
+                  </div>
+                  <ArrowRight size={16} className="text-medical-gray group-hover:text-indigo-400 transition-colors" />
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {results.pathologies.length > 0 && (
+          <div className="space-y-4">
+            <h4 className="text-[10px] font-bold text-rose-400 uppercase tracking-widest flex items-center gap-2">
+              <Activity size={14} /> Patologías ({results.pathologies.length})
+            </h4>
+            <div className="space-y-2">
+              {results.pathologies.slice(0, 5).map(p => (
+                <button 
+                  key={p.id}
+                  onClick={() => onSelectItem('pathologies', p.id)}
+                  className="w-full bg-medical-card p-4 rounded-xl border border-medical-border hover:border-rose-500/50 transition-all text-left flex justify-between items-center group"
+                >
+                  <div>
+                    <p className="text-white font-bold">{p.name}</p>
+                    <p className="text-[10px] text-medical-gray uppercase font-bold tracking-tighter mt-0.5">{p.system}</p>
+                  </div>
+                  <ArrowRight size={16} className="text-medical-gray group-hover:text-rose-400 transition-colors" />
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {results.dictionary.length > 0 && (
+          <div className="space-y-4">
+            <h4 className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest flex items-center gap-2">
+              <Book size={14} /> Diccionario ({results.dictionary.length})
+            </h4>
+            <div className="space-y-2">
+              {results.dictionary.slice(0, 5).map(d => (
+                <button 
+                  key={d.term}
+                  onClick={() => onSelectItem('dictionary', d.term)}
+                  className="w-full bg-medical-card p-4 rounded-xl border border-medical-border hover:border-emerald-500/50 transition-all text-left flex justify-between items-center group"
+                >
+                  <p className="text-white font-bold">{d.term}</p>
+                  <ArrowRight size={16} className="text-medical-gray group-hover:text-emerald-400 transition-colors" />
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [activeSection, setActiveSection] = useState<Section>('home');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [globalQuery, setGlobalQuery] = useState('');
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+
+  const handleGlobalSelectItem = (section: Section, id: string) => {
+    setActiveSection(section);
+    setGlobalQuery('');
+    // Each view should handle the selected item if passed, but for now we navigate
+    // To make it better, we could pass a 'initialSelectedId' prop to views
+    // but the sections already have internal state for selection usually.
+  };
 
   const NavItem = ({ section, icon: Icon, label }: { section: Section, icon: any, label: string }) => (
     <button
@@ -123,7 +264,7 @@ export default function App() {
               <Menu size={24} />
             </button>
             <h2 className="text-lg font-semibold text-white capitalize hidden md:block">
-              {activeSection === 'home' ? 'Protocolos de Enfermería' : activeSection}
+              {globalQuery ? 'Búsqueda Global' : activeSection === 'home' ? 'Protocolos de Enfermería' : activeSection}
             </h2>
           </div>
           
@@ -131,10 +272,10 @@ export default function App() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-medical-gray group-focus-within:text-medical-blue transition-colors" size={18} />
             <input 
               type="text" 
-              placeholder="Buscar fármaco, signo o protocolo..."
+              placeholder="Buscar en toda la biblioteca..."
               className="w-full bg-medical-input border border-medical-border rounded-lg py-2 pl-10 pr-4 text-sm text-gray-300 focus:border-medical-blue/50 transition-all outline-none placeholder:text-medical-gray/50"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              value={globalQuery}
+              onChange={(e) => setGlobalQuery(e.target.value)}
             />
           </div>
 
@@ -158,20 +299,26 @@ export default function App() {
         <div className="flex-grow overflow-y-auto p-4 sm:p-8">
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeSection}
+              key={globalQuery ? 'global-search' : activeSection}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
             >
-              {activeSection === 'home' && <Dashboard setActiveSection={setActiveSection} />}
-              {activeSection === 'procedures' && <ProceduresView searchQuery={searchQuery} />}
-              {activeSection === 'pharmacology' && <PharmacologyView searchQuery={searchQuery} />}
-              {activeSection === 'pathologies' && <PathologiesView searchQuery={searchQuery} />}
-              {activeSection === 'scales' && <AssessmentScalesView />}
-              {activeSection === 'labs' && <LabsView />}
-              {activeSection === 'dictionary' && <DictionaryView searchQuery={searchQuery} />}
-              {activeSection === 'cases' && <ClinicalCasesView />}
+              {globalQuery ? (
+                <GlobalSearchView query={globalQuery} onSelectItem={handleGlobalSelectItem} />
+              ) : (
+                <>
+                  {activeSection === 'home' && <Dashboard setActiveSection={setActiveSection} />}
+                  {activeSection === 'procedures' && <ProceduresView />}
+                  {activeSection === 'pharmacology' && <PharmacologyView />}
+                  {activeSection === 'pathologies' && <PathologiesView />}
+                  {activeSection === 'scales' && <AssessmentScalesView />}
+                  {activeSection === 'labs' && <LabsView />}
+                  {activeSection === 'dictionary' && <DictionaryView />}
+                  {activeSection === 'cases' && <ClinicalCasesView />}
+                </>
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -262,12 +409,13 @@ function QuickCard({ title, desc, bgColor, icon: Icon, onClick }: any) {
   );
 }
 
-function ProceduresView({ searchQuery }: { searchQuery: string }) {
+function ProceduresView() {
   const [selected, setSelected] = useState<Procedure | null>(null);
+  const [localSearch, setLocalSearch] = useState('');
 
   const filteredProcedures = PROCEDURES.filter(p => 
-    p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    p.type.toLowerCase().includes(searchQuery.toLowerCase())
+    p.name.toLowerCase().includes(localSearch.toLowerCase()) ||
+    p.type.toLowerCase().includes(localSearch.toLowerCase())
   );
 
   if (selected) {
@@ -288,6 +436,20 @@ function ProceduresView({ searchQuery }: { searchQuery: string }) {
               <h3 className="text-3xl font-bold mt-2 text-white">{selected.name}</h3>
             </div>
           </div>
+
+          {selected.image && (
+            <div className="w-full h-64 rounded-2xl overflow-hidden border border-medical-border relative group">
+              <img 
+                src={selected.image} 
+                alt={selected.name} 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-medical-card/80 to-transparent flex items-end p-6">
+                <span className="text-white font-bold text-xs uppercase tracking-widest bg-medical-blue/80 px-3 py-1 rounded">Guía Visual de Referencia</span>
+              </div>
+            </div>
+          )}
 
           <div className="grid md:grid-cols-2 gap-8">
             <SectionBlock title="Material Necesario" icon={ClipboardList}>
@@ -334,21 +496,38 @@ function ProceduresView({ searchQuery }: { searchQuery: string }) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest mb-6">Guías de Procedimientos</h3>
+    <div className="max-w-4xl mx-auto space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest">Guías de Procedimientos</h3>
+        <div className="relative group max-w-xs w-full">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-medical-gray group-focus-within:text-sky-400 transition-colors" size={14} />
+          <input 
+            type="text" 
+            placeholder="Filtrar procedimientos..."
+            className="w-full bg-medical-input border border-medical-border rounded-lg py-1.5 pl-9 pr-4 text-xs text-gray-300 focus:border-sky-400/50 transition-all outline-none"
+            value={localSearch}
+            onChange={(e) => setLocalSearch(e.target.value)}
+          />
+        </div>
+      </div>
       <div className="grid sm:grid-cols-2 gap-4">
         {filteredProcedures.map((p) => (
           <div 
             key={p.id} 
             onClick={() => setSelected(p)}
-            className="bg-medical-card p-6 rounded-xl border border-medical-border shadow-sm hover:border-medical-blue/30 cursor-pointer transition-all flex justify-between items-center group"
+            className="bg-medical-card p-6 rounded-xl border border-medical-border shadow-sm hover:border-medical-blue/30 cursor-pointer transition-all flex justify-between items-center group relative overflow-hidden"
           >
-            <div>
+            <div className="z-10 bg-inherit/90">
               <p className="text-[10px] font-bold text-medical-gray uppercase tracking-widest leading-none mb-2">{p.type === 'invasive' ? 'Invasivo' : 'No Invasivo'}</p>
-              <h4 className="text-lg font-bold text-white mt-1">{p.name}</h4>
+              <h4 className="text-lg font-bold text-white mt-1 group-hover:text-medical-blue transition-colors">{p.name}</h4>
               <p className="text-xs text-medical-gray mt-1">{p.steps.length} pasos detallados</p>
             </div>
-            <div className="w-10 h-10 rounded-lg bg-medical-input flex items-center justify-center text-medical-gray group-hover:text-medical-blue transition-colors border border-medical-border">
+            {p.image && (
+              <div className="absolute right-0 top-0 w-24 h-full opacity-10 group-hover:opacity-30 transition-opacity">
+                <img src={p.image} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              </div>
+            )}
+            <div className="z-10 w-10 h-10 rounded-lg bg-medical-input flex items-center justify-center text-medical-gray group-hover:text-medical-blue transition-colors border border-medical-border">
               <BookOpen size={20} />
             </div>
           </div>
@@ -370,29 +549,43 @@ function SectionBlock({ title, icon: Icon, children, color = 'text-medical-blue'
   );
 }
 
-function PharmacologyView({ searchQuery }: { searchQuery: string }) {
+function PharmacologyView() {
   const [selected, setSelected] = useState<Drug | null>(null);
   const [showCalculator, setShowCalculator] = useState(false);
+  const [localSearch, setLocalSearch] = useState('');
 
   const filteredDrugs = DRUGS.filter(d => 
-    d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    d.mechanism.toLowerCase().includes(searchQuery.toLowerCase())
+    d.name.toLowerCase().includes(localSearch.toLowerCase()) ||
+    d.mechanism.toLowerCase().includes(localSearch.toLowerCase()) ||
+    d.group.toLowerCase().includes(localSearch.toLowerCase())
   );
 
   return (
     <div className="max-w-4xl mx-auto space-y-12">
       <div>
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest">Diccionario de Fármacos</h3>
-          <button 
-            onClick={() => setShowCalculator(!showCalculator)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold text-xs transition-all ${
-              showCalculator ? 'bg-medical-red/80 hover:bg-medical-red text-white' : 'bg-medical-blue/10 text-medical-blue border border-medical-blue/30'
-            }`}
-          >
-            {showCalculator ? <X size={14} /> : <Activity size={14} />}
-            {showCalculator ? 'Cerrar Calculadora' : 'Calculadora de Goteo'}
-          </button>
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <div className="relative group max-w-xs w-full">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-medical-gray group-focus-within:text-indigo-400 transition-colors" size={14} />
+              <input 
+                type="text" 
+                placeholder="Filtrar fármacos..."
+                className="w-full bg-medical-input border border-medical-border rounded-lg py-1.5 pl-9 pr-4 text-xs text-gray-300 focus:border-indigo-400/50 transition-all outline-none"
+                value={localSearch}
+                onChange={(e) => setLocalSearch(e.target.value)}
+              />
+            </div>
+            <button 
+              onClick={() => setShowCalculator(!showCalculator)}
+              className={`flex items-center gap-2 px-4 py-1.5 rounded-lg font-bold text-xs transition-all whitespace-nowrap ${
+                showCalculator ? 'bg-medical-red/80 hover:bg-medical-red text-white' : 'bg-medical-blue/10 text-medical-blue border border-medical-blue/30'
+              }`}
+            >
+              {showCalculator ? <X size={14} /> : <Activity size={14} />}
+              {showCalculator ? 'Cerrar' : 'Calculadora'}
+            </button>
+          </div>
         </div>
 
         {showCalculator && <DripCalculator />}
@@ -528,18 +721,31 @@ function DripCalculator() {
   );
 }
 
-function PathologiesView({ searchQuery }: { searchQuery: string }) {
+function PathologiesView() {
+  const [localSearch, setLocalSearch] = useState('');
   const filteredPathologies = PATHOLOGIES.filter(p => 
-    p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    p.system.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    p.definition.toLowerCase().includes(searchQuery.toLowerCase())
+    p.name.toLowerCase().includes(localSearch.toLowerCase()) ||
+    p.system.toLowerCase().includes(localSearch.toLowerCase()) ||
+    p.definition.toLowerCase().includes(localSearch.toLowerCase())
   );
 
   const systems = Array.from(new Set(PATHOLOGIES.map(p => p.system)));
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest mb-6">Guía de Patologías</h3>
+    <div className="max-w-4xl mx-auto space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest">Guía de Patologías</h3>
+        <div className="relative group max-w-xs w-full">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-medical-gray group-focus-within:text-medical-blue transition-colors" size={14} />
+          <input 
+            type="text" 
+            placeholder="Filtrar patologías..."
+            className="w-full bg-medical-input border border-medical-border rounded-lg py-1.5 pl-9 pr-4 text-xs text-gray-300 focus:border-medical-blue/50 transition-all outline-none"
+            value={localSearch}
+            onChange={(e) => setLocalSearch(e.target.value)}
+          />
+        </div>
+      </div>
       <div className="space-y-12">
         {systems.map((system) => {
           const systemPathologies = filteredPathologies.filter(p => p.system === system);
@@ -613,54 +819,80 @@ function AssessmentScalesView() {
   if (activeScale === 'Glasgow') return <GlasgowScale onBack={() => setActiveScale(null)} />;
   if (activeScale === 'Braden') return <BradenScale onBack={() => setActiveScale(null)} />;
   if (activeScale === 'EVA') return <EVAScale onBack={() => setActiveScale(null)} />;
+  if (activeScale === 'Numérica') return <NumericPainScale onBack={() => setActiveScale(null)} />;
   if (activeScale === 'Fall Morse') return <MorseScale onBack={() => setActiveScale(null)} />;
   if (activeScale === 'Norton') return <NortonScale onBack={() => setActiveScale(null)} />;
+  if (activeScale === 'Barthel') return <BarthelScale onBack={() => setActiveScale(null)} />;
+  if (activeScale === 'Katz') return <KatzScale onBack={() => setActiveScale(null)} />;
+  if (activeScale === 'MMSE') return <MMSEScale onBack={() => setActiveScale(null)} />;
+  if (activeScale === 'Yesavage') return <YesavageScale onBack={() => setActiveScale(null)} />;
+
+  const categories = [
+    {
+      title: "1. Escalas de Valoración",
+      scales: [
+        { name: "Glasgow", desc: "Nivel de conciencia y respuesta cerebral.", icon: Activity, color: "bg-medical-blue/20 text-medical-blue border-medical-blue/30" },
+        { name: "Norton", desc: "Riesgo de UPP (Esencial geriátrico).", icon: Thermometer, color: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" },
+        { name: "Braden", desc: "Riesgo de úlceras por presión.", icon: Thermometer, color: "bg-orange-500/20 text-orange-400 border-orange-500/30" },
+      ]
+    },
+    {
+      title: "2. Escalas de Dolor",
+      scales: [
+        { name: "EVA", desc: "Escala Visual Analógica.", icon: HeartPulse, color: "bg-medical-red/20 text-medical-red border-medical-red/30" },
+        { name: "Numérica", desc: "Valoración verbal numérica (1-10).", icon: Hash, color: "bg-medical-blue/20 text-medical-blue border-medical-blue/30" },
+      ]
+    },
+    {
+      title: "3. Escalas Funcionales",
+      scales: [
+        { name: "Barthel", desc: "Actividades de la vida diaria (AVD).", icon: Accessibility, color: "bg-indigo-500/20 text-indigo-400 border-indigo-500/30" },
+        { name: "Katz", desc: "Índice de independencia en AVD.", icon: User, color: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30" },
+      ]
+    },
+    {
+      title: "4. Riesgo y Seguridad",
+      scales: [
+        { name: "Fall Morse", desc: "Riesgo de caídas hospitalarias.", icon: AlertCircle, color: "bg-amber-500/20 text-amber-400 border-amber-500/30" },
+      ]
+    },
+    {
+      title: "5. Cognitivas y Emocionales",
+      scales: [
+        { name: "MMSE", desc: "Mini-Examen de Estado Mental.", icon: Brain, color: "bg-purple-500/20 text-purple-400 border-purple-500/30" },
+        { name: "Yesavage", desc: "Depresión geriátrica (Abreviada).", icon: Smile, color: "bg-rose-500/20 text-rose-400 border-rose-500/30" },
+      ]
+    }
+  ];
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest mb-6">Escalas de Valoración</h3>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <ScaleCard 
-          name="Glasgow" 
-          desc="Nivel de conciencia y respuesta cerebral." 
-          icon={Activity} 
-          color="bg-medical-blue/20 text-medical-blue border border-medical-blue/30"
-          onClick={() => setActiveScale('Glasgow')}
-        />
-        <ScaleCard 
-          name="Braden" 
-          desc="Riesgo de úlceras por presión (UPP)." 
-          icon={Thermometer} 
-          color="bg-orange-500/20 text-orange-400 border border-orange-500/30"
-          onClick={() => setActiveScale('Braden')}
-        />
-        <ScaleCard 
-          name="EVA" 
-          desc="Escala visual análoga del dolor." 
-          icon={HeartPulse} 
-          color="bg-medical-red/20 text-medical-red border border-medical-red/30"
-          onClick={() => setActiveScale('EVA')}
-        />
-        <ScaleCard 
-          name="Fall Morse" 
-          desc="Riesgo de caídas hospitalarias." 
-          icon={Activity} 
-          color="bg-amber-500/20 text-amber-400 border border-amber-500/30"
-          onClick={() => setActiveScale('Fall Morse')}
-        />
-        <ScaleCard 
-          name="Norton" 
-          desc="Valoración del riesgo de UPP (Alternativa Braden)." 
-          icon={Thermometer} 
-          color="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
-          onClick={() => setActiveScale('Norton')}
-        />
-      </div>
+    <div className="max-w-5xl mx-auto space-y-12">
+      {categories.map((cat, idx) => (
+        <div key={idx} className="space-y-6">
+          <h3 className="text-sm font-bold text-medical-blue uppercase tracking-widest flex items-center gap-2">
+            <span className="w-8 h-px bg-medical-border" />
+            {cat.title}
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {cat.scales.map((scale, sIdx) => (
+              <ScaleCard 
+                key={sIdx}
+                name={scale.name} 
+                desc={scale.desc} 
+                icon={scale.icon} 
+                color={scale.color}
+                onClick={() => setActiveScale(scale.name)}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+      
       <div className="mt-12 p-8 bg-medical-input border border-medical-border rounded-xl text-center">
         <ClipboardList size={40} className="text-medical-gray mx-auto mb-4 opacity-30" />
         <h4 className="text-lg font-bold text-white">Próximamente</h4>
         <p className="text-xs text-medical-gray mt-2 max-w-xs mx-auto">
-          Integración automática con registros NANDA-NIC-NOC.
+          Cálculo automático de balances hídricos y gases arteriales.
         </p>
       </div>
     </div>
@@ -1148,6 +1380,497 @@ function NortonScale({ onBack }: { onBack: () => void }) {
   );
 }
 
+function NumericPainScale({ onBack }: { onBack: () => void }) {
+  const [score, setScore] = useState(0);
+
+  const getInterp = () => {
+    if (score === 0) return { label: 'SIN DOLOR', color: 'text-medical-green', bg: 'bg-medical-green/10' };
+    if (score <= 3) return { label: 'DOLOR LEVE', color: 'text-medical-blue', bg: 'bg-medical-blue/10' };
+    if (score <= 6) return { label: 'DOLOR MODERADO', color: 'text-yellow-500', bg: 'bg-yellow-500/10' };
+    if (score <= 9) return { label: 'DOLOR SEVERO', color: 'text-orange-500', bg: 'bg-orange-500/10' };
+    return { label: 'DOLOR MÁXIMO', color: 'text-medical-red', bg: 'bg-medical-red/10' };
+  };
+
+  const interp = getInterp();
+
+  return (
+    <div className="max-w-4xl mx-auto space-y-6">
+      <button onClick={onBack} className="flex items-center gap-2 text-medical-gray hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">
+        <ArrowLeft size={16} /> Volver a Escalas
+      </button>
+
+      <div className="bg-medical-card rounded-xl p-8 border border-medical-border shadow-sm">
+        <div className="flex justify-between items-center mb-10 pb-6 border-b border-medical-border">
+          <div>
+            <h3 className="text-3xl font-bold text-white">Escala Numérica</h3>
+            <p className="text-medical-gray mt-1 uppercase text-[10px] font-bold tracking-widest">Valoración Verbal del Dolor (1-10)</p>
+          </div>
+          <div className="text-center">
+            <p className="text-[10px] font-bold text-medical-gray uppercase tracking-widest mb-1">PUNTAJE</p>
+            <div className="text-5xl font-black text-white">{score}</div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-5 sm:grid-cols-11 gap-2 mb-10">
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
+            <button
+              key={n}
+              onClick={() => setScore(n)}
+              className={`aspect-square rounded-xl border-2 flex flex-col items-center justify-center transition-all ${
+                score === n
+                  ? 'bg-medical-blue border-medical-blue text-white shadow-lg shadow-medical-blue/20 scale-105'
+                  : 'bg-medical-input border-medical-border text-medical-gray hover:border-medical-blue/30'
+              }`}
+            >
+              <span className="text-xl font-bold">{n}</span>
+            </button>
+          ))}
+        </div>
+
+        <div className={`p-6 rounded-xl ${interp.bg} border border-white/5 flex flex-col items-center justify-center text-center`}>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-medical-gray mb-1">Estado del Paciente</p>
+          <h4 className={`text-2xl font-bold ${interp.color}`}>{interp.label}</h4>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BarthelScale({ onBack }: { onBack: () => void }) {
+  const [q, setQ] = useState<number[]>(new Array(10).fill(10));
+  
+  const updateQ = (idx: number, val: number) => {
+    const newQ = [...q];
+    newQ[idx] = val;
+    setQ(newQ);
+  };
+
+  const score = q.reduce((a, b) => a + b, 0);
+
+  const getInterp = () => {
+    if (score < 20) return { label: 'DEPENDENCIA TOTAL', color: 'text-medical-red', bg: 'bg-medical-red/10' };
+    if (score < 60) return { label: 'DEPENDENCIA SEVERA', color: 'text-orange-500', bg: 'bg-orange-500/10' };
+    if (score < 90) return { label: 'DEPENDENCIA MODERADA', color: 'text-yellow-500', bg: 'bg-yellow-500/10' };
+    if (score < 100) return { label: 'DEPENDENCIA LEVE', color: 'text-medical-blue', bg: 'bg-medical-blue/10' };
+    return { label: 'INDEPENDIENTE', color: 'text-medical-green', bg: 'bg-medical-green/10' };
+  };
+
+  const interp = getInterp();
+
+  return (
+    <div className="max-w-4xl mx-auto space-y-6">
+      <button onClick={onBack} className="flex items-center gap-2 text-medical-gray hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">
+        <ArrowLeft size={16} /> Volver a Escalas
+      </button>
+
+      <div className="bg-medical-card rounded-xl p-8 border border-medical-border shadow-sm">
+        <div className="flex justify-between items-center mb-10 pb-6 border-b border-medical-border">
+          <div>
+            <h3 className="text-3xl font-bold text-white">Índice de Barthel</h3>
+            <p className="text-medical-gray mt-1 uppercase text-[10px] font-bold tracking-widest">Actividades de la vida diaria</p>
+          </div>
+          <div className="text-center">
+            <p className="text-[10px] font-bold text-medical-gray uppercase tracking-widest mb-1">PUNTAJE</p>
+            <div className="text-5xl font-black text-medical-blue">{score}</div>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          <ScaleSection 
+            title="1. Comer" 
+            options={[
+              { l: 'Incapaz', v: 0 },
+              { l: 'Necesita ayuda', v: 5 },
+              { l: 'Independiente', v: 10 },
+            ]} 
+            value={q[0]} 
+            onChange={(v: number) => updateQ(0, v)} 
+          />
+          <ScaleSection 
+            title="2. Lavarse (Baño)" 
+            options={[
+              { l: 'Dependiente', v: 0 },
+              { l: 'Independiente', v: 5 },
+            ]} 
+            value={q[1]} 
+            onChange={(v: number) => updateQ(1, v)} 
+          />
+          <ScaleSection 
+            title="3. Vestirse" 
+            options={[
+              { l: 'Dependiente', v: 0 },
+              { l: 'Necesita ayuda', v: 5 },
+              { l: 'Independiente', v: 10 },
+            ]} 
+            value={q[2]} 
+            onChange={(v: number) => updateQ(2, v)} 
+          />
+          <ScaleSection 
+            title="4. Aseo Personal" 
+            options={[
+              { l: 'Dependiente', v: 0 },
+              { l: 'Independiente', v: 5 },
+            ]} 
+            value={q[3]} 
+            onChange={(v: number) => updateQ(3, v)} 
+          />
+          <ScaleSection 
+            title="5. Deposición (Anal)" 
+            options={[
+              { l: 'Incontinente', v: 0 },
+              { l: 'Accidente ocasional', v: 5 },
+              { l: 'Continente', v: 10 },
+            ]} 
+            value={q[4]} 
+            onChange={(v: number) => updateQ(4, v)} 
+          />
+          <ScaleSection 
+            title="6. Micción (Urinaria)" 
+            options={[
+              { l: 'Incontinente', v: 0 },
+              { l: 'Accidente ocasional', v: 5 },
+              { l: 'Continente', v: 10 },
+            ]} 
+            value={q[5]} 
+            onChange={(v: number) => updateQ(5, v)} 
+          />
+          <ScaleSection 
+            title="7. Usar el Retrete" 
+            options={[
+              { l: 'Dependiente', v: 0 },
+              { l: 'Necesita ayuda', v: 5 },
+              { l: 'Independiente', v: 10 },
+            ]} 
+            value={q[6]} 
+            onChange={(v: number) => updateQ(6, v)} 
+          />
+          <ScaleSection 
+            title="8. Traslado (Silla/Cama)" 
+            options={[
+              { l: 'Incapaz', v: 0 },
+              { l: 'Gran ayuda', v: 5 },
+              { l: 'Pequeña ayuda', v: 10 },
+              { l: 'Independiente', v: 15 },
+            ]} 
+            value={q[7]} 
+            onChange={(v: number) => updateQ(7, v)} 
+          />
+          <ScaleSection 
+            title="9. Deambulación" 
+            options={[
+              { l: 'Inmóvil', v: 0 },
+              { l: 'Independiente en silla', v: 5 },
+              { l: 'Ayuda de una persona', v: 10 },
+              { l: 'Independiente', v: 15 },
+            ]} 
+            value={q[8]} 
+            onChange={(v: number) => updateQ(8, v)} 
+          />
+          <ScaleSection 
+            title="10. Escalones" 
+            options={[
+              { l: 'Incapaz', v: 0 },
+              { l: 'Necesita ayuda', v: 5 },
+              { l: 'Independiente', v: 10 },
+            ]} 
+            value={q[9]} 
+            onChange={(v: number) => updateQ(9, v)} 
+          />
+        </div>
+
+        <div className={`mt-10 p-6 rounded-xl ${interp.bg} border border-medical-border flex flex-col items-center justify-center text-center`}>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-medical-gray mb-1">Capacidad Funcional</p>
+          <h4 className={`text-2xl font-bold ${interp.color}`}>{interp.label}</h4>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function KatzScale({ onBack }: { onBack: () => void }) {
+  const [q, setQ] = useState<number[]>(new Array(6).fill(1));
+  
+  const updateQ = (idx: number, val: number) => {
+    const newQ = [...q];
+    newQ[idx] = val;
+    setQ(newQ);
+  };
+
+  const score = q.reduce((a, b) => a + b, 0);
+
+  const getInterp = () => {
+    if (score === 6) return { label: 'A: INDEPENDENCIA TOTAL', color: 'text-medical-green' };
+    if (score === 5) return { label: 'B: INDEPENDENCIA (excepto 1 func.)', color: 'text-medical-blue' };
+    if (score <= 2) return { label: 'G: DEPENDENCIA TOTAL', color: 'text-medical-red' };
+    return { label: 'DEPENDENCIA MODERADA', color: 'text-orange-500' };
+  };
+
+  const interp = getInterp();
+
+  return (
+    <div className="max-w-4xl mx-auto space-y-6">
+      <button onClick={onBack} className="flex items-center gap-2 text-medical-gray hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">
+        <ArrowLeft size={16} /> Volver a Escalas
+      </button>
+
+      <div className="bg-medical-card rounded-xl p-8 border border-medical-border shadow-sm">
+        <h3 className="text-3xl font-bold text-white mb-2">Índice de Katz</h3>
+        <p className="text-medical-gray uppercase text-[10px] font-bold tracking-widest border-b border-medical-border pb-6 mb-10">Independencia en AVD</p>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          <ScaleSection 
+            title="1. Baño" 
+            options={[
+              { l: 'Independiente', v: 1 },
+              { l: 'Dependiente', v: 0 },
+            ]} 
+            value={q[0]} 
+            onChange={(v: number) => updateQ(0, v)} 
+          />
+          <ScaleSection 
+            title="2. Vestido" 
+            options={[
+              { l: 'Independiente', v: 1 },
+              { l: 'Dependiente', v: 0 },
+            ]} 
+            value={q[1]} 
+            onChange={(v: number) => updateQ(1, v)} 
+          />
+          <ScaleSection 
+            title="3. Uso del Retrete" 
+            options={[
+              { l: 'Independiente', v: 1 },
+              { l: 'Dependiente', v: 0 },
+            ]} 
+            value={q[2]} 
+            onChange={(v: number) => updateQ(2, v)} 
+          />
+          <ScaleSection 
+            title="4. Movilidad" 
+            options={[
+              { l: 'Independiente', v: 1 },
+              { l: 'Dependiente', v: 0 },
+            ]} 
+            value={q[3]} 
+            onChange={(v: number) => updateQ(3, v)} 
+          />
+          <ScaleSection 
+            title="5. Continencia" 
+            options={[
+              { l: 'Independiente', v: 1 },
+              { l: 'Dependiente', v: 0 },
+            ]} 
+            value={q[4]} 
+            onChange={(v: number) => updateQ(4, v)} 
+          />
+          <ScaleSection 
+            title="6. Alimentación" 
+            options={[
+              { l: 'Independiente', v: 1 },
+              { l: 'Dependiente', v: 0 },
+            ]} 
+            value={q[5]} 
+            onChange={(v: number) => updateQ(5, v)} 
+          />
+        </div>
+
+        <div className="mt-10 p-6 bg-medical-input rounded-xl border border-medical-border text-center">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-medical-gray mb-1">Clasificación</p>
+          <h4 className={`text-2xl font-bold ${interp.color}`}>{interp.label}</h4>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MMSEScale({ onBack }: { onBack: () => void }) {
+  const [q, setQ] = useState<number[]>(new Array(5).fill(10));
+  
+  const updateQ = (idx: number, val: number) => {
+    const newQ = [...q];
+    newQ[idx] = val;
+    setQ(newQ);
+  };
+
+  const score = q.reduce((a, b) => a + b, 0);
+
+  const getInterp = () => {
+    if (score <= 9) return { label: 'DETERIORO GRAVE', color: 'text-medical-red' };
+    if (score <= 18) return { label: 'DETERIORO MODERADO', color: 'text-orange-500' };
+    if (score <= 26) return { label: 'DETERIORO LEVE', color: 'text-medical-blue' };
+    return { label: 'NORMAL', color: 'text-medical-green' };
+  };
+
+  const interp = getInterp();
+
+  return (
+    <div className="max-w-4xl mx-auto space-y-6">
+      <button onClick={onBack} className="flex items-center gap-2 text-medical-gray hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">
+        <ArrowLeft size={16} /> Volver a Escalas
+      </button>
+
+      <div className="bg-medical-card rounded-xl p-8 border border-medical-border shadow-sm">
+        <div className="flex justify-between items-center mb-10 pb-6 border-b border-medical-border">
+          <div>
+            <h3 className="text-3xl font-bold text-white">MMSE (Folstein)</h3>
+            <p className="text-medical-gray mt-1 uppercase text-[10px] font-bold tracking-widest">Mini-Examen del Estado Mental</p>
+          </div>
+          <div className="text-center">
+            <p className="text-[10px] font-bold text-medical-gray uppercase tracking-widest mb-1">PUNTAJE</p>
+            <div className="text-5xl font-black text-medical-blue">{score}</div>
+          </div>
+        </div>
+
+        <div className="grid gap-6">
+           <ScaleSection 
+            title="1. Orientación (Tiempo y Espacio)" 
+            options={[
+              { l: 'Deterioro grave', v: 2 },
+              { l: 'Algún error', v: 7 },
+              { l: 'Orientación completa', v: 10 },
+            ]} 
+            value={q[0]} 
+            onChange={(v: number) => updateQ(0, v)} 
+          />
+          <ScaleSection 
+            title="2. Memoria de Fijación" 
+            options={[
+              { l: 'Ninguna palabra', v: 0 },
+              { l: '1 palabra', v: 1 },
+              { l: '2 palabras', v: 2 },
+              { l: '3 palabras', v: 3 },
+            ]} 
+            value={q[1]} 
+            onChange={(v: number) => updateQ(1, v)} 
+          />
+          <ScaleSection 
+            title="3. Atención y Cálculo" 
+            options={[
+              { l: 'Incapaz', v: 0 },
+              { l: 'Errores frecuentes', v: 2 },
+              { l: 'Errores mínimos', v: 4 },
+              { l: 'Sin errores', v: 5 },
+            ]} 
+            value={q[2]} 
+            onChange={(v: number) => updateQ(2, v)} 
+          />
+          <ScaleSection 
+            title="4. Memoria de Recuerdo" 
+            options={[
+              { l: 'Incapaz', v: 0 },
+              { l: '1 palabra', v: 1 },
+              { l: '2 palabras', v: 2 },
+              { l: '3 palabras', v: 3 },
+            ]} 
+            value={q[3]} 
+            onChange={(v: number) => updateQ(3, v)} 
+          />
+          <ScaleSection 
+            title="5. Lenguaje y Praxis" 
+            options={[
+              { l: 'Deterioro marcado', v: 2 },
+              { l: 'Deterioro leve', v: 6 },
+              { l: 'Capacidad normal', v: 9 },
+            ]} 
+            onChange={(v: number) => updateQ(4, v)} 
+            value={q[4]}
+          />
+        </div>
+
+        <div className="mt-10 p-6 bg-medical-input rounded-xl border border-medical-border text-center">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-medical-gray mb-1">Estado Cognitivo</p>
+          <h4 className={`text-2xl font-bold ${interp.color}`}>{interp.label}</h4>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function YesavageScale({ onBack }: { onBack: () => void }) {
+  const [items, setItems] = useState<number[]>([]);
+
+  const toggleItem = (idx: number) => {
+    if (items.includes(idx)) {
+      setItems(items.filter(i => i !== idx));
+    } else {
+      setItems([...items, idx]);
+    }
+  };
+
+  const score = items.length;
+
+  const getInterp = () => {
+    if (score <= 5) return { label: 'NORMAL', color: 'text-medical-green' };
+    if (score <= 9) return { label: 'DEPRESIÓN LEVE', color: 'text-orange-500' };
+    return { label: 'DEPRESIÓN ESTABLECIDA', color: 'text-medical-red' };
+  };
+
+  const interp = getInterp();
+
+  return (
+    <div className="max-w-4xl mx-auto space-y-6">
+      <button onClick={onBack} className="flex items-center gap-2 text-medical-gray hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">
+        <ArrowLeft size={16} /> Volver a Escalas
+      </button>
+
+      <div className="bg-medical-card rounded-xl p-8 border border-medical-border shadow-sm">
+        <div className="flex justify-between items-center mb-8 pb-6 border-b border-medical-border">
+          <div>
+            <h3 className="text-3xl font-bold text-white">Escala Yesavage</h3>
+            <p className="text-medical-gray mt-1 uppercase text-[10px] font-bold tracking-widest">Depresión Geriátrica (Abreviada)</p>
+          </div>
+          <div className="text-center">
+            <p className="text-[10px] font-bold text-medical-gray uppercase tracking-widest mb-1">SÍNTOMAS</p>
+            <div className="text-5xl font-black text-rose-500">{score}</div>
+          </div>
+        </div>
+
+        <p className="text-xs text-medical-gray mb-8 italic">Seleccione los ítems que el paciente responde afirmativamente (indicadores de depresión en escala abreviada de 15 ítems).</p>
+
+        <div className="grid gap-3">
+          {[
+            "¿Se siente básicamente satisfecho con su vida? (No)",
+            "¿Ha abandonado muchos de sus intereses y actividades?",
+            "¿Siente que su vida está vacía?",
+            "¿Se aburre a menudo?",
+            "¿Se siente con buen ánimo la mayor parte del tiempo? (No)",
+            "¿Teme que algo malo le pase?",
+            "¿Se siente feliz la mayor parte del tiempo? (No)",
+            "¿Se siente a menudo desvalido?",
+            "¿Prefiere quedarse en casa?",
+            "¿Siente que tiene más problemas de memoria?",
+            "¿Piensa que es maravilloso estar vivo? (No)",
+            "¿Se siente inútil?",
+            "¿Se siente lleno de energía? (No)",
+            "¿Siente que su situación es desesperada?",
+            "¿Cree que la mayoría de la gente está mejor que usted?"
+          ].map((q, i) => (
+            <button
+              key={i}
+              onClick={() => toggleItem(i)}
+              className={`p-4 rounded-xl border text-left text-sm transition-all flex items-center gap-4 ${
+                items.includes(i)
+                  ? 'bg-rose-500/10 border-rose-500 text-rose-500'
+                  : 'bg-medical-input border-medical-border text-medical-text hover:border-medical-gray'
+              }`}
+            >
+              <div className={`w-5 h-5 rounded border flex items-center justify-center ${items.includes(i) ? 'bg-rose-500 border-rose-500' : 'border-medical-border'}`}>
+                {items.includes(i) && <X size={12} className="text-white" />}
+              </div>
+              {q}
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-10 p-6 bg-medical-input rounded-xl border border-medical-border text-center">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-medical-gray mb-1">Resultado de Valoración</p>
+          <h4 className={`text-2xl font-bold ${interp.color}`}>{interp.label}</h4>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ScaleSection({ title, options, value, onChange }: any) {
   return (
     <div className="space-y-4">
@@ -1514,9 +2237,28 @@ function ClinicalCasesView() {
 }
 
 function LabsView() {
+  const [localSearch, setLocalSearch] = useState('');
+
+  const filteredLabs = LAB_VALUES.filter(lab => 
+    lab.name.toLowerCase().includes(localSearch.toLowerCase()) ||
+    lab.normalRange.toLowerCase().includes(localSearch.toLowerCase())
+  );
+
   return (
-    <div className="max-w-4xl mx-auto">
-      <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest mb-6">Valores de Laboratorio</h3>
+    <div className="max-w-4xl mx-auto space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest">Valores de Laboratorio</h3>
+        <div className="relative group max-w-xs w-full">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-medical-gray group-focus-within:text-emerald-400 transition-colors" size={14} />
+          <input 
+            type="text" 
+            placeholder="Filtrar exámenes..."
+            className="w-full bg-medical-input border border-medical-border rounded-lg py-1.5 pl-9 pr-4 text-xs text-gray-300 focus:border-emerald-400/50 transition-all outline-none"
+            value={localSearch}
+            onChange={(e) => setLocalSearch(e.target.value)}
+          />
+        </div>
+      </div>
       <div className="bg-medical-card rounded-xl border border-medical-border shadow-sm overflow-hidden">
         <table className="w-full text-left border-collapse">
           <thead>
@@ -1527,7 +2269,7 @@ function LabsView() {
             </tr>
           </thead>
           <tbody className="divide-y divide-medical-border">
-            {LAB_VALUES.map((lab, i) => (
+            {filteredLabs.map((lab, i) => (
               <tr key={i} className="hover:bg-white/5 transition-colors group">
                 <td className="px-6 py-4">
                   <p className="text-sm font-bold text-white">{lab.name}</p>
@@ -1544,23 +2286,43 @@ function LabsView() {
             ))}
           </tbody>
         </table>
+        {filteredLabs.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-sm text-medical-gray">No se encontraron resultados para "{localSearch}"</p>
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-function DictionaryView({ searchQuery }: { searchQuery: string }) {
+function DictionaryView() {
+  const [localSearch, setLocalSearch] = useState('');
+  const [activeLetter, setActiveLetter] = useState<string | null>(null);
+
   const filteredEntries = DICTIONARY.filter(e => 
-    e.term.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    e.abbreviation?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    e.definition.toLowerCase().includes(searchQuery.toLowerCase())
+    e.term.toLowerCase().includes(localSearch.toLowerCase()) ||
+    e.abbreviation?.toLowerCase().includes(localSearch.toLowerCase()) ||
+    e.definition.toLowerCase().includes(localSearch.toLowerCase())
   );
 
   const categories = Array.from(new Set(DICTIONARY.map(e => e.category)));
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest mb-6">Diccionario de Términos y Abreviaturas</h3>
+    <div className="max-w-4xl mx-auto space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <h3 className="text-xs font-bold text-medical-gray uppercase tracking-widest">Diccionario de Términos y Abreviaturas</h3>
+        <div className="relative group max-w-xs w-full">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-medical-gray group-focus-within:text-medical-blue transition-colors" size={14} />
+          <input 
+            type="text" 
+            placeholder="Buscar término o sigla..."
+            className="w-full bg-medical-input border border-medical-border rounded-lg py-1.5 pl-9 pr-4 text-xs text-gray-300 focus:border-medical-blue/50 transition-all outline-none"
+            value={localSearch}
+            onChange={(e) => setLocalSearch(e.target.value)}
+          />
+        </div>
+      </div>
       
       <div className="space-y-8">
         {categories.map(category => {
@@ -1587,8 +2349,18 @@ function DictionaryView({ searchQuery }: { searchQuery: string }) {
                       )}
                       <h5 className="text-sm font-bold text-white leading-tight">{entry.term}</h5>
                     </div>
-                    <div className="flex-grow">
-                      <p className="text-sm text-medical-text leading-relaxed">{entry.definition}</p>
+                    <div className="flex-grow flex flex-col md:flex-row gap-4">
+                      <p className="text-sm text-medical-text leading-relaxed flex-grow">{entry.definition}</p>
+                      {entry.image && (
+                        <div className="md:w-48 shrink-0 rounded-lg overflow-hidden border border-medical-border h-32">
+                          <img 
+                            src={entry.image} 
+                            alt={entry.term} 
+                            className="w-full h-full object-cover"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -1601,7 +2373,7 @@ function DictionaryView({ searchQuery }: { searchQuery: string }) {
       {filteredEntries.length === 0 && (
         <div className="text-center py-20">
           <Book className="text-medical-gray mx-auto mb-4 opacity-20" size={48} />
-          <p className="text-medical-gray font-medium">No se encontraron términos para "{searchQuery}"</p>
+          <p className="text-medical-gray font-medium">No se encontraron términos para "{localSearch}"</p>
         </div>
       )}
     </div>

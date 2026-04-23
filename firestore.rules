@@ -18,8 +18,8 @@ service cloud.firestore {
       return data.keys().hasAll(['uid', 'email', 'displayName', 'photoURL', 'createdAt', 'lastLogin']) &&
              data.uid == request.auth.uid &&
              data.email is string &&
-             data.displayName is string &&
-             data.photoURL is string &&
+             (data.displayName == null || data.displayName is string) &&
+             (data.photoURL == null || data.photoURL is string) &&
              (!('specialty' in data) || data.specialty is string) &&
              (!('hospital' in data) || data.hospital is string) &&
              (!('isProfileComplete' in data) || data.isProfileComplete is bool);

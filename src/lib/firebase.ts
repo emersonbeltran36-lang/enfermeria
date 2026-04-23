@@ -20,9 +20,10 @@ export async function signInWithGoogle() {
     if (!userDoc.exists()) {
       await setDoc(userRef, {
         uid: user.uid,
-        email: user.email,
-        displayName: user.displayName,
-        photoURL: user.photoURL,
+        email: user.email || '',
+        displayName: user.displayName || '',
+        photoURL: user.photoURL || '',
+        isProfileComplete: false,
         createdAt: serverTimestamp(),
         lastLogin: serverTimestamp(),
       });
@@ -47,7 +48,26 @@ export async function getUserProfile(uid: string) {
 
 export async function updateUserProfile(uid: string, data: any) {
   const userRef = doc(db, 'users', uid);
-  await setDoc(userRef, data, { merge: true });
+  const userSnap = await getDoc(userRef);
+  
+  if (!userSnap.exists()) {
+    const user = auth.currentUser;
+    await setDoc(userRef, {
+      uid,
+      email: user?.email || '',
+      displayName: user?.displayName || data.displayName || '',
+      photoURL: user?.photoURL || '',
+      createdAt: serverTimestamp(),
+      lastLogin: serverTimestamp(),
+      isProfileComplete: false,
+      ...data
+    });
+  } else {
+    await setDoc(userRef, {
+      ...data,
+      lastLogin: serverTimestamp()
+    }, { merge: true });
+  }
 }
 
 export type { FirebaseUser };

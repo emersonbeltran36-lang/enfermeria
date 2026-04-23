@@ -69,7 +69,14 @@ function AppContent() {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        const profile = await getUserProfile(currentUser.uid);
+        let profile = await getUserProfile(currentUser.uid);
+        
+        // Retry once if profile is null (might be a race condition during registration)
+        if (!profile) {
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          profile = await getUserProfile(currentUser.uid);
+        }
+        
         setUserProfile(profile);
       } else {
         setUserProfile(null);

@@ -20,9 +20,17 @@ export async function signInAnonymouslyUser() {
 }
 
 export async function getUserProfile(uid: string) {
-  const userRef = doc(db, 'users', uid);
-  const userDoc = await getDoc(userRef);
-  return userDoc.exists() ? userDoc.data() : null;
+  try {
+    const userRef = doc(db, 'users', uid);
+    const userDoc = await getDoc(userRef);
+    if (userDoc.exists()) {
+      return userDoc.data();
+    }
+    return null;
+  } catch (error) {
+    console.error('Error getting user profile:', error);
+    return null;
+  }
 }
 
 export async function updateUserProfile(uid: string, data: any) {

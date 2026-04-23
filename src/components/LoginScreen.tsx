@@ -14,13 +14,15 @@ export function LoginScreen({ onLoginSuccess }: LoginScreenProps) {
   const [error, setError] = useState<string | null>(null);
 
   const handleStart = async () => {
+    console.log('Starting anonymous sign in...');
     setIsLoggingIn(true);
     setError(null);
     try {
-      await signInAnonymouslyUser();
+      const user = await signInAnonymouslyUser();
+      console.log('Sign in successful:', user.uid);
       onLoginSuccess();
     } catch (err) {
-      console.error(err);
+      console.error('Sign in error:', err);
       setError('Error al iniciar sesión. Inténtelo de nuevo.');
     } finally {
       setIsLoggingIn(false);

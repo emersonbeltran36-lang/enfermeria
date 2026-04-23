@@ -137,10 +137,18 @@ function AppContent() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <LoginScreen onLoginSuccess={() => {}} />
+            <LoginScreen onLoginSuccess={async () => {
+              const currentUser = auth.currentUser;
+              if (currentUser) {
+                setUser(currentUser);
+                const profile = await getUserProfile(currentUser.uid);
+                setUserProfile(profile);
+              }
+            }} />
           </motion.div>
-        ) : (!userProfile?.isProfileComplete) ? (
+        ) : (!userProfile || !userProfile.isProfileComplete) ? (
           <ProfileSetup 
+            key="setup"
             uid={user.uid} 
             onComplete={async () => {
               const profile = await getUserProfile(user.uid);

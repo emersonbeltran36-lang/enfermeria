@@ -1491,6 +1491,456 @@ export const DRUGS: Drug[] = [
     dosage: 'Inducción: 1-2 mUI/min. Hemorragia: 10-40 UI en goteo.',
     route: 'IV, IM',
     contraindications: ['Desproporción cefalopélvica']
+  },
+  {
+    id: 'amoxi',
+    name: 'Amoxicilina',
+    group: 'Antibiótico Penicilánico',
+    mechanism: 'Bactericida; inhibe la síntesis de la pared celular bacteriana.',
+    dosage: 'Adultos: 500-1000 mg c/8h. Niños: 40-90 mg/kg/día.',
+    route: 'VO',
+    contraindications: ['Alergia a penicilinas', 'Mononucleosis infecciosa']
+  },
+  {
+    id: 'amoxi-clav',
+    name: 'Amoxicilina + Ácido Clavulánico',
+    group: 'Antibiótico + Inhibidor Beta-lactamasa',
+    mechanism: 'Combinación bactericida que resiste la degradación por beta-lactamasas.',
+    dosage: 'Adultos: 875/125 mg c/12h o 500/125 mg c/8h.',
+    route: 'VO, IV',
+    contraindications: ['Antecedente de ictericia colestásica por clavulánico', 'Alergia severa a betalactámicos']
+  },
+  {
+    id: 'amp-sulb',
+    name: 'Ampicilina + Sulbactam',
+    group: 'Penicilina / Inhibidor Beta-lact.',
+    mechanism: 'Amplio espectro incluyendo anaerobios y gram negativos.',
+    dosage: '1.5-3g c/6h.',
+    route: 'IV, IM',
+    contraindications: ['Alergia a penicilinas']
+  },
+  {
+    id: 'peni-benz',
+    name: 'Penicilina G Benzatínica',
+    group: 'Antibiótico Natural',
+    mechanism: 'Penicilina de liberación lenta para depósitos.',
+    dosage: '1.2 - 2.4 millones UI dosis única.',
+    route: 'IM profunda',
+    contraindications: ['Hipersensibilidad a penicilinas', 'Administración IV']
+  },
+  {
+    id: 'ceftazi',
+    name: 'Ceftazidima',
+    group: 'Cefalosporina 3ra Gen',
+    mechanism: 'Especialmente activa contra Pseudomonas aeruginosa.',
+    dosage: '1-2g c/8h.',
+    route: 'IV, IM',
+    contraindications: ['Hipersensibilidad a cefalosporinas']
+  },
+  {
+    id: 'cefepime',
+    name: 'Cefepime',
+    group: 'Cefalosporina 4ta Gen',
+    mechanism: 'Amplio espectro, alta resistencia a beta-lactamasas.',
+    dosage: '1-2g c/8-12h.',
+    route: 'IV',
+    contraindications: ['Hipersensibilidad a betalactámicos']
+  },
+  {
+    id: 'linezolid',
+    name: 'Linezolid',
+    group: 'Oxazolidinona',
+    mechanism: 'Inhibe la síntesis proteica (subunidad 50S).',
+    dosage: '600mg c/12h.',
+    route: 'IV, VO',
+    contraindications: ['Uso con IMAO', 'Hipertensión no controlada']
+  },
+  {
+    id: 'tigeciclina',
+    name: 'Tigeciclina',
+    group: 'Glicilciclina',
+    mechanism: 'Derivado de tetraciclina para bacterias multirresistentes.',
+    dosage: 'Carga 100mg, luego 50mg c/12h.',
+    route: 'IV',
+    contraindications: ['Niños menores de 8 años', 'Hipersensibilidad']
+  },
+  {
+    id: 'doxiciclina',
+    name: 'Doxiciclina',
+    group: 'Tetraciclina',
+    mechanism: 'Inhibe síntesis proteica bacteriana (30S).',
+    dosage: '100mg c/12h.',
+    route: 'VO, IV',
+    contraindications: ['Embarazo', 'Niños < 8 años (tinción dental)']
+  },
+  {
+    id: 'tmp-smx',
+    name: 'Trimetoprim + Sulfametoxazol',
+    group: 'Sulfonamida / Antibiótico',
+    mechanism: 'Bloqueo secuencial de la síntesis de ácido fólico.',
+    dosage: '160/800 mg c/12-24h (Bactrim Forte).',
+    route: 'VO, IV',
+    contraindications: ['Falla renal severa', 'Embarazo a término', 'Recién nacidos < 2 meses']
+  },
+  {
+    id: 'anfo-b',
+    name: 'Anfotericina B',
+    group: 'Antifúngico Polieno',
+    mechanism: 'Altera la permeabilidad de la membrana fúngica.',
+    dosage: '0.5-1.5 mg/kg/día (Deoxicolato); 3-5 mg/kg (Liposomal).',
+    route: 'IV (Infusión lenta)',
+    contraindications: ['Disfunción renal severa', 'Hipersensibilidad']
+  },
+  {
+    id: 'caspo',
+    name: 'Caspofungina',
+    group: 'Equinocandina',
+    mechanism: 'Inhibe la síntesis de glucano en la pared fúngica.',
+    dosage: 'Carga 70mg, luego 50mg día.',
+    route: 'IV',
+    contraindications: ['Hipersensibilidad']
+  },
+  {
+    id: 'oselta',
+    name: 'Oseltamivir',
+    group: 'Antiviral / Inhibidor Neuraminid.',
+    mechanism: 'Impide la liberación del virus de la gripe de las células.',
+    dosage: '75mg c/12h por 5 días.',
+    route: 'VO',
+    contraindications: ['Hipersensibilidad']
+  },
+  {
+    id: 'valsa',
+    name: 'Valsartán',
+    group: 'ARA-II',
+    mechanism: 'Antagonista selectivo del receptor de angiotensina II.',
+    dosage: '80-320 mg/día.',
+    route: 'VO',
+    contraindications: ['Embarazo', 'Insuficiencia renal/hepática grave']
+  },
+  {
+    id: 'verapa',
+    name: 'Verapamilo',
+    group: 'Calleantagonista / Clase IV',
+    mechanism: 'Reduce la conducción AV y frecuencia cardíaca.',
+    dosage: '80-120 mg c/8h VO. 5-10mg IV lento.',
+    route: 'VO, IV',
+    contraindications: ['Bloqueo AV 2-3 er grado', 'ICC severa']
+  },
+  {
+    id: 'diltia',
+    name: 'Diltiazem',
+    group: 'Calleantagonista / Clase IV',
+    mechanism: 'Vasodilatador coronario y enlentecedor de conducción AV.',
+    dosage: '30-60 mg c/8h. Infusión IV para fibrilación auricular.',
+    route: 'VO, IV',
+    contraindications: ['Síndrome de nodo enfermo', 'Bradicardia severa']
+  },
+  {
+    id: 'nifedi',
+    name: 'Nifedipina',
+    group: 'Calleantagonista (Dihidropiridina)',
+    mechanism: 'Potente vasodilatador arterial.',
+    dosage: '10-30 mg c/8-12h (Larga acción).',
+    route: 'VO',
+    contraindications: ['Shock cardiogénico', 'Post-IM reciente']
+  },
+  {
+    id: 'ateno',
+    name: 'Atenolol',
+    group: 'Beta-bloqueante Selectivo',
+    mechanism: 'Reduce gasto cardíaco y frecuencia cardíaca.',
+    dosage: '25-100 mg/día.',
+    route: 'VO',
+    contraindications: ['Asma bronquial', 'Bradicardia', 'IC no compensada']
+  },
+  {
+    id: 'nebivo',
+    name: 'Nebivolol',
+    group: 'Beta-bloqueante / Vasodilatador',
+    mechanism: 'Alta selectividad beta-1 y liberación de óxido nítrico.',
+    dosage: '5 mg/día.',
+    route: 'VO',
+    contraindications: ['Insuficiencia hepática', 'Bradicardia']
+  },
+  {
+    id: 'clonidi',
+    name: 'Clonidina',
+    group: 'Agonista Alfa-2 Central',
+    mechanism: 'Reduce la descarga simpática central.',
+    dosage: '0.1-0.3 mg c/12h.',
+    route: 'VO, Parche',
+    contraindications: ['Bradibradicardia severa']
+  },
+  {
+    id: 'vaso',
+    name: 'Vasopresina',
+    group: 'Hormona Antidiurética',
+    mechanism: 'Vasoconstricción potente mediada por receptores V1.',
+    dosage: 'Shock: 0.01-0.04 UI/min.',
+    route: 'IV',
+    contraindications: ['Enfermedad arterial coronaria grave']
+  },
+  {
+    id: 'terli',
+    name: 'Terlipresina',
+    group: 'Análogo de Vasopresina',
+    mechanism: 'Vasoconstricción esplácnica específica.',
+    dosage: '1-2 mg c/4-6h IV.',
+    route: 'IV',
+    contraindications: ['Embarazo', 'Hipertensión arterial grave']
+  },
+  {
+    id: 'milri',
+    name: 'Milrinona',
+    group: 'Inotrópico / Inhibidor PDE3',
+    mechanism: 'Aumenta contractilidad y produce vasodilatación.',
+    dosage: '0.375-0.75 mcg/kg/min.',
+    route: 'IV',
+    contraindications: ['Obstrucción valvular aórtica o pulmonar']
+  },
+  {
+    id: 'levosimen',
+    name: 'Levosimendán',
+    group: 'Sensibilizador de Calcio',
+    mechanism: 'Mejora contractilidad sin aumentar consumo de O2.',
+    dosage: '0.1-0.2 mcg/kg/min por 24h.',
+    route: 'IV',
+    contraindications: ['Hipotensión severa', 'Obstrucción mecánica del llenado ventricular']
+  },
+  {
+    id: 'estrep',
+    name: 'Estreptoquinasa',
+    group: 'Trombolítico',
+    mechanism: 'Activa el plasminógeno para degradar fibrina.',
+    dosage: '1.5 millones UI en 60 min (IAM).',
+    route: 'IV',
+    contraindications: ['Hemorragia activa reciente', 'ACV hemorrágico previo', 'Cirugía mayor reciente']
+  },
+  {
+    id: 'alteplasa',
+    name: 'Alteplasa',
+    group: 'Trombolítico',
+    mechanism: 'Activador tisular del plasminógeno recombinante.',
+    dosage: '0.9 mg/kg (90mg max) en ACV isquémico.',
+    route: 'IV',
+    contraindications: ['Hemorragia intracraneal', 'Traumatismo craneal reciente', 'TA > 185/110']
+  },
+  {
+    id: 'acetilcis',
+    name: 'Acetilcisteína',
+    group: 'Mucolítico / Antídoto',
+    mechanism: 'Rompe puentes disulfuro de secreciones y restaura glutatión.',
+    dosage: 'Paracetamol: Carga 140mg/kg luego dosis menores.',
+    route: 'IV, VO, Inhalado',
+    contraindications: ['Hipersensibilidad']
+  },
+  {
+    id: 'ambroxol',
+    name: 'Ambroxol',
+    group: 'Mucolítico',
+    mechanism: 'Disminuye viscosidad del moco y estimula surfactante.',
+    dosage: '30mg c/8h.',
+    route: 'VO',
+    contraindications: ['Úlcera péptica', 'Primer trimestre embarazo']
+  },
+  {
+    id: 'bude',
+    name: 'Budesonida',
+    group: 'Corticosteroide Inhalado',
+    mechanism: 'Acción antiinflamatoria local potente en pulmón o colon.',
+    dosage: 'Inhalación: 200-400 mcg c/12h.',
+    route: 'Inhalatoria, Nasal, VO',
+    contraindications: ['Tuberculosis pulmonar activa']
+  },
+  {
+    id: 'fluti',
+    name: 'Fluticasona',
+    group: 'Corticosteroide Inhalado',
+    mechanism: 'Potente inhibidor de la inflamación bronquial.',
+    dosage: '100-250 mcg c/12h.',
+    route: 'Inhalatoria, Nasal',
+    contraindications: ['Infección fúngica oral no tratada']
+  },
+  {
+    id: 'montelu',
+    name: 'Montelukast',
+    group: 'Antag. Rec. Leucotrienos',
+    mechanism: 'Bloquea la bronconstricción mediada por leucotrienos.',
+    dosage: '10mg noche.',
+    route: 'VO',
+    contraindications: ['Hipersensibilidad']
+  },
+  {
+    id: 'tiotro',
+    name: 'Bromuro de Tiotropio',
+    group: 'Broncodilatador LAMA',
+    mechanism: 'Antagonista muscarínico de acción prolongada.',
+    dosage: '18 mcg (una cápsula inhalada) al día.',
+    route: 'Inhalatoria',
+    contraindications: ['Hipersensibilidad a atropina']
+  },
+  {
+    id: 'esco',
+    name: 'Escopolamina (Butilbromuro)',
+    group: 'Antiespasmódico',
+    mechanism: 'Antagonista competitivo de receptores muscarínicos.',
+    dosage: '10-20 mg c/6-8h.',
+    route: 'VO, IV, IM',
+    contraindications: ['Glaucoma de ángulo estrecho', 'Mega colon']
+  },
+  {
+    id: 'lope',
+    name: 'Loperamida',
+    group: 'Antidiarreico',
+    mechanism: 'Agonista opioide periférico (reduce motilidad).',
+    dosage: '4mg inicial, luego 2mg post-deposición. Max 16mg/día.',
+    route: 'VO',
+    contraindications: ['Disentería aguda', 'Colitis ulcerosa aguda']
+  },
+  {
+    id: 'sucra',
+    name: 'Sucralfato',
+    group: 'Protector Gástrico',
+    mechanism: 'Forma un complejo adherente en el sitio de la úlcera.',
+    dosage: '1g c/6h.',
+    route: 'VO (antes de comidas)',
+    contraindications: ['Insuficiencia renal crónica']
+  },
+  {
+    id: 'rosuva',
+    name: 'Rosuvastatina',
+    group: 'Estatina',
+    mechanism: 'Inhibe la HMG-CoA reductasa con alta potencia.',
+    dosage: '10-40 mg día.',
+    route: 'VO',
+    contraindications: ['Hepatopatía activa', 'Embarazo']
+  },
+  {
+    id: 'feno',
+    name: 'Fenofibrato',
+    group: 'Fibrato / Hipolipemiante',
+    mechanism: 'Agonista del receptor PPAR-alfa.',
+    dosage: '160-200 mg día.',
+    route: 'VO',
+    contraindications: ['Enfermedad de vesícula biliar', 'Falla renal severa']
+  },
+  {
+    id: 'alopu',
+    name: 'Alopurinol',
+    group: 'Antigotoso',
+    mechanism: 'Inhibidor de la xantino oxidasa (reduce Ác. Úrico).',
+    dosage: '100-300 mg día.',
+    route: 'VO',
+    contraindications: ['Ataque agudo de gota (no iniciar en fase aguda)']
+  },
+  {
+    id: 'colchi',
+    name: 'Colchicina',
+    group: 'Antigotoso',
+    mechanism: 'Inhibe la migración de leucocitos y fagocitosis.',
+    dosage: '0.5-1 mg c/12-24h.',
+    route: 'VO',
+    contraindications: ['Insuficiencia renal o hepática grave']
+  },
+  {
+    id: 'gaba',
+    name: 'Gabapentina',
+    group: 'Antiepiléptico / Neuromodulador',
+    mechanism: 'Se une a canales de calcio dependientes de voltaje.',
+    dosage: '300-900 mg c/8h.',
+    route: 'VO',
+    contraindications: ['Disfunción renal severa']
+  },
+  {
+    id: 'prega',
+    name: 'Pregabalina',
+    group: 'Anticonvulsivante /Analgésico',
+    mechanism: 'Modula la liberación de neurotransmisores excitatorios.',
+    dosage: '75-150 mg c/12h.',
+    route: 'VO',
+    contraindications: ['Hipersensibilidad']
+  },
+  {
+    id: 'carba',
+    name: 'Carbamazepina',
+    group: 'Anticonvulsivante',
+    mechanism: 'Estabiliza canales de sodio desactivados.',
+    dosage: '200-400 mg c/8-12h.',
+    route: 'VO',
+    contraindications: ['Bloqueo AV', 'Supresión de médula ósea']
+  },
+  {
+    id: 'topira',
+    name: 'Topiramato',
+    group: 'Antiepiléptico',
+    mechanism: 'Múltiples acciones: canales Na, receptores GABA y Glutamato.',
+    dosage: '25-200 mg c/12h.',
+    route: 'VO',
+    contraindications: ['Cálculos renales recurrentes']
+  },
+  {
+    id: 'lamo',
+    name: 'Lamotrigina',
+    group: 'Antiepiléptico',
+    mechanism: 'Inhibe la liberación de glutamato y canales de Na.',
+    dosage: '50-200 mg día.',
+    route: 'VO',
+    contraindications: ['Riesgo de Síndrome Stevens-Johnson']
+  },
+  {
+    id: 'litio',
+    name: 'Carbonato de Litio',
+    group: 'Antimaníaco',
+    mechanism: 'Altera el transporte de sodio en células nerviosas.',
+    dosage: '300-600 mg c/8-12h (Ajustar por niveles).',
+    route: 'VO',
+    contraindications: ['Enfermedad renal grave', 'Deshidratación']
+  },
+  {
+    id: 'rispe',
+    name: 'Risperidona',
+    group: 'Antipsicótico Atípico',
+    mechanism: 'Antagonista de receptores D2 y 5-HT2.',
+    dosage: '1-4 mg c/12-24h.',
+    route: 'VO',
+    contraindications: ['Adultos mayores con demencia (aumento riesgo ACV)']
+  },
+  {
+    id: 'olanza',
+    name: 'Olanzapina',
+    group: 'Antipsicótico Atípico',
+    mechanism: 'Antagonista serotoninérgico y dopaminérgico.',
+    dosage: '5-20 mg día.',
+    route: 'VO, IM',
+    contraindications: ['Glaucoma de ángulo estrecho']
+  },
+  {
+    id: 'escitalo',
+    name: 'Escitalopram',
+    group: 'ISRS',
+    mechanism: 'Inhibición potente de la recaptación de serotonina.',
+    dosage: '10-20 mg día.',
+    route: 'VO',
+    contraindications: ['Uso con IMAO']
+  },
+  {
+    id: 'alpra',
+    name: 'Alprazolam',
+    group: 'Benzodiazepina',
+    mechanism: 'Potencia el efecto inhibidor del GABA.',
+    dosage: '0.25-1 mg c/8-12h.',
+    route: 'VO',
+    contraindications: ['Insuficiencia respiratoria grave']
+  },
+  {
+    id: 'zolpi',
+    name: 'Zolpidem',
+    group: 'Hipnótico No Benzodiazepínico',
+    mechanism: 'Agonista selectivo del receptor omega-1 BZD.',
+    dosage: '5-10 mg noche.',
+    route: 'VO',
+    contraindications: ['Apnea del sueño', 'Miastenia gravis']
   }
 ];
 

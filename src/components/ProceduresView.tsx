@@ -67,6 +67,13 @@ export function ProceduresView() {
             </div>
           </div>
         </div>
+
+        <div className="mt-12 p-6 bg-medical-red/5 rounded-2xl border border-medical-red/10 text-center">
+          <p className="text-[10px] font-bold text-medical-red uppercase tracking-[0.2em] mb-2">Protocolo de Seguridad</p>
+          <p className="text-[10px] text-medical-gray leading-relaxed max-w-lg mx-auto">
+            Estos procedimientos deben ser realizados únicamente por personal capacitado. La aplicación incorrecta puede conllevar riesgos graves para el paciente.
+          </p>
+        </div>
       </div>
     );
   }
@@ -93,6 +100,13 @@ export function ProceduresView() {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="mt-12 p-6 bg-medical-red/5 rounded-2xl border border-medical-red/10 text-center">
+        <p className="text-[10px] font-bold text-medical-red uppercase tracking-[0.2em] mb-2">Descargo de Responsabilidad</p>
+        <p className="text-[10px] text-medical-gray leading-relaxed max-w-lg mx-auto">
+          Cuidar+ es una herramienta de apoyo. No sustituye la formación profesional ni las guías clínicas institucionales obligatorias.
+        </p>
       </div>
     </div>
   );

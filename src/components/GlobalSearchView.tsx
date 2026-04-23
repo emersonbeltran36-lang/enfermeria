@@ -1,5 +1,6 @@
 import { Search, Stethoscope, Pill, Activity, BookOpen, ArrowRight } from 'lucide-react';
 import { PROCEDURES, DRUGS, PATHOLOGIES, DICTIONARY } from '../data';
+import { useLanguage } from '../contexts/LanguageContext';
 
 type Section = 'home' | 'procedures' | 'pharmacology' | 'pathologies' | 'scales' | 'labs' | 'dictionary' | 'cases' | 'settings';
 
@@ -9,6 +10,7 @@ interface GlobalSearchViewProps {
 }
 
 export function GlobalSearchView({ query, onSelectItem }: GlobalSearchViewProps) {
+  const { t } = useLanguage();
   const q = query.toLowerCase();
 
   const results = {
@@ -24,8 +26,8 @@ export function GlobalSearchView({ query, onSelectItem }: GlobalSearchViewProps)
     return (
       <div className="text-center py-20">
         <Search size={48} className="mx-auto text-medical-gray mb-4 opacity-20" />
-        <h4 className="text-xl font-bold text-white">No se encontraron resultados</h4>
-        <p className="text-medical-gray mt-2">Prueba con términos como "RCP", "Adrenalina" o "Glasgow"</p>
+        <h4 className="text-xl font-bold text-medical-text">{t('noResults')}</h4>
+        <p className="text-medical-gray mt-2">{t('searchTry')}</p>
       </div>
     );
   }
@@ -34,8 +36,8 @@ export function GlobalSearchView({ query, onSelectItem }: GlobalSearchViewProps)
     <div className="max-w-6xl mx-auto space-y-12 pb-20 px-4 sm:px-0">
       <div className="flex items-center justify-between border-b border-medical-border pb-4">
         <div>
-          <h3 className="text-2xl font-bold text-white leading-none">Resultados de Búsqueda</h3>
-          <p className="text-medical-gray text-xs mt-2 uppercase tracking-widest font-bold">Búsqueda Global en {totalResults} entradas</p>
+          <h3 className="text-2xl font-bold text-medical-text leading-none">{t('searchResults')}</h3>
+          <p className="text-medical-gray text-xs mt-2 uppercase tracking-widest font-bold">{t('globalSearch').replace('{count}', totalResults.toString())}</p>
         </div>
       </div>
 
@@ -53,7 +55,7 @@ export function GlobalSearchView({ query, onSelectItem }: GlobalSearchViewProps)
                   className="w-full bg-medical-card p-4 rounded-xl border border-medical-border hover:border-sky-500/50 transition-all text-left flex justify-between items-center group"
                 >
                   <div>
-                    <p className="text-white font-bold">{p.name}</p>
+                    <p className="text-medical-text font-bold">{p.name}</p>
                     <p className="text-[10px] text-medical-gray uppercase font-bold tracking-tighter mt-0.5">{p.type}</p>
                   </div>
                   <ArrowRight size={16} className="text-medical-gray group-hover:text-sky-400 transition-colors" />
@@ -76,7 +78,7 @@ export function GlobalSearchView({ query, onSelectItem }: GlobalSearchViewProps)
                   className="w-full bg-medical-card p-4 rounded-xl border border-medical-border hover:border-indigo-500/50 transition-all text-left flex justify-between items-center group"
                 >
                   <div>
-                    <p className="text-white font-bold">{d.name}</p>
+                    <p className="text-medical-text font-bold">{d.name}</p>
                     <p className="text-[10px] text-medical-gray uppercase font-bold tracking-tighter mt-0.5">{d.group}</p>
                   </div>
                   <ArrowRight size={16} className="text-medical-gray group-hover:text-indigo-400 transition-colors" />
@@ -99,7 +101,7 @@ export function GlobalSearchView({ query, onSelectItem }: GlobalSearchViewProps)
                   className="w-full bg-medical-card p-4 rounded-xl border border-medical-border hover:border-rose-500/50 transition-all text-left flex justify-between items-center group"
                 >
                   <div>
-                    <p className="text-white font-bold">{p.name}</p>
+                    <p className="text-medical-text font-bold">{p.name}</p>
                     <p className="text-[10px] text-medical-gray uppercase font-bold tracking-tighter mt-0.5">{p.system}</p>
                   </div>
                   <ArrowRight size={16} className="text-medical-gray group-hover:text-rose-400 transition-colors" />
@@ -122,7 +124,7 @@ export function GlobalSearchView({ query, onSelectItem }: GlobalSearchViewProps)
                   className="w-full bg-medical-card p-4 rounded-xl border border-medical-border hover:border-emerald-500/50 transition-all text-left flex justify-between items-center group"
                 >
                   <div>
-                    <p className="text-white font-bold">{d.term}</p>
+                    <p className="text-medical-text font-bold">{d.term}</p>
                     <p className="text-[10px] text-medical-gray uppercase font-bold tracking-tighter mt-0.5">{d.category}</p>
                   </div>
                   <ArrowRight size={16} className="text-medical-gray group-hover:text-emerald-400 transition-colors" />

@@ -78,8 +78,8 @@ function QuickCard({ title, desc, bgColor, icon: Icon, onClick }: any) {
           <Icon size={20} />
         </div>
         <div>
-          <p className="text-[10px] font-bold text-medical-gray uppercase tracking-widest bg-transparent">{title}</p>
-          <p className="text-sm font-bold text-white mt-1 leading-tight">{desc}</p>
+          <p className="text-[10px] font-black text-medical-gray uppercase tracking-[0.2em] mb-1">{title}</p>
+          <p className="text-sm font-black text-medical-text leading-tight italic uppercase tracking-tighter">{desc}</p>
         </div>
       </div>
     </button>

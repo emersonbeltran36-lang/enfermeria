@@ -606,6 +606,81 @@ export const PROCEDURES: Procedure[] = [
       'Vigilar signos de respuesta vagal.'
     ],
     image: 'https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'nurs-1',
+    name: 'Administración de Hemoderivados',
+    type: 'invasive',
+    materials: [
+      'Unidad de sangre/plasma validada',
+      'Equipo de transfusión con filtro',
+      'Catéter venoso #18 o #20',
+      'Solución salina 0.9%',
+      'Monitor de signos vitales'
+    ],
+    steps: [
+      'Verificar identidad del paciente y grupo sanguíneo (doble chequeo).',
+      'Obtener consentimiento informado.',
+      'Control de signos vitales basales.',
+      'Canalizar vía de grueso calibre.',
+      'Iniciar infusión lenta los primeros 15 min.',
+      'Vigilar reacciones adversas (fiebre, rash, disnea).',
+      'Finalizar y registrar volumen infundido.'
+    ],
+    biosecurity: [
+      'Uso de guantes y protección ocular.',
+      'Desecho de bolsa en contenedor de riesgo biológico.',
+      'No mezclar con otros medicamentos.'
+    ],
+    image: 'https://images.unsplash.com/photo-1542884748-2b87b36c6b90?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'nurs-2',
+    name: 'Cuidado de Catéter Central (PICC/CVC)',
+    type: 'invasive',
+    materials: [
+      'Kit de curación estéril',
+      'Clorhexidina al 2% en alcohol',
+      'Apósito transparente reforzado',
+      'Bioconectores estériles',
+      'Guantes estériles'
+    ],
+    steps: [
+      'Retirar apósito anterior observando el sitio de inserción.',
+      'Lavado de manos y postura de guantes estériles.',
+      'Limpiar con clorhexidina mediante técnica de fricción.',
+      'Colocar apósito transparente vigilando que cubra el sitio.',
+      'Cambiar bioconectores y lavar lúmenes con técnica de presión positiva.'
+    ],
+    biosecurity: [
+      'Técnica estéril rigurosa (riesgo de bacteriemia).',
+      'Mascarilla obligatoria para paciente y enfermero.'
+    ],
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    id: 'nurs-3',
+    name: 'Control de Glucemia Capilar',
+    type: 'invasive',
+    materials: [
+      'Glucometro calibrado',
+      'Tira reactiva',
+      'Lanceta estéril',
+      'Torunda con alcohol',
+      'Guantes limpios'
+    ],
+    steps: [
+      'Limpiar el pulpejo del dedo (lateral) con alcohol.',
+      'Realizar punción firme con la lanceta.',
+      'Eliminar la primera gota de sangre.',
+      'Colocar la segunda gota en la tira reactiva.',
+      'Leer resultado y registrar en gráfica de control glucémico.'
+    ],
+    biosecurity: [
+      'Uso de guantes por riesgo biológico.',
+      'Desecho de lanceta en guardián.'
+    ],
+    image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80'
   }
 ];
 
@@ -1941,6 +2016,456 @@ export const DRUGS: Drug[] = [
     dosage: '5-10 mg noche.',
     route: 'VO',
     contraindications: ['Apnea del sueño', 'Miastenia gravis']
+  },
+  {
+    id: 'digox',
+    name: 'Digoxina',
+    group: 'Inótropo positivo',
+    mechanism: 'Inhibe la bomba Na+/K+ ATPasa.',
+    dosage: '0.125-0.25 mg/día.',
+    route: 'VO, IV',
+    contraindications: ['Bloqueo AV 2-3', 'Hipopotasemia grave']
+  },
+  {
+    id: 'isoprena',
+    name: 'Isoprenalina',
+    group: 'Simpaticomimético',
+    mechanism: 'Agonista beta-adrenérgico no selectivo.',
+    dosage: '0.02-0.5 mcg/kg/min.',
+    route: 'IV',
+    contraindications: ['Taquicardia sinusal intensa', 'IAM agudo']
+  },
+  {
+    id: 'metropol',
+    name: 'Metoprolol',
+    group: 'Betabloqueante',
+    mechanism: 'Antagonista selecitvo beta-1.',
+    dosage: '5 mg IV c/5 min (máx 15mg). 50-100mg VO.',
+    route: 'VO, IV',
+    contraindications: ['Bradicardia severa', 'Bloqueo AV mayor a 1er grado']
+  },
+  {
+    id: 'atenol',
+    name: 'Atenolol',
+    group: 'Betabloqueante',
+    mechanism: 'Antagonista selectivo beta-1.',
+    dosage: '25-100 mg/día.',
+    route: 'VO',
+    contraindications: ['Insuficiencia cardíaca descompensada']
+  },
+  {
+    id: 'enlapril',
+    name: 'Enalapril',
+    group: 'IECA',
+    mechanism: 'Inhibidor de la enzima convertidora de angiotensina.',
+    dosage: '5-20 mg c/12-24h.',
+    route: 'VO',
+    contraindications: ['Embarazo', 'Angioedema previo por IECA']
+  },
+  {
+    id: 'amlodip',
+    name: 'Amlodipino',
+    group: 'Calcioantagonista',
+    mechanism: 'Bloquea canales de calcio tipo L en músculo liso.',
+    dosage: '5-10 mg/día.',
+    route: 'VO',
+    contraindications: ['Hipotensión grave', 'Choque cardiogénico']
+  },
+  {
+    id: 'nifedip',
+    name: 'Nifedipino',
+    group: 'Calcioantagonista',
+    mechanism: 'Dihidropiridina bloqueante de canales de calcio.',
+    dosage: '10-20 mg c/8-12h. (Urgencia: 10mg retard).',
+    route: 'VO',
+    contraindications: ['Estenosis aórtica grave']
+  },
+  {
+    id: 'spirit',
+    name: 'Espironolactona',
+    group: 'Antagonista de la Aldosterona',
+    mechanism: 'Ahorrador de potasio por bloqueo de receptores mineralocorticoides.',
+    dosage: '25-100 mg/día.',
+    route: 'VO',
+    contraindications: ['Insuficiencia renal anúrica', 'Hiperpotasemia']
+  },
+  {
+    id: 'hydrot',
+    name: 'Hidroclorotiazida',
+    group: 'Diurético Tiazídico',
+    mechanism: 'Inhibe el cotransportador Na+/Cl- en el túbulo distal.',
+    dosage: '12.5-50 mg/día.',
+    route: 'VO',
+    contraindications: ['Anuria', 'Hipersensibilidad a sulfas']
+  },
+  {
+    id: 'losart',
+    name: 'Losartán',
+    group: 'ARA-II',
+    mechanism: 'Antagonista selectivo de receptores AT1 de angiotensina II.',
+    dosage: '50-100 mg/día.',
+    route: 'VO',
+    contraindications: ['Embarazo', 'Falla renal grave']
+  },
+  {
+    id: 'volsart',
+    name: 'Valsartán',
+    group: 'ARA-II',
+    mechanism: 'Bloquea los efectos vasopresores de angiotensina II.',
+    dosage: '80-160 mg/día.',
+    route: 'VO',
+    contraindications: ['Uso con aliskireno en diabéticos']
+  },
+  {
+    id: 'captop',
+    name: 'Captopril',
+    group: 'IECA',
+    mechanism: 'Inhibidor rápido de la ECA.',
+    dosage: '25-50 mg c/8-12h (Crisis: 25mg sublingual - uso debatido).',
+    route: 'VO, SL',
+    contraindications: ['Estrechamiento arteria renal bilateral']
+  },
+  {
+    id: 'nitrogly',
+    name: 'Nitroglicerina',
+    group: 'Nitrato Vasodilatador',
+    mechanism: 'Libera óxido nítrico, produce venodilatación (reduce precarga).',
+    dosage: 'SC: 0.4mg. IV: 5-200 mcg/min.',
+    route: 'SL, IV, Transdérmico',
+    contraindications: ['Hipotensión', 'Uso de inhibidores de fosfodiesterasa 5']
+  },
+  {
+    id: 'isosor',
+    name: 'Isosorbida Dinitrato',
+    group: 'Nitrato',
+    mechanism: 'Relajación del músculo liso vascular.',
+    dosage: '5-20 mg c/8-12h.',
+    route: 'VO, SL',
+    contraindications: ['Infarto de ventrículo derecho']
+  },
+  {
+    id: 'clopid',
+    name: 'Clopidogrel',
+    group: 'Antiagregante Plaquetario',
+    mechanism: 'Inhibe de forma irreversible la unión de ADP al receptor P2Y12.',
+    dosage: 'Carga: 300-600 mg. Mantenimiento: 75 mg/día.',
+    route: 'VO',
+    contraindications: ['Hemorragia patológica activa (úlcera)']
+  },
+  {
+    id: 'ticag',
+    name: 'Ticagrelor',
+    group: 'Antiagregante Plaquetario',
+    mechanism: 'Antagonista reversible del receptor P2Y12.',
+    dosage: 'Carga: 180 mg. Mantenimiento: 90 mg c/12h.',
+    route: 'VO',
+    contraindications: ['HSA previa', 'Insuficiencia hepática grave']
+  },
+  {
+    id: 'prasug',
+    name: 'Prasugrel',
+    group: 'Antiagregante Plaquetario',
+    mechanism: 'Tienopiridina de tercera generación.',
+    dosage: 'Carga: 60 mg. Mantenimiento: 10 mg/día.',
+    route: 'VO',
+    contraindications: ['Antecedente de ACV o AIT', 'Edad > 75 años']
+  },
+  {
+    id: 'dabigat',
+    name: 'Dabigatrán',
+    group: 'Anticoagulante Oral (ACOD)',
+    mechanism: 'Inhibidor directo de la trombina (Factor IIa).',
+    dosage: '110-150 mg c/12h.',
+    route: 'VO',
+    contraindications: ['Prótesis valvulares mecánicas']
+  },
+  {
+    id: 'rivarox',
+    name: 'Rivaroxabán',
+    group: 'ACOD',
+    mechanism: 'Inhibidor directo del Factor Xa.',
+    dosage: '15-20 mg/día.',
+    route: 'VO',
+    contraindications: ['Hemorragia mayor']
+  },
+  {
+    id: 'apix',
+    name: 'Apixabán',
+    group: 'ACOD',
+    mechanism: 'Inhibidor directo y reversible del Factor Xa.',
+    dosage: '2.5-5 mg c/12h.',
+    route: 'VO',
+    contraindications: ['Valvulopatía reumática']
+  },
+  {
+    id: 'amoxic',
+    name: 'Amoxicilina + Ác. Clavulánico',
+    group: 'Aminopenicilina / Inhibidor',
+    mechanism: 'Betalactámico con inhibidor de betalactamasa.',
+    dosage: '875/125 mg c/12h.',
+    route: 'VO',
+    contraindications: ['Hipersensibilidad a penicilinas']
+  },
+  {
+    id: 'ampic',
+    name: 'Ampicilina + Sulbactam',
+    group: 'Aminopenicilina / Inhibidor',
+    mechanism: 'Bactericida de amplio espectro para uso parenteral.',
+    dosage: '1.5-3 g c/6h.',
+    route: 'IV, IM',
+    contraindications: ['Mononucleosis infecciosa (riesgo de rash)']
+  },
+  {
+    id: 'cefalex',
+    name: 'Cefalexina',
+    group: 'Cefalosporina 1ª Gen',
+    mechanism: 'Inhibe síntesis de pared celular bacteriana.',
+    dosage: '250-500 mg c/6h.',
+    route: 'VO',
+    contraindications: ['Alergia a cefalosporinas']
+  },
+  {
+    id: 'cefazol',
+    name: 'Cefazolina',
+    group: 'Cefalosporina 1ª Gen',
+    mechanism: 'Uso frecuente en profilaxis quirúrgica.',
+    dosage: '1-2 g dosis única o c/8h.',
+    route: 'IV, IM',
+    contraindications: ['Hipersensibilidad']
+  },
+  {
+    id: 'ceftri',
+    name: 'Ceftriaxona',
+    group: 'Cefalosporina 3ª Gen',
+    mechanism: 'Amplio espectro, atraviesa barrera hematoencefálica.',
+    dosage: '1-2 g/día (Sepsis/Meningitis).',
+    route: 'IV, IM',
+    contraindications: ['Recién nacidos hiperbilirrubinémicos']
+  },
+  {
+    id: 'ceftaz',
+    name: 'Ceftazidima',
+    group: 'Cefalosporina 3ª Gen',
+    mechanism: 'Activa contra Pseudomonas aeruginosa.',
+    dosage: '1-2 g c/8h.',
+    route: 'IV, IM',
+    contraindications: ['Hipersensibilidad']
+  },
+  {
+    id: 'cefepim',
+    name: 'Cefepima',
+    group: 'Cefalosporina 4ª Gen',
+    mechanism: 'Resistente a muchas betalactamasas cromosómicas.',
+    dosage: '1-2 g c/8-12h.',
+    route: 'IV, IM',
+    contraindications: ['Status epilepticus no convusivo en falla renal']
+  },
+  {
+    id: 'vanco-drug',
+    name: 'Vancomicina',
+    group: 'Glucopeptido',
+    mechanism: 'Acción contra gram positivos multirresistentes (S. aureus).',
+    dosage: '15 mg/kg c/8-12h.',
+    route: 'IV',
+    contraindications: ['Síndrome del hombre rojo (por infusión rápida)']
+  },
+  {
+    id: 'clinda',
+    name: 'Clindamicina',
+    group: 'Lincosamida',
+    mechanism: 'Inhibe subunidad ribosomal 50S.',
+    dosage: '600-900 mg c/8h.',
+    route: 'IV, VO',
+    contraindications: ['Antecedente de colitis pseudomembranosa']
+  },
+  {
+    id: 'metronid',
+    name: 'Metronidazol',
+    group: 'Nitroimidazol',
+    mechanism: 'Bactericida para anaerobios y protozoos.',
+    dosage: '500 mg c/8h.',
+    route: 'IV, VO',
+    contraindications: ['Consumo de alcohol']
+  },
+  {
+    id: 'halop',
+    name: 'Haloperidol',
+    group: 'Antipsicótico Típico',
+    mechanism: 'Bloqueo dopaminérgico D2 potente.',
+    dosage: '2.5-5 mg IM c/4h (Agitación).',
+    route: 'VO, IM, IV',
+    contraindications: ['Parkinson', 'Prolongación QT']
+  },
+  {
+    id: 'quetiap',
+    name: 'Quetiapina',
+    group: 'Antipsicótico Atípico',
+    mechanism: 'Antagonista multireceptor (5HT2A, D2).',
+    dosage: '25-400 mg/día.',
+    route: 'VO',
+    contraindications: ['Uso con fármacos que prolonguen QT']
+  },
+  {
+    id: 'olanz',
+    name: 'Olanzapina',
+    group: 'Antipsicótico Atípico',
+    mechanism: 'Afinidad por receptores de serotonina y dopamina.',
+    dosage: '5-10 mg/día.',
+    route: 'VO, IM',
+    contraindications: ['Glaucoma de ángulo estrecho']
+  },
+  {
+    id: 'risp',
+    name: 'Risperidona',
+    group: 'Antipsicótico Atípico',
+    mechanism: 'Antagonista selectivo monoaminérgico.',
+    dosage: '1-6 mg/día.',
+    route: 'VO',
+    contraindications: ['Hipersensibilidad']
+  },
+  {
+    id: 'levoprom',
+    name: 'Levomepromazina',
+    group: 'Neuroléptico Sedante',
+    mechanism: 'Bloqueo alfa-adrenérgico y dopaminérgico.',
+    dosage: '25-50 mg noche.',
+    route: 'VO, IM',
+    contraindications: ['Riesgo de retención urinaria']
+  },
+  {
+    id: 'insulin-r',
+    name: 'Insulina Cristalina (R)',
+    group: 'Insulina de Acción Rápida',
+    mechanism: 'Regulación del metabolismo de la glucosa.',
+    dosage: 'Según escala o 0.1 UI/kg/h en infusión.',
+    route: 'SC, IV',
+    contraindications: ['Hipoglucemia']
+  },
+  {
+    id: 'insulin-nph',
+    name: 'Insulina NPH',
+    group: 'Insulina de Acción Intermedia',
+    mechanism: 'Inicio 1-2h, pico 4-10h.',
+    dosage: 'Según requerimiento metabólico.',
+    route: 'SC',
+    contraindications: ['Hipoglucemia']
+  },
+  {
+    id: 'glarg',
+    name: 'Insulina Glargina',
+    group: 'Insulina de Acción Prolongada',
+    mechanism: 'Sin pico de acción, duración 24h.',
+    dosage: 'Dosis única diaria.',
+    route: 'SC',
+    contraindications: ['Hipoglucemia']
+  },
+  {
+    id: 'glimep',
+    name: 'Glimepirida',
+    group: 'Sulfonilurea',
+    mechanism: 'Estimula liberación de insulina pancreática.',
+    dosage: '1-4 mg/día.',
+    route: 'VO',
+    contraindications: ['Cetoacidosis diabética', 'Falla renal grave']
+  },
+  {
+    id: 'sitag',
+    name: 'Sitagliptina',
+    group: 'Inhibidor DPP-4',
+    mechanism: 'Aumenta niveles de incretinas activas.',
+    dosage: '100 mg/día.',
+    route: 'VO',
+    contraindications: ['Antecedente de pancreatitis']
+  },
+  {
+    id: 'empag',
+    name: 'Empagliflozina',
+    group: 'Inhibidor SGLT-2',
+    mechanism: 'Inhibe reabsorción de glucosa en el riñón.',
+    dosage: '10-25 mg/día.',
+    route: 'VO',
+    contraindications: ['Falla renal (TFGe < 30)']
+  },
+  {
+    id: 'lirag',
+    name: 'Liraglutida',
+    group: 'Agonista GLP-1',
+    mechanism: 'Retrasa vaciamiento gástrico y aumenta saciedad.',
+    dosage: '0.6-3 mg SC día.',
+    route: 'SC',
+    contraindications: ['Carcinoma medular de tiroides']
+  },
+  {
+    id: 'levotirox',
+    name: 'Levotiroxina',
+    group: 'Hormona Tiroidea',
+    mechanism: 'Sustitución de T4 exógena.',
+    dosage: '1.6 mcg/kg/día.',
+    route: 'VO (ayunas)',
+    contraindications: ['Tirotoxicosis no tratada']
+  },
+  {
+    id: 'hydrocort-iv',
+    name: 'Hidrocortisona',
+    group: 'Glucocorticoide',
+    mechanism: 'Reemplazo hormonal y efecto antiinflamatorio.',
+    dosage: '100-200 mg c/6-8h.',
+    route: 'IV, IM',
+    contraindications: ['Infecciones fúngicas sistémicas']
+  },
+  {
+    id: 'prednis',
+    name: 'Prednisona',
+    group: 'Corticoide Oral',
+    mechanism: 'Inmunosupresor y antiinflamatorio.',
+    dosage: '5-60 mg/día.',
+    route: 'VO',
+    contraindications: ['Úlcera péptica activa']
+  },
+  {
+    id: 'dexa-iv',
+    name: 'Dexametasona',
+    group: 'Corticoide Potente',
+    mechanism: 'Baja actividad mineralocorticoide, alta antiinflamatoria.',
+    dosage: '4-8 mg c/8h.',
+    route: 'IV, IM, VO',
+    contraindications: ['Infección viral ocular']
+  },
+  {
+    id: 'salbut',
+    name: 'Salbutamol',
+    group: 'Agonista Beta-2',
+    mechanism: 'Broncodilatador de acción corta.',
+    dosage: '2 puff c/4-6h o nebulización 2.5-5 mg.',
+    route: 'Inhalada',
+    contraindications: ['Arritmias graves']
+  },
+  {
+    id: 'iprat',
+    name: 'Bromuro de Ipratropio',
+    group: 'Anticolinérgico',
+    mechanism: 'Bloquea receptores muscarínicos en pulmón.',
+    dosage: '2 puff c/6-8h o nebulización 500 mcg.',
+    route: 'Inhalada',
+    contraindications: ['Hipersensibilidad a la atropina']
+  },
+  {
+    id: 'tiotrop',
+    name: 'Tioptropio',
+    group: 'LAMA',
+    mechanism: 'Anticolinérgico de larga acción.',
+    dosage: '1 inhalación diaria.',
+    route: 'Inhalada',
+    contraindications: ['Hipersensibilidad']
+  },
+  {
+    id: 'budom',
+    name: 'Budesonida',
+    group: 'Corticoide Inhalado',
+    mechanism: 'Antiinflamatorio local bronquial.',
+    dosage: '200-400 mcg c/12h.',
+    route: 'Inhalada',
+    contraindications: ['Tuberculosis pulmonar activa']
   }
 ];
 
@@ -2915,6 +3440,96 @@ export const PATHOLOGIES: Pathology[] = [
     affectedTarget: 'Sistema nervioso central/Termorregulación',
     symptoms: ['Temperatura > 40°C', 'Piel seca y caliente', 'Confusión/Coma'],
     nursingCare: ['Enfriamiento rápido (hielo, mantas frías)', 'Hidratación IV con sueros frescos', 'Monitoreo de la temperatura central']
+  },
+  {
+    id: 'ict-hem',
+    name: 'Ictus Hemorrágico',
+    system: 'Neurológico',
+    definition: 'Ruptura de un vaso sanguíneo cerebral con formación de hematoma.',
+    affectedTarget: 'Tejido cerebral/Parénquima',
+    symptoms: ['Cefalea súbita intensa', 'Vómitos en proyectil', 'Deterioro rápido de conciencia', 'Déficit focal'],
+    nursingCare: ['Cabecera a 30°', 'Control estricto de PA (objetivo <140/90)', 'Manejo de la temperatura y glucemia']
+  },
+  {
+    id: 'aneu-dis',
+    name: 'Disección Aórtica',
+    system: 'Cardiovascular',
+    definition: 'Desgarro de la íntima de la aorta que permite la entrada de sangre entre las capas vasculares.',
+    affectedTarget: 'Aorta (Torácica/Abdominal)',
+    symptoms: ['Dolor lacerante irradiado a espalda', 'Diferencia de pulsos entre extremidades', 'Soplo aórtico nuevo'],
+    nursingCare: ['Disminuir FC y PA inmediatamente (Betabloqueantes IV)', 'Acceso venoso bilateral', 'Reposo absoluto']
+  },
+  {
+    id: 'pancreatitis-a',
+    name: 'Pancreatitis Aguda',
+    system: 'Digestivo',
+    definition: 'Inflamación súbita del páncreas con autodigestión enzimática.',
+    affectedTarget: 'Páncreas',
+    symptoms: ['Dolor epigástrico en cinturón', 'Náuseas y vómitos tenaces', 'Signos de Cullen/Grey-Turner (si hemorrágica)'],
+    nursingCare: ['NPO absoluto', 'Hidratación agresiva con cristaloides', 'Control del dolor intenso', 'Monitoreo de la diuresis']
+  },
+  {
+    id: 'obstruccion-i',
+    name: 'Obstrucción Intestinal',
+    system: 'Digestivo',
+    definition: 'Interrupción del tránsito de heces y gases.',
+    affectedTarget: 'Intestino Delgado / Colon',
+    symptoms: ['Vómitos fecaloideos', 'Distensión abdominal', 'Ausencia de expulsión de gases'],
+    nursingCare: ['Colocación de SNG a succión libre', 'Balance hídrico riguroso', 'Monitoreo de ruidos hidroaéreos']
+  },
+  {
+    id: 'falla-h-a',
+    name: 'Falla Hepática Aguda',
+    system: 'Digestivo',
+    definition: 'Pérdida rápida de la función hepática con encefalopatía y coagulopatía.',
+    affectedTarget: 'Hígado',
+    symptoms: ['Ictericia', 'Asterixis (flapping tremor)', 'Confusión/Coma', 'Hemorragias'],
+    nursingCare: ['Control de amonio sérico', 'Protección de vía aérea', 'Evitar fármacos de metabolismo hepático']
+  },
+  {
+    id: 'colecistitis-a',
+    name: 'Colecistitis Aguda',
+    system: 'Digestivo',
+    definition: 'Inflamación de la vesícula biliar, generalmente por cálculos.',
+    affectedTarget: 'Vesícula Biliar',
+    symptoms: ['Dolor en hipocondrio derecho (Murphy positivo)', 'Fiebre', 'Náuseas'],
+    nursingCare: ['Preparación prequirúrgica', 'Antibioticoterapia IV', 'Manejo del dolor y náuseas']
+  },
+  {
+    id: 'asma-ex',
+    name: 'Crisis Asmática Severa',
+    system: 'Respiratorio',
+    definition: 'Broncoconstricción aguda que no responde al tratamiento habitual.',
+    affectedTarget: 'Bronquios',
+    symptoms: ['Tórax silente (grave)', 'Incapacidad para completar frases', 'Cianosis', 'Agitación'],
+    nursingCare: ['Oxígeno húmedo', 'Nebulización continua con Salbutamol/Ipratropio', 'Corticoides IV', 'Preparación para soporte ventilatorio']
+  },
+  {
+    id: 'neumot-t',
+    name: 'Neumotórax a Tensión',
+    system: 'Respiratorio (Emergencia)',
+    definition: 'Acumulación de aire en el espacio pleural con colapso pulmonar y desviación del mediastino.',
+    affectedTarget: 'Espacio Pleural / Pulmón',
+    symptoms: ['Ausencia de ruidos respiratorios unilateral', 'Ingurgitación yugular', 'Desviación traqueal', 'Hipotensión'],
+    nursingCare: ['Asistencia en descompresión con aguja (2do espacio intercostal)', 'Colocación de tubo de tórax', 'Monitoreo hemodinámico']
+  },
+  {
+    id: 'pericard-tam',
+    name: 'Taponamiento Cardíaco',
+    system: 'Cardiovascular (Emergencia)',
+    definition: 'Compresión del corazón por acumulación de líquido en el saco pericárdico.',
+    affectedTarget: 'Pericardio',
+    symptoms: ['Tríada de Beck (Ruidos cardíacos apagados, Ingurgitación yugular, Hipotensión)', 'Pulso paradójico'],
+    nursingCare: ['Preparación para pericardiocentesis', 'Optimización de la precarga (fluidos)', 'Monitoreo de presión venosa central']
+  },
+  {
+    id: 'tep-grave',
+    name: 'Tromboembolismo Pulmonar (TEP)',
+    system: 'Cardiorrespiratorio',
+    definition: 'Oclusión de la arteria pulmonar por un trombo (usualmente de MMII).',
+    affectedTarget: 'Arterias Pulmonares',
+    symptoms: ['Disnea súbita', 'Dolor pleurítico', 'Hemoptisis', 'Signos de TVP en piernas'],
+    nursingCare: ['Reposo absoluto (evitar desprendimiento de más trombos)', 'Oxigenoterapia de alto flujo', 'Inicio de anticoagulación IV']
   }
 ];
 
@@ -4184,6 +4799,90 @@ export const CLINICAL_CASES: ClinicalCase[] = [
       'Asegurar vía aérea y posición lateral de seguridad.',
       'Control de la presión arterial con hidralazina/labetalol.',
       'Planificación del desembarazo urgente.'
+    ]
+  },
+  {
+    id: 'path-21',
+    category: 'pathology',
+    title: 'Cetoacidosis Diabética (CAD)',
+    patient: 'Masculino de 19 años con dolor abdominal, aliento cetósico (frutas) y respiración profunda rápida (Kussmaul).',
+    vitals: {
+      fc: '125 lpm',
+      fr: '30 rpm',
+      pa: '95/60 mmHg',
+      temp: '37.5 °C',
+      sat: '97%'
+    },
+    scenario: 'Glucemia de 550 mg/dL y presencia de cetonas en orina.',
+    diagnosis: 'Cetoacidosis Diabética.',
+    options: [
+      'Cetoacidosis Diabética',
+      'Estado Hiperosmolar',
+      'Hipoglucemia Severa',
+      'Abdomen Agudo Quirúrgico'
+    ],
+    correctAnswer: 'Cetoacidosis Diabética',
+    care: [
+      'Hidratación agresiva con Solución Salina 0.9%.',
+      'Administración de Insulina Cristalina en infusión.',
+      'Monitoreo estricto de Potasio (evitar hipopotasemia por insulina).',
+      'Control horario de glucometría y balance hídrico.'
+    ]
+  },
+  {
+    id: 'path-22',
+    category: 'pathology',
+    title: 'Edema Agudo de Pulmón (EAP)',
+    patient: 'Femenina de 68 años con antecedente de ICC. Presenta disnea súbita extrema y expectoración rosada espumosa.',
+    vitals: {
+      fc: '110 lpm',
+      fr: '36 rpm',
+      pa: '160/100 mmHg',
+      temp: '36.5 °C',
+      sat: '84%'
+    },
+    scenario: 'Estertores crepitantes en ambos campos pulmonares (marea ascendente).',
+    diagnosis: 'Edema Agudo de Pulmón Cardiógeno.',
+    options: [
+      'Edema Agudo de Pulmón',
+      'Neumonia Lobar',
+      'TEP Masivo',
+      'Crisis Asmática'
+    ],
+    correctAnswer: 'Edema Agudo de Pulmón',
+    care: [
+      'Posición sentada con piernas declives.',
+      'Oxigenoterapia con VMNI (CPAP/BIPAP).',
+      'Administración de Furosemida IV y Nitroglicerina.',
+      'Sondaje vesical para control de diuresis.'
+    ]
+  },
+  {
+    id: 'path-23',
+    category: 'pathology',
+    title: 'Estado Epiléptico',
+    patient: 'Masculino de 25 años con actividad convulsiva tónico-clónica persistente por más de 10 minutos.',
+    vitals: {
+      fc: '145 lpm',
+      fr: '28 rpm',
+      pa: '150/95 mmHg',
+      temp: '38.5 °C',
+      sat: '88%'
+    },
+    scenario: 'Paciente no recupera la conciencia entre crisis sucesivas.',
+    diagnosis: 'Status Epilepticus.',
+    options: [
+      'Estado Epiléptico',
+      'Crisis Convulsiva Simple',
+      'Síncope Vasovagal',
+      'Ataque de Pánico'
+    ],
+    correctAnswer: 'Estado Epiléptico',
+    care: [
+      'Protección contra traumatismos y aspiración.',
+      'Administración de Benzodiacepinas (Diazepan/Midazolam).',
+      'Inicio de carga de Fenitoína o Levetiracetam IV.',
+      'Preparación para inducción de coma barbitúrico si no cede.'
     ]
   }
 ];

@@ -40,6 +40,14 @@ export function PharmacologyView() {
             />
           ))}
         </div>
+
+        <div className="mt-12 p-6 bg-medical-red/5 rounded-2xl border border-medical-red/10 text-center">
+          <AlertCircle size={20} className="text-medical-red mx-auto mb-3" />
+          <p className="text-[10px] font-bold text-medical-red uppercase tracking-[0.2em] mb-2">Advertencia de Seguridad</p>
+          <p className="text-[10px] text-medical-gray leading-relaxed max-w-lg mx-auto">
+            La información sobre dosis y administración es orientativa. Verifique siempre con el protocolo local y el juicio clínico antes de administrar cualquier fármaco.
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -64,7 +72,7 @@ function DrugCard(props: DrugCardProps) {
                <Pill size={20} />
           </div>
           <div>
-            <h4 className="text-xl font-bold text-white">{drug.name}</h4>
+            <h4 className="text-xl font-bold text-medical-text">{drug.name}</h4>
             <p className="text-[10px] font-bold text-medical-blue uppercase tracking-widest">{drug.group}</p>
           </div>
         </div>
@@ -95,7 +103,7 @@ function DrugCard(props: DrugCardProps) {
                 <h5 className="text-[10px] font-bold text-medical-blue uppercase mb-3 flex items-center gap-2">
                   <Activity size={14} /> Dosificación Estándar
                 </h5>
-                <p className="text-sm font-bold text-white">{drug.dosage}</p>
+                <p className="text-sm font-bold text-medical-text">{drug.dosage}</p>
               </div>
 
               <div>

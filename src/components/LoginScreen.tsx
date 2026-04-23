@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
-import { HeartPulse, LogIn } from 'lucide-react';
-import { signInWithGoogle } from '../lib/firebase';
+import { HeartPulse, ArrowRight } from 'lucide-react';
+import { signInAnonymouslyUser } from '../lib/firebase';
 import { useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -13,15 +13,15 @@ export function LoginScreen({ onLoginSuccess }: LoginScreenProps) {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleLogin = async () => {
+  const handleStart = async () => {
     setIsLoggingIn(true);
     setError(null);
     try {
-      await signInWithGoogle();
+      await signInAnonymouslyUser();
       onLoginSuccess();
     } catch (err) {
       console.error(err);
-      setError(t('loginError'));
+      setError('Error al iniciar sesión. Inténtelo de nuevo.');
     } finally {
       setIsLoggingIn(false);
     }
@@ -52,25 +52,25 @@ export function LoginScreen({ onLoginSuccess }: LoginScreenProps) {
           </motion.div>
           
           <h2 className="text-3xl font-black text-medical-text tracking-tighter uppercase italic mb-2">
-            {t('welcome')}
+            Cuidar<span className="text-medical-blue">+</span>
           </h2>
           <p className="text-medical-gray text-sm font-medium leading-relaxed">
-            {t('accessCenter')}
+            ASISTENTE CLÍNICO ESPECIALIZADO
           </p>
         </div>
 
         <div className="space-y-6">
           <button
-            onClick={handleLogin}
+            onClick={handleStart}
             disabled={isLoggingIn}
-            className="w-full flex items-center justify-center gap-3 bg-white text-black font-black uppercase tracking-widest text-xs py-4 px-6 rounded-2xl hover:bg-white/90 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+            className="w-full flex items-center justify-between gap-3 bg-medical-blue text-white font-black uppercase tracking-widest text-xs py-5 px-8 rounded-2xl hover:bg-medical-blue/90 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-medical-blue/20"
           >
             {isLoggingIn ? (
-              <div className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+              <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin mx-auto" />
             ) : (
               <>
-                <LogIn size={18} />
-                {t('continueWithGoogle')}
+                <span>Empezar Configuración</span>
+                <ArrowRight size={18} />
               </>
             )}
           </button>
@@ -88,13 +88,8 @@ export function LoginScreen({ onLoginSuccess }: LoginScreenProps) {
 
         <div className="mt-12 pt-8 border-t border-medical-border text-center">
           <p className="text-[10px] text-medical-gray uppercase tracking-[0.2em] font-bold">
-            {t('secureVigilance')}
+            Uso exclusivo para profesionales
           </p>
-          <div className="flex justify-center gap-2 mt-4">
-             <div className="w-1 h-1 rounded-full bg-medical-blue/30" />
-             <div className="w-1 h-1 rounded-full bg-medical-blue/30" />
-             <div className="w-1 h-1 rounded-full bg-medical-blue/30" />
-          </div>
         </div>
       </div>
     </motion.div>

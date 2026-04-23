@@ -8,34 +8,13 @@ export const auth = getAuth(app);
 export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 export const googleProvider = new GoogleAuthProvider();
 
-export async function signInWithGoogle() {
+export async function signInAnonymouslyUser() {
   try {
-    const result = await signInWithPopup(auth, googleProvider);
-    const user = result.user;
-    
-    // Create/Update user doc
-    const userRef = doc(db, 'users', user.uid);
-    const userDoc = await getDoc(userRef);
-    
-    if (!userDoc.exists()) {
-      await setDoc(userRef, {
-        uid: user.uid,
-        email: user.email || '',
-        displayName: user.displayName || '',
-        photoURL: user.photoURL || '',
-        isProfileComplete: false,
-        createdAt: serverTimestamp(),
-        lastLogin: serverTimestamp(),
-      });
-    } else {
-      await setDoc(userRef, {
-        lastLogin: serverTimestamp(),
-      }, { merge: true });
-    }
-    
-    return user;
+    const { signInAnonymously } = await import('firebase/auth');
+    const result = await signInAnonymously(auth);
+    return result.user;
   } catch (error) {
-    console.error('Error signing in with Google:', error);
+    console.error('Error in anonymous sign in:', error);
     throw error;
   }
 }

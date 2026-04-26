@@ -25,7 +25,14 @@ export function PathologiesView() {
                   <div key={p.id} className="bg-medical-card rounded-xl p-8 border border-medical-border shadow-sm space-y-6 hover:border-medical-blue/20 transition-all">
                     <div className="space-y-4">
                       <div>
-                        <h5 className="text-2xl font-bold text-white">{p.name}</h5>
+                        <h5 className="text-2xl font-bold text-white leading-tight">
+                          {p.name}
+                          {p.abbreviation && (
+                            <span className="ml-3 text-lg font-medium text-medical-blue bg-medical-blue/10 px-2 py-0.5 rounded-lg border border-medical-blue/20">
+                              {p.abbreviation}
+                            </span>
+                          )}
+                        </h5>
                         <p className="text-medical-text mt-2 italic leading-relaxed">{p.definition}</p>
                       </div>
                       

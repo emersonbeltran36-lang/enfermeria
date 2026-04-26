@@ -2466,13 +2466,194 @@ export const DRUGS: Drug[] = [
     dosage: '200-400 mcg c/12h.',
     route: 'Inhalada',
     contraindications: ['Tuberculosis pulmonar activa']
+  },
+  {
+    id: 'keta',
+    name: 'Ketamina',
+    group: 'Anestésico / Analgésico',
+    mechanism: 'Antagonista de receptores NMDA.',
+    dosage: 'Inducción: 1-2 mg/kg. Analgesia: 0.1-0.5 mg/kg.',
+    route: 'IV, IM',
+    contraindications: ['Hipertensión grave', 'Eclampsia']
+  },
+  {
+    id: 'eto',
+    name: 'Etomidato',
+    group: 'Hipnótico',
+    mechanism: 'Facilita la neurotransmisión de GABA.',
+    dosage: '0.2-0.3 mg/kg.',
+    route: 'IV',
+    contraindications: ['Hipersensibilidad']
+  },
+  {
+    id: 'dexme',
+    name: 'Dexmedetomidina',
+    group: 'Agonista Alfa-2',
+    mechanism: 'Sedante altamente selectivo alfa-2 adrenérgico.',
+    dosage: 'Carga: 1 mcg/kg. Mant: 0.2-0.7 mcg/kg/h.',
+    route: 'IV (Infusión)',
+    contraindications: ['Bradicardia severa', 'Bloqueo AV']
+  },
+  {
+    id: 'fenile',
+    name: 'Fenilefrina',
+    group: 'Vasopresor',
+    mechanism: 'Agonista alfa-1 adrenérgico puro.',
+    dosage: 'Bolo: 50-100 mcg. Infusión: 10-100 mcg/min.',
+    route: 'IV',
+    contraindications: ['Bradicardia', 'Hipertensión severa']
+  },
+  {
+    id: 'bupi',
+    name: 'Bupivacaína',
+    group: 'Anestésico Local',
+    mechanism: 'Bloquea la conducción nerviosa inhibiendo canales de Na+.',
+    dosage: 'Caudal o espinal según procedimiento.',
+    route: 'Epidural, Intratecal, Infiltración local',
+    contraindications: ['Enfermedad del SNC', 'Alteraciones de la coagulación']
+  },
+  {
+    id: 'ropi',
+    name: 'Ropivacaína',
+    group: 'Anestésico Local',
+    mechanism: 'Amino-amida de larga duración, menor cardiotoxicidad que bupivacaína.',
+    dosage: 'Variable según zona y técnica.',
+    route: 'Epidural, Local',
+    contraindications: ['Hipersensibilidad a anestésicos tipo amida']
+  },
+  {
+    id: 'tiopen',
+    name: 'Tiopental Sódico',
+    group: 'Barbitúrico / Hipnótico',
+    mechanism: 'Depresión del SNC por aumento del tono GABA.',
+    dosage: '3-5 mg/kg.',
+    route: 'IV',
+    contraindications: ['Porfiria', 'Estado asmático']
+  },
+  {
+    id: 'atra',
+    name: 'Atracurio',
+    group: 'BNM No Despolarizante',
+    mechanism: 'Bloqueo competitivo por eliminación de Hoffman.',
+    dosage: '0.4-0.5 mg/kg.',
+    route: 'IV',
+    contraindications: ['Hipersensibilidad']
+  },
+  {
+    id: 'cisatra',
+    name: 'Cisatracurio',
+    group: 'BNM No Despolarizante',
+    mechanism: 'Isómero del atracurio, sin liberación de histamina.',
+    dosage: '0.15-0.2 mg/kg.',
+    route: 'IV',
+    contraindications: ['Hipersensibilidad']
+  },
+  {
+    id: 'suga',
+    name: 'Sugammadex',
+    group: 'Agente de Reversión BNM',
+    mechanism: 'Encapsula moléculas de rocuronio y vecuronio.',
+    dosage: '2-4 mg/kg para reversión rutinaria.',
+    route: 'IV (Bolo rápido)',
+    contraindications: ['Falla renal severa']
+  },
+  {
+    id: 'neo',
+    name: 'Neostigmina',
+    group: 'Anticolinesterásico',
+    mechanism: 'Inhibe la acetilcolinesterasa aumentando niveles de Ach.',
+    dosage: '0.03-0.07 mg/kg (asociar atropina).',
+    route: 'IV',
+    contraindications: ['Obstrucción mecánica intestinal o urinaria']
+  },
+  {
+    id: 'nalo',
+    name: 'Naloxona',
+    group: 'Antagonista Opioide',
+    mechanism: 'Antagonista competitivo de receptores de opioides.',
+    dosage: '0.4 mg IV/IM, repetir según necesidad.',
+    route: 'IV, IM, SC',
+    contraindications: ['Dependencia física a opioides (puede causar abstinencia aguda)']
+  },
+  {
+    id: 'fluma',
+    name: 'Flumazenil',
+    group: 'Antagonista Benzodiazepínico',
+    mechanism: 'Antagonista competitivo en el receptor GABA.',
+    dosage: '0.2 mg IV, luego 0.3-0.5 mg hasta respuesta.',
+    route: 'IV',
+    contraindications: ['Intoxicación mixta con tricíclicos', 'Epilepsia']
+  },
+  {
+    id: 'clorprom',
+    name: 'Clorpromazina',
+    group: 'Antipsicótico Típico',
+    mechanism: 'Bloqueo de receptores dopaminérgicos postsinápticos.',
+    dosage: '25-50 mg.',
+    route: 'VO, IM',
+    contraindications: ['Depresión del SNC por alcohol o coma']
+  },
+  {
+    id: 'prome',
+    name: 'Prometazina',
+    group: 'Antihistamínico H1',
+    mechanism: 'Derivado de fenotiazina con efectos sedantes.',
+    dosage: '25-50 mg.',
+    route: 'VO, IM, IV',
+    contraindications: ['Niños menores de 2 años', 'Coma']
+  },
+  {
+    id: 'hidroxi',
+    name: 'Hidroxizina',
+    group: 'Antihistamínico H1',
+    mechanism: 'Antagonista H1 con propiedades ansiolíticas.',
+    dosage: '10-25 mg.',
+    route: 'VO, IM',
+    contraindications: ['Prolongación del intervalo QT']
+  },
+  {
+    id: 'ceti',
+    name: 'Cetirizina',
+    group: 'Antihistamínico H1',
+    mechanism: 'Antagonista H1 de segunda generación (menos sedante).',
+    dosage: '10 mg/día.',
+    route: 'VO',
+    contraindications: ['Falla renal severa']
+  },
+  {
+    id: 'lora',
+    name: 'Loratadina',
+    group: 'Antihistamínico H1',
+    mechanism: 'Antagonista H1 periférico potente.',
+    dosage: '10 mg/día.',
+    route: 'VO',
+    contraindications: ['Alergia a componentes']
+  },
+  {
+    id: 'gemfi',
+    name: 'Gemfibrozilo',
+    group: 'Fibrato / Hipolipemiante',
+    mechanism: 'Regulador de lípidos plasmáticos.',
+    dosage: '600 mg c/12h.',
+    route: 'VO',
+    contraindications: ['Disfunción hepática severa', 'Litiasis biliar']
+  },
+  {
+    id: 'simva',
+    name: 'Simvastatina',
+    group: 'Estatina',
+    mechanism: 'Inhibidor competitivo de la HMG-CoA reductasa.',
+    dosage: '10-40 mg noche.',
+    route: 'VO',
+    contraindications: ['Hepatopatía activa', 'Embarazo']
   }
 ];
 
 export const PATHOLOGIES: Pathology[] = [
   {
     id: 'iam',
-    name: 'Infarto Agudo de Miocardio (IAM)',
+    name: 'Infarto Agudo de Miocardio',
+    abbreviation: 'IAM',
     system: 'Cardiovascular',
     definition: 'Muerte de tejido cardíaco por falta de riego sanguíneo.',
     affectedTarget: 'Miocardio (Células del músculo cardíaco)',
@@ -2493,6 +2674,7 @@ export const PATHOLOGIES: Pathology[] = [
   {
     id: 'epoc',
     name: 'EPOC Exacerbado',
+    abbreviation: 'EPOC',
     system: 'Respiratorio',
     definition: 'Obstrucción crónica y progresiva del flujo de aire.',
     affectedTarget: 'Alvéolos y bronquiolos pulmonares',
@@ -2511,7 +2693,8 @@ export const PATHOLOGIES: Pathology[] = [
   },
   {
     id: 'ic',
-    name: 'Insuficiencia Cardíaca Congestiva (ICC)',
+    name: 'Insuficiencia Cardíaca Congestiva',
+    abbreviation: 'ICC',
     system: 'Cardiovascular',
     definition: 'Falla del corazón para bombear suficiente sangre.',
     affectedTarget: 'Ventrículos cardíacos',
@@ -2549,7 +2732,8 @@ export const PATHOLOGIES: Pathology[] = [
   },
   {
     id: 'ira',
-    name: 'Insuficiencia Renal Aguda (IRA)',
+    name: 'Insuficiencia Renal Aguda',
+    abbreviation: 'IRA',
     system: 'Renal',
     definition: 'Pérdida rápida de la función filtrante del riñón.',
     affectedTarget: 'Nefronas (Unidad funcional del riñón)',
@@ -2568,7 +2752,8 @@ export const PATHOLOGIES: Pathology[] = [
   },
   {
     id: 'acv',
-    name: 'Evento Cerebrovascular (ACV)',
+    name: 'Evento Cerebrovascular',
+    abbreviation: 'ACV',
     system: 'Neurológico',
     definition: 'Interrupción súbita del flujo sanguíneo al cerebro.',
     affectedTarget: 'Neuronas y vasos sanguíneos cerebrales',
@@ -2587,7 +2772,8 @@ export const PATHOLOGIES: Pathology[] = [
   },
   {
     id: 'cad',
-    name: 'Cetoacidosis Diabética (CAD)',
+    name: 'Cetoacidosis Diabética',
+    abbreviation: 'CAD',
     system: 'Endocrino',
     definition: 'Crisis hiperglucémica con presencia de cuerpos cetónicos.',
     affectedTarget: 'Células beta pancreáticas (déficit de insulina) y metabolismo celular',
@@ -2642,7 +2828,8 @@ export const PATHOLOGIES: Pathology[] = [
   },
   {
     id: 'aaa',
-    name: 'Aneurisma de Aorta Abdominal (AAA)',
+    name: 'Aneurisma de Aorta Abdominal',
+    abbreviation: 'AAA',
     system: 'Cardiovascular',
     definition: 'Dilatación localizada de la aorta abdominal.',
     affectedTarget: 'Aorta Abdominal',
@@ -2651,7 +2838,8 @@ export const PATHOLOGIES: Pathology[] = [
   },
   {
     id: 'tvp',
-    name: 'Trombosis Venosa Profunda (TVP)',
+    name: 'Trombosis Venosa Profunda',
+    abbreviation: 'TVP',
     system: 'Cardiovascular',
     definition: 'Formación de un coágulo de sangre en una vena profunda.',
     affectedTarget: 'Venas de extremidades inferiores',
@@ -2678,7 +2866,8 @@ export const PATHOLOGIES: Pathology[] = [
   },
   {
     id: 'fa',
-    name: 'Fibrilación Auricular (FA)',
+    name: 'Fibrilación Auricular',
+    abbreviation: 'FA',
     system: 'Cardiovascular',
     definition: 'Arritmia supraventricular caracterizada por una activación auricular desorganizada.',
     affectedTarget: 'Aurículas cardíacas',
@@ -2733,6 +2922,7 @@ export const PATHOLOGIES: Pathology[] = [
   {
     id: 'tbc',
     name: 'Tuberculosis Pulmonar',
+    abbreviation: 'TBC',
     system: 'Respiratorio',
     definition: 'Enfermedad infecciosa causada por Mycobacterium tuberculosis.',
     affectedTarget: 'Pulmones (principalmente ápices)',
@@ -2750,7 +2940,8 @@ export const PATHOLOGIES: Pathology[] = [
   },
   {
     id: 'eap',
-    name: 'Edema Agudo de Pulmón (EAP)',
+    name: 'Edema Agudo de Pulmón',
+    abbreviation: 'EAP',
     system: 'Respiratorio',
     definition: 'Acumulación de líquido en los alvéolos que impide el intercambio gaseoso.',
     affectedTarget: 'Alvéolos pulmonares',
@@ -2796,6 +2987,7 @@ export const PATHOLOGIES: Pathology[] = [
   {
     id: 'mg',
     name: 'Miastenia Gravis',
+    abbreviation: 'MG',
     system: 'Neurológico',
     definition: 'Trastorno neuromuscular autoinmune que afecta la placa motora.',
     affectedTarget: 'Receptores de Acetilcolina',
@@ -2805,6 +2997,7 @@ export const PATHOLOGIES: Pathology[] = [
   {
     id: 'gbs',
     name: 'Síndrome de Guillain-Barré',
+    abbreviation: 'SGB',
     system: 'Neurológico',
     definition: 'Polineuropatía desmielinizante inflamatoria aguda.',
     affectedTarget: 'Nervios periféricos',
@@ -2822,7 +3015,8 @@ export const PATHOLOGIES: Pathology[] = [
   },
   {
     id: 'hsa',
-    name: 'Hemorragia Subaracnoidea (HSA)',
+    name: 'Hemorragia Subaracnoidea',
+    abbreviation: 'HSA',
     system: 'Neurológico',
     definition: 'Presencia de sangre en el espacio subaracnoideo, usualmente por ruptura de aneurisma.',
     affectedTarget: 'Vasos cerebrales subaracnoideos',
@@ -2994,6 +3188,7 @@ export const PATHOLOGIES: Pathology[] = [
   {
     id: 'vih',
     name: 'VIH / SIDA',
+    abbreviation: 'VIH',
     system: 'Infeccioso',
     definition: 'Infección por el virus de la inmunodeficiencia humana.',
     affectedTarget: 'Linfocitos T CD4+',
@@ -3074,7 +3269,8 @@ export const PATHOLOGIES: Pathology[] = [
   },
   {
     id: 'les',
-    name: 'Lupus Eritematoso Sistémico (LES)',
+    name: 'Lupus Eritematoso Sistémico',
+    abbreviation: 'LES',
     system: 'Inmunológico',
     definition: 'Enfermedad autoinmune multisistémica crónica.',
     affectedTarget: 'Articulaciones, Piel, Riñón, Corazón',
@@ -3084,6 +3280,7 @@ export const PATHOLOGIES: Pathology[] = [
   {
     id: 'ar',
     name: 'Artritis Reumatoide',
+    abbreviation: 'AR',
     system: 'Inmunológico',
     definition: 'Enfermedad inflamatoria crónica autoinmune de las sinoviales.',
     affectedTarget: 'Articulaciones diartrodiales (Sinovial)',
@@ -3138,6 +3335,7 @@ export const PATHOLOGIES: Pathology[] = [
   {
     id: 'oa',
     name: 'Osteoartritis',
+    abbreviation: 'OA',
     system: 'Musculoesquelético',
     definition: 'Degeneración del cartílago articular.',
     affectedTarget: 'Cartílago hialino articular',
@@ -3242,6 +3440,190 @@ export const PATHOLOGIES: Pathology[] = [
     affectedTarget: 'Linfocitos B y tejido linfoide',
     symptoms: ['Fiebre', 'Faringitis severa', 'Adenopatías generalizadas', 'Esplenomegalia'],
     nursingCare: ['Reposo absoluto (evitar ruptura esplénica)', 'Hidratación', 'Control del dolor']
+  },
+  {
+    id: 'psoriasis',
+    name: 'Psoriasis',
+    system: 'Inmunológico/Dermatológico',
+    definition: 'Enfermedad inflamatoria crónica de la piel de origen autoinmune.',
+    affectedTarget: 'Queratinocitos (recambio acelerado)',
+    symptoms: ['Placas eritematosas con escamas plateadas', 'Prurito', 'Engrosamiento ungueal'],
+    nursingCare: ['Hidratación constante de la piel', 'Educación sobre exposición solar controlada', 'Apoyo emocional por afectación de autoimagen']
+  },
+  {
+    id: 'eczema',
+    name: 'Dermatitis Atópica (Eczema)',
+    system: 'Dermatológico',
+    definition: 'Trastorno cutáneo inflamatorio crónico y recurrente.',
+    affectedTarget: 'Barrera cutánea (Epidermis)',
+    symptoms: ['Xerosis (piel seca)', 'Prurito intenso', 'Exudado y costras en brotes'],
+    nursingCare: ['Uso de jabones neutros (syndet)', 'Baños cortos con agua tibia', 'Aplicación inmediata de emolientes']
+  },
+  {
+    id: 'escabiosis',
+    name: 'Escabiosis (Sarna)',
+    system: 'Infectioso/Dermatológico',
+    definition: 'Infestación cutánea por el ácaro Sarcoptes scabiei.',
+    affectedTarget: 'Estrato córneo de la epidermis',
+    symptoms: ['Prurito nocturno intenso', 'Surcos acarinos', 'Pápulas en pliegues'],
+    nursingCare: ['Tratamiento familiar simultáneo', 'Lavado de ropa con agua caliente', 'Aplicación de permetrina del cuello hacia abajo']
+  },
+  {
+    id: 'melanoma',
+    name: 'Melanoma Maligno',
+    system: 'Oncológico/Dermatológico',
+    definition: 'Cáncer de piel derivado de los melanocitos.',
+    affectedTarget: 'Melanocitos',
+    symptoms: ['Lesión pigmentada con asimetría, bordes irregulares, color variado y diámetro > 6mm'],
+    nursingCare: ['Educación sobre el ABCDE de los lunares', 'Fomento del uso de protector solar', 'Seguimiento post-quirúrgico']
+  },
+  {
+    id: 'pid',
+    name: 'Enfermedad Inflamatoria Pélvica',
+    abbreviation: 'EIP',
+    system: 'Ginecológico',
+    definition: 'Infección ascendente del tracto genital superior femenino.',
+    affectedTarget: 'Endometrio, trompas de falopio, ovarios',
+    symptoms: ['Dolor abdominal bajo', 'Dispareunia', 'Leucorrea fétida', 'Fiebre'],
+    nursingCare: ['Administración de antibióticos de amplio espectro', 'Reposo en posición de Fowler', 'Educación sobre salud sexual y tratamiento a la pareja']
+  },
+  {
+    id: 'ectopico',
+    name: 'Embarazo Ectópico',
+    system: 'Ginecológico/Obstétrico',
+    definition: 'Implantación del óvulo fecundado fuera de la cavidad uterina.',
+    affectedTarget: 'Trompas de Falopio (95%)',
+    symptoms: ['Dolor pélvico agudo unilateral', 'Sangrado vaginal escaso', 'Signos de shock (si hay rotura)'],
+    nursingCare: ['Monitorización hemodinámica estricta', 'Preparación para cirugía de urgencia', 'Control de niveles de Beta-hCG']
+  },
+  {
+    id: 'preeclampsia',
+    name: 'Preeclampsia',
+    system: 'Obstétrico',
+    definition: 'Síndrome multisistémico caracterizado por hipertensión y proteinuria después de las 20 semanas.',
+    affectedTarget: 'Endotelio vascular materno y Placenta',
+    symptoms: ['TA > 140/90', 'Edema facial y de manos', 'Cefalea', 'Acúfenos/Tinnitus'],
+    nursingCare: ['Control estricto de la presión arterial', 'Vigilancia de reflejos osteotendinosos', 'Administración de Sulfato de Magnesio (profilaxis convulsiva)']
+  },
+  {
+    id: 'eclampsia',
+    name: 'Eclampsia',
+    system: 'Obstétrico (Emergencia)',
+    definition: 'Aparición de convulsiones en una paciente con preeclampsia.',
+    affectedTarget: 'Sistema Nervioso Central',
+    symptoms: ['Convulsiones tónico-clónicas', 'Coma post-ictal', 'Hipertensión severa'],
+    nursingCare: ['Asegurar vía aérea y evitar mordedura de lengua', 'Administración de bolo de Sulfato de Magnesio', 'Preparación para finalización inmediata del embarazo']
+  },
+  {
+    id: 'hellp',
+    name: 'Síndrome de HELLP',
+    abbreviation: 'HELLP',
+    system: 'Obstétrico (Severo)',
+    definition: 'Variante de la preeclampsia grave (Hemólisis, Enzimas hepáticas elevadas, Plaquetas bajas).',
+    affectedTarget: 'Sístema hematológico e Hígado',
+    symptoms: ['Dolor en epigastrio o hipocondrio derecho', 'Malestar general', 'Ictericia'],
+    nursingCare: ['Control de pruebas de función hepática y plaquetas', 'Monitoreo de sangrados', 'Soporte hemodinámico']
+  },
+  {
+    id: 'placenta_p',
+    name: 'Placenta Previa',
+    system: 'Obstétrico',
+    definition: 'Implantación de la placenta en el segmento uterino inferior, cubriendo el orificio cervical.',
+    affectedTarget: 'Útero / Únion feto-materna',
+    symptoms: ['Sangrado vaginal rojo rutilante, indoloro y espontáneo'],
+    nursingCare: ['Reposo absoluto', 'Prohibición estricta de tacto vaginal', 'Monitorización fetal continua']
+  },
+  {
+    id: 'abruptio',
+    name: 'Desprendimiento Prematuro de Placenta (Abruptio)',
+    system: 'Obstétrico (Emergencia)',
+    definition: 'Separación parcial o total de la placenta normoinserta antes del parto.',
+    affectedTarget: 'Placenta',
+    symptoms: ['Sangrado oscuro', 'Dolor abdominal intenso (útero leñoso)', 'Sufrimiento fetal agudo'],
+    nursingCare: ['Monitorización materna y fetal urgente', 'Canalización de dos vías venosas de grueso calibre', 'Preparación para cesárea de emergencia']
+  },
+  {
+    id: 'mastitis',
+    name: 'Mastitis Puerperal',
+    system: 'Ginecológico',
+    definition: 'Inflamación/infección del tejido mamario durante la lactancia.',
+    affectedTarget: 'Glándula mamaria',
+    symptoms: ['Dolor, calor y eritema en un cuadrante de la mama', 'Fiebre', 'Malestar general'],
+    nursingCare: ['Fomentar el vaciamiento frecuente de la mama (no suspender lactancia)', 'Compresas tibias antes de la toma', 'Antibioticoterapia']
+  },
+  {
+    id: 'sop',
+    name: 'Síndrome de Ovario Poliquístico',
+    abbreviation: 'SOP',
+    system: 'Endocrino/Ginecológico',
+    definition: 'Disfunción endocrino-metabólica caracterizada por hiperandrogenismo y anovulación.',
+    affectedTarget: 'Ovarios y Eje Hipotálamo-Hipófisis',
+    symptoms: ['Hirsutismo', 'Acné', 'Irregularidades menstruales', 'Resistencia a la insulina'],
+    nursingCare: ['Educación sobre hábitos de vida saludables', 'Apoyo emocional', 'Control de glucemia']
+  },
+  {
+    id: 'endometriosis',
+    name: 'Endometriosis',
+    system: 'Ginecológico',
+    definition: 'Presencia de tejido endometrial fuera de la cavidad uterina.',
+    affectedTarget: 'Peritoneo pélvico, Ovarios',
+    symptoms: ['Dismenorrea severa', 'Dolor pélvico crónico', 'Infertilidad', 'Dispareunia'],
+    nursingCare: ['Manejo del dolor crónico', 'Asistencia en el tratamiento hormonal', 'Soporte en aspectos de fertilidad']
+  },
+  {
+    id: 'hpb',
+    name: 'Hiperplasia Prostática Benigna',
+    abbreviation: 'HPB',
+    system: 'Urológico',
+    definition: 'Crecimiento no canceroso de la glándula prostática.',
+    affectedTarget: 'Próstata (zona de transición)',
+    symptoms: ['Disminución del chorro urinario', 'Nicturia', 'Polaquiuria', 'Goteo post-miccional'],
+    nursingCare: ['Control de la diuresis', 'Educación sobre restricción de líquidos nocturnos', 'Cuidados si se requiere sondaje vesical']
+  },
+  {
+    id: 'varicocele',
+    name: 'Varicocele',
+    system: 'Genitourinario',
+    definition: 'Dilatación varicosa de las venas del plexo pampiniforme del cordón espermático.',
+    affectedTarget: 'Testículo (usualmente izquierdo)',
+    symptoms: ['Sensación de pesadez escrotal', 'Venas visibles ("bolsa de gusanos")', 'Infertilidad'],
+    nursingCare: ['Soporte escrotal', 'Manejo del dolor post-quirúrgico', 'Educación sobre salud reproductiva']
+  },
+  {
+    id: 'torsion_t',
+    name: 'Torsión Testicular',
+    system: 'Genitourinario (Urgencia)',
+    definition: 'Torsión del cordón espermático que interrumpe el flujo sanguíneo al testículo.',
+    affectedTarget: 'Testículo',
+    symptoms: ['Dolor testicular súbito e intenso', 'Testículo elevado y horizontalizado', 'Náuseas y vómitos'],
+    nursingCare: ['Preparación inmediata para cirugía', 'Ayuno estricto', 'Posicionamiento cómodo del paciente']
+  },
+  {
+    id: 'ataxia_w',
+    name: 'Ataxia de Friedreich',
+    system: 'Neurológico/Genético',
+    definition: 'Enfermedad hereditaria que causa daño progresivo al sistema nervioso.',
+    affectedTarget: 'Médula espinal y Nervios periféricos',
+    symptoms: ['Dificultad para caminar', 'Pérdida de sensibilidad', 'Escoliosis', 'Cardiopatía'],
+    nursingCare: ['Fisioterapia y terapia ocupacional', 'Prevención de caídas', 'Apoyo en la comunicación']
+  },
+  {
+    id: 'neurofibro',
+    name: 'Neurofibromatosis Tipo 1',
+    system: 'Genético/Dermatológico',
+    definition: 'Trastorno genético que causa la formación de tumores en el tejido nervioso.',
+    affectedTarget: 'Células de Schwann y Melanocitos (Piel)',
+    symptoms: ['Manchas café con leche', 'Neurofibromas cutáneos', 'Nódulos de Lisch en el iris'],
+    nursingCare: ['Vigilancia de crecimiento de tumores', 'Apoyo psicológico por desfiguración cutánea', 'Asesoramiento genético']
+  },
+  {
+    id: 'hemofilia_a',
+    name: 'Hemofilia A',
+    system: 'Hematológico',
+    definition: 'Trastorno hemorrágico hereditario por deficiencia del factor VIII.',
+    affectedTarget: 'Cascada de coagulación',
+    symptoms: ['Hemartrosis (sangrado en articulaciones)', 'Epistaxis prolongada', 'Hemorragias post-traumáticas'],
+    nursingCare: ['Administración de Factor VIII', 'Evitar deportes de contacto', 'Cuidado extremo en procedimientos invasivos']
   },
   {
     id: 'fiebre_t',
@@ -3524,7 +3906,8 @@ export const PATHOLOGIES: Pathology[] = [
   },
   {
     id: 'tep-grave',
-    name: 'Tromboembolismo Pulmonar (TEP)',
+    name: 'Tromboembolismo Pulmonar',
+    abbreviation: 'TEP',
     system: 'Cardiorrespiratorio',
     definition: 'Oclusión de la arteria pulmonar por un trombo (usualmente de MMII).',
     affectedTarget: 'Arterias Pulmonares',
@@ -3567,7 +3950,33 @@ export const LAB_VALUES: LabValue[] = [
   { name: 'Bicarbonato (HCO3)', normalRange: '22 - 26', unit: 'mEq/L' },
   { name: 'Lactato', normalRange: '0.5 - 2.2', unit: 'mmol/L' },
   { name: 'PCR (Proteína C Reactiva)', normalRange: '< 1.0', unit: 'mg/dL' },
-  { name: 'Troponina I', normalRange: '< 0.04', unit: 'ng/mL' }
+  { name: 'Troponina I', normalRange: '< 0.04', unit: 'ng/mL' },
+  
+  // Función Hepática
+  { name: 'AST (TGO)', normalRange: '5 - 40', unit: 'U/L' },
+  { name: 'ALT (TGP)', normalRange: '7 - 56', unit: 'U/L' },
+  { name: 'Fosfatasa Alcalina (FA)', normalRange: '44 - 147', unit: 'U/L' },
+  { name: 'Bilirrubina Total', normalRange: '0.1 - 1.2', unit: 'mg/dL' },
+  { name: 'Bilirrubina Directa', normalRange: '0.0 - 0.3', unit: 'mg/dL' },
+  { name: 'Albúmina', normalRange: '3.4 - 5.4', unit: 'g/dL' },
+  { name: 'Proteínas Totales', normalRange: '6.0 - 8.3', unit: 'g/dL' },
+
+  // Perfil Lipídico y Otros
+  { name: 'Colesterol Total', normalRange: '< 200', unit: 'mg/dL' },
+  { name: 'HDL ("Bueno")', normalRange: '> 40 (H) / > 50 (M)', unit: 'mg/dL' },
+  { name: 'LDL ("Malo")', normalRange: '< 100', unit: 'mg/dL' },
+  { name: 'Triglicéridos', normalRange: '< 150', unit: 'mg/dL' },
+  { name: 'Ácido Úrico', normalRange: '2.4 - 7.0', unit: 'mg/dL' },
+
+  // Marcadores de Inflamación y Cardíacos
+  { name: 'LDH (Lactato Deshidrogenasa)', normalRange: '140 - 280', unit: 'U/L' },
+  { name: 'Amilasa', normalRange: '30 - 110', unit: 'U/L' },
+  { name: 'Lipasa', normalRange: '0 - 160', unit: 'U/L' },
+  { name: 'Procalcitonina', normalRange: '< 0.1', unit: 'ng/mL' },
+  { name: 'Dímero D', normalRange: '< 500', unit: 'ng/FEU' },
+  { name: 'CPK Total', normalRange: '26 - 192', unit: 'U/L' },
+  { name: 'CPK-MB', normalRange: '< 25', unit: 'U/L' },
+  { name: 'NT-proBNP', normalRange: '< 125', unit: 'pg/mL' }
 ];
 
 export const DICTIONARY: DictionaryEntry[] = [

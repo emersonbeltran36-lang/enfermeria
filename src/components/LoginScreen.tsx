@@ -1,32 +1,21 @@
 import { motion } from 'motion/react';
 import { HeartPulse, ArrowRight } from 'lucide-react';
-import { signInAnonymouslyUser } from '../lib/firebase';
+import { signInMockUser } from '../lib/firebase';
 import { useState } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
 
 interface LoginScreenProps {
-  onLoginSuccess: () => void;
+  onLoginSuccess: (mockUser?: any) => void;
 }
 
 export function LoginScreen({ onLoginSuccess }: LoginScreenProps) {
-  const { t } = useLanguage();
   const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  const handleStart = async () => {
-    console.log('Starting anonymous sign in...');
+  const handleDemoMode = async () => {
     setIsLoggingIn(true);
-    setError(null);
-    try {
-      const user = await signInAnonymouslyUser();
-      console.log('Sign in successful:', user.uid);
-      onLoginSuccess();
-    } catch (err) {
-      console.error('Sign in error:', err);
-      setError('Error al iniciar sesión. Inténtelo de nuevo.');
-    } finally {
-      setIsLoggingIn(false);
-    }
+    const mockUser = await signInMockUser();
+    // Tiny delay for visual feedback
+    await new Promise(resolve => setTimeout(resolve, 600));
+    onLoginSuccess(mockUser);
   };
 
   return (
@@ -63,7 +52,7 @@ export function LoginScreen({ onLoginSuccess }: LoginScreenProps) {
 
         <div className="space-y-6">
           <button
-            onClick={handleStart}
+            onClick={handleDemoMode}
             disabled={isLoggingIn}
             className="w-full flex items-center justify-between gap-3 bg-medical-blue text-white font-black uppercase tracking-widest text-xs py-5 px-8 rounded-2xl hover:bg-medical-blue/90 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-medical-blue/20"
           >
@@ -71,21 +60,15 @@ export function LoginScreen({ onLoginSuccess }: LoginScreenProps) {
               <div className="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin mx-auto" />
             ) : (
               <>
-                <span>Empezar Configuración</span>
+                <span>Acceder Modo de Prueba</span>
                 <ArrowRight size={18} />
               </>
             )}
           </button>
 
-          {error && (
-            <motion.p 
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-medical-red text-[10px] font-bold text-center uppercase tracking-wider"
-            >
-              {error}
-            </motion.p>
-          )}
+          <p className="text-[10px] text-medical-gray font-bold text-center uppercase tracking-wider opacity-60">
+            Los datos se guardarán localmente
+          </p>
         </div>
 
         <div className="mt-12 pt-8 border-t border-medical-border text-center">

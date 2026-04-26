@@ -16,7 +16,11 @@ export function GlobalSearchView({ query, onSelectItem }: GlobalSearchViewProps)
   const results = {
     procedures: PROCEDURES.filter(p => p.name.toLowerCase().includes(q) || p.type.toLowerCase().includes(q)),
     drugs: DRUGS.filter(d => d.name.toLowerCase().includes(q) || d.group.toLowerCase().includes(q)),
-    pathologies: PATHOLOGIES.filter(p => p.name.toLowerCase().includes(q) || p.definition.toLowerCase().includes(q)),
+    pathologies: PATHOLOGIES.filter(p => 
+      p.name.toLowerCase().includes(q) || 
+      p.definition.toLowerCase().includes(q) || 
+      (p.abbreviation && p.abbreviation.toLowerCase().includes(q))
+    ),
     dictionary: DICTIONARY.filter(d => d.term.toLowerCase().includes(q) || d.definition.toLowerCase().includes(q))
   };
 
@@ -101,7 +105,14 @@ export function GlobalSearchView({ query, onSelectItem }: GlobalSearchViewProps)
                   className="w-full bg-medical-card p-4 rounded-xl border border-medical-border hover:border-rose-500/50 transition-all text-left flex justify-between items-center group"
                 >
                   <div>
-                    <p className="text-medical-text font-bold">{p.name}</p>
+                    <div className="flex items-center gap-2">
+                      <p className="text-medical-text font-bold">{p.name}</p>
+                      {p.abbreviation && (
+                        <span className="text-[10px] font-bold text-rose-400 bg-rose-400/10 px-1.5 py-0.5 rounded border border-rose-400/20">
+                          {p.abbreviation}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-[10px] text-medical-gray uppercase font-bold tracking-tighter mt-0.5">{p.system}</p>
                   </div>
                   <ArrowRight size={16} className="text-medical-gray group-hover:text-rose-400 transition-colors" />

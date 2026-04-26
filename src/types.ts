@@ -21,6 +21,7 @@ export interface Drug {
 export interface Pathology {
   id: string;
   name: string;
+  abbreviation?: string;
   system: string;
   definition: string;
   affectedTarget: string; // Célula u órgano afectado

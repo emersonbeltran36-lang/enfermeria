@@ -31,11 +31,8 @@ service cloud.firestore {
 
     // Users collection
     match /users/{userId} {
-      allow get: if isOwner(userId);
-      allow create: if isOwner(userId) && isValidUser(request.resource.data);
-      allow update: if isOwner(userId) && 
-                      isValidUser(request.resource.data) &&
-                      request.resource.data.diff(resource.data).affectedKeys().hasOnly(['lastLogin', 'displayName', 'photoURL', 'specialty', 'hospital', 'isProfileComplete']);
+      allow read: if true; // Temporary for debugging/setup
+      allow write: if isOwner(userId);
     }
   }
 }

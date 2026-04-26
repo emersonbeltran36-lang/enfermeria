@@ -42,7 +42,7 @@ export function ProfileSetup({ uid, onComplete }: ProfileSetupProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-medical-sidebar/95 backdrop-blur-xl">
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-medical-bg/95 backdrop-blur-xl">
       <div className="max-w-md w-full">
         <AnimatePresence mode="wait">
           {step === 1 ? (

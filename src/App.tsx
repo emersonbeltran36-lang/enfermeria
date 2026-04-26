@@ -67,17 +67,26 @@ function AppContent() {
     }, 2500); // 2.5 seconds for a better feel
 
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      console.log('Auth state changed:', currentUser?.uid);
       setUser(currentUser);
+      
       if (currentUser) {
-        let profile = await getUserProfile(currentUser.uid);
-        
-        // Retry once if profile is null (might be a race condition during registration)
-        if (!profile) {
-          await new Promise(resolve => setTimeout(resolve, 1000));
-          profile = await getUserProfile(currentUser.uid);
+        try {
+          let profile = await getUserProfile(currentUser.uid);
+          console.log('Profile loaded:', !!profile);
+          
+          // Retry once if profile is null (might be a race condition during registration)
+          if (!profile) {
+            console.log('Profile is null, retrying in 1s...');
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            profile = await getUserProfile(currentUser.uid);
+            console.log('Retry result:', !!profile);
+          }
+          
+          setUserProfile(profile);
+        } catch (err) {
+          console.error('Error fetching profile in auth change:', err);
         }
-        
-        setUserProfile(profile);
       } else {
         setUserProfile(null);
       }
@@ -137,18 +146,22 @@ function AppContent() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <LoginScreen onLoginSuccess={async () => {
-              const currentUser = auth.currentUser;
+            <LoginScreen onLoginSuccess={async (mockUser) => {
+              console.log('LoginScreen reported success', mockUser ? '(Mock Mode)' : '');
+              const currentUser = mockUser || auth.currentUser;
               if (currentUser) {
                 setUser(currentUser);
-                const profile = await getUserProfile(currentUser.uid);
-                setUserProfile(profile);
+                try {
+                  const profile = await getUserProfile(currentUser.uid);
+                  setUserProfile(profile);
+                } catch (err) {
+                  console.error('Error loading profile after login:', err);
+                }
               }
             }} />
           </motion.div>
         ) : (!userProfile || !userProfile.isProfileComplete) ? (
           <ProfileSetup 
-            key="setup"
             uid={user.uid} 
             onComplete={async () => {
               const profile = await getUserProfile(user.uid);
